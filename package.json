@@ -1,0 +1,22 @@
+{
+  "name": "manga2",
+  "version": "1.0.0",
+  "description": "projet de manga",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeromeEsnault/MANGA2.git"
+  },
+  "author": "jerome",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeromeEsnault/MANGA2/issues"
+  },
+  "homepage": "https://github.com/jeromeEsnault/MANGA2#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
