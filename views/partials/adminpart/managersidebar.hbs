@@ -1,0 +1,58 @@
+<div class="accordion w-100 m-5" id="accordion-manager">
+    <div class="card row">
+        <div class="card-header " id="managerOne">
+            <h2 class="mb-1 ">
+                <button class="btn btn-link btn-block text-center text-decoration-none link-dark" type="button"
+                    data-toggle="collapse" data-target="#manag-navbar" aria-expanded="true" aria-controls="manag-navbar">
+                    sidebar
+                </button>
+            </h2>
+        </div>
+
+        <div id="manag-navbar" class="collapse show" aria-labelledby="managerOne" data-parent="#accordion-manager">
+            <div class="card-body p-2">
+
+
+                {{> adminpart/navbarcont}}
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-1">
+                <button class="btn btn-link btn-block text-center text-decoration-none link-dark collapsed"
+                    type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                    aria-controls="collapseTwo">
+                    article
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion-manager">
+            <div class="card-body">
+           
+                {{> adminpart/navarticle }}
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-1">
+                <button class="btn btn-link btn-block text-center text-decoration-none link-dark collapsed"
+                    type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                    aria-controls="collapseThree">
+                    contact
+                </button>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion-manager">
+            <div class="card-body">
+               
+                {{> adminpart/navcontact}}
+
+
+            </div>
+        </div>
+    </div>
+    
+</div>
