@@ -7,6 +7,11 @@ const router = express.Router();
 const homeController = require('../API/Controllers/home/homeController'),
     //article
     articleController = require('../API/Controllers/article/articleController'),
+
+    //ajout d'article
+    pageidController = require('../API/Controllers/article/ajoutarticle'),
+    articlepost = require('../API/Controllers/article/articlePost'),
+
     //contact
     contactController = require('../API/Controllers/Contact/contactController'),
     //reference
@@ -20,6 +25,9 @@ const homeController = require('../API/Controllers/home/homeController'),
     //book de livre
     bookingController = require('../API/Controllers/booking/bookingController')
 
+
+
+
 // Home
 router.route('/')
     .get(homeController.get)
@@ -27,6 +35,15 @@ router.route('/')
 // Article
 router.route('/article')
     .get(articleController.get)
+
+
+//ajout temporaire test
+router.route('/pageid')
+    .get(pageidController.get)
+
+//ajout temporaire test
+router.route('/pageid/post')
+    .post(articlepost.post)
 
 // Contact
 router.route('/contact')
