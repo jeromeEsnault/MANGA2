@@ -1,5 +1,5 @@
 module.exports = {
-    get: (req, res) => {
+    getContactPage: (req, res) => {
         res.render('contact')
     }
 }

@@ -1,5 +1,5 @@
 module.exports = {
-    get: (req, res) => {
+    getUserPage: (req, res) => {
         res.render('user')
     }
 }

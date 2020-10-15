@@ -1,72 +1,87 @@
 const express = require('express');
-
 const router = express.Router();
 
 // Controller
 //accueil
-const homeController = require('../API/Controllers/home/homeController'),
-    //article
-    articleController = require('../API/Controllers/article/articleController'),
-
-    //ajout d'article
-    pageidController = require('../API/Controllers/article/ajoutarticle'),
-    articlepost = require('../API/Controllers/article/articlePost'),
-
+const homeController = require('./Controllers/home/homeController'), //ok
+    //manga
+    mangaController = require('./Controllers/article/mangaController'), //ok
     //contact
-    contactController = require('../API/Controllers/Contact/contactController'),
+    contactController = require('./Controllers/Contact/contactController'), //ok
     //reference
-    referenceController = require('./Controllers/Reference/referenceController'),
+    referenceController = require('./Controllers/Reference/referenceController'), //ok
     //admin
-    adminController = require('./Controllers/admin/adminController'),
-    //partie du admin
-    adminpartController = require('../API/Controllers/admin/adminpartController'),
-    // utilisateur
-    userController = require('../API/Controllers/user/userController'),
+    adminController = require('./Controllers/admin/adminController')
+    // user
+    //userController = require('./Controllers/user/userController'), //ok
     //book de livre
-    bookingController = require('../API/Controllers/booking/bookingController')
+    //bookingController = require('./Controllers/booking/bookingController')
 
 
 
-
-// Home
+/*
+ * Home
+ * **** */
 router.route('/')
-    .get(homeController.get)
+    .get(homeController.getHomePage)
 
-// Article
-router.route('/article')
-    .get(articleController.get)
+/*
+ * manga
+ * ******* */
+router.route('/manga')
+    // Page Article Website
+    .get(mangaController.getMangaPage)
 
+router.route('/manga/:id')
+    // Page Manga ID
+    .get(mangaController.getMangaPageID)
 
-//ajout temporaire test
-router.route('/pageid')
-    .get(pageidController.get)
+router.route('/manga/create')
+    // Page Formulaire create Article
+    .get(mangaController.getPageFormCreateArticle)
+    // Action du Formulaire
+    .post(mangaController.createArticleForm)
 
-//ajout temporaire test
-router.route('/pageid/post')
-    .post(articlepost.post)
-
-// Contact
+/*
+ * Contact
+ * ********/
 router.route('/contact')
-    .get(contactController.get)
+    .get(contactController.getContactPage)
 
-// reférence
+/*
+ * reference
+ * ***********/
 router.route('/reference')
-    .get(referenceController.get)
+    .get(referenceController.getReferencePage)
 
-// admin
+/*
+ * admin
+ * ******* */
 router.route('/admin')
-    .get(adminController.get)
+    .get(adminController.getAdminPage)
 
-// adminpart
-router.route('/adminpart')
-    .get(adminpartController.get)
+/*
+ * adminpart
+ * ******* */
+router.route('/admin')
+    .get(adminController.getAdminPart)
 
-// user
-router.route('/user')
-    .get(userController.get)
+/*
+ *
+ * MODE BETA PAGE
+ *
+ *************************/
 
-// booking
-router.route('/booking')
-    .get(bookingController.get)
+/*
+ * user
+ * ******* */
+//router.route('/user')
+//    .get(userController.getUserPage)
+
+/*
+ * booking
+ * ******* */
+//router.route('/booking')
+//.get(bookingController.get)
 
 module.exports = router;

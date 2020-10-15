@@ -3,16 +3,17 @@ const express = require('express'),
     port = 1989,
     hbs = require('express-handlebars'),
     bodyParser = require('body-parser'),
-    bcrypt = require('bcrypt'),
-    flash = require('connect-flash'),
-    mongostore = require('connect-mongo'),
-    upload = require('express-fileupload'),
-    exhbs = require('express-handlebars'),
-    session = require('express-session'),
+    //bcrypt = require('bcrypt'),
+    //flash = require('connect-flash'),
+    //mongostore = require('connect-mongo'),
+    //upload = require('express-fileupload'),
+    //exhbs = require('express-handlebars'),
+    //session = require('express-session'),
     handlebars = require('handlebars'),
     handlebarshelpers = require('handlebars-helpers'),
     handlebarsmoment = require('handlebars.moment');
-//mongoose = require('mongoose');
+
+
 
 // Handlebars
 app.set('view engine', 'hbs');
@@ -43,6 +44,8 @@ app.use(express.static('public'));
 
 const ROUTER = require('./API/router');
 app.use('/', ROUTER)
+
+
 
 app.listen(port, () => {
     console.log('le serveur tourne sur :' + port);
