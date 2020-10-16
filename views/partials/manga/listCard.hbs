@@ -8,20 +8,16 @@
             {{#each manga }}
 
             <a href="/manga/{{ _id }}">
-                <div class="card" id="#n° de l'article">
+                <div class="card" >
                     <div class="card-img img-thumbnail">
-                        <img src="../assets/img/bookimg/dgray_man_01.jpg"
-                            class="card-img-top" alt="{{ nameVF }}">
+                        <img src="{{ image }}"
+                            class="card-img-top" alt="{{ alt }}">
                     </div>
                     <div class="card-body">
                         <h5 class="card-title"> {{ nameVF }} </h5>
-                        <p class="card-text" id="#description">This is a longer
-                            card with supporting text below as a
-                            natural lead-in to additional content. This content
-                            is a little bit longer.</p>
-                        <p class="card-text" id="#date de parution"><small
-                                class="text-muted">Last updated 3 mins
-                                ago</small></p>
+                        <p class="card-text" name ="description"> {{ description }} </p>
+                        <p class="card-text" name ="date de parution">{{ date de parution }}<small
+                                class="text-muted"> creer par {{ author }} , le  {{ datedecreation }}  </small></p>
                         <p>{{ _id }}</p>
                     </div>
                 </div>

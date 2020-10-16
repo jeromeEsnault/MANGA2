@@ -11,12 +11,14 @@ const homeController = require('./Controllers/home/homeController'), //ok
     //reference
     referenceController = require('./Controllers/Reference/referenceController'), //ok
     //admin
-    adminController = require('./Controllers/admin/adminController')
+    adminController = require('./Controllers/admin/adminController'), //ok
     // user
-    //userController = require('./Controllers/user/userController'), //ok
+    userController = require('./Controllers/user/userController'), //ok
     //book de livre
-    //bookingController = require('./Controllers/booking/bookingController')
-
+    bookingController = require('./Controllers/booking/bookingController'); //ok
+//middleware
+//au
+//authAdminController = require('./Controllers/admin/auth');
 
 
 /*
@@ -75,13 +77,13 @@ router.route('/admin')
 /*
  * user
  * ******* */
-//router.route('/user')
-//    .get(userController.getUserPage)
+router.route('/user')
+    .get(userController.getUserPage)
 
 /*
  * booking
  * ******* */
-//router.route('/booking')
-//.get(bookingController.get)
+router.route('/booking')
+    .get(bookingController.get)
 
 module.exports = router;

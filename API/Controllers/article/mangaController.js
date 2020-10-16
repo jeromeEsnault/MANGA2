@@ -1,4 +1,4 @@
-const Manga = require('../database/models/Manga')
+const Manga = require('../../database/models/Manga')
 
 module.exports = {
     // GET : Page manga list ( Utilisateur )
@@ -38,5 +38,9 @@ module.exports = {
             if (err) console.log(err)
             res.render('formCreateManga')
         })
+    },
+    // envoie de donne sur html
+    getDBMangaID: (req, res) => {
+        res.render()
     }
 }
