@@ -40,7 +40,7 @@ module.exports = {
         })
     },
     // envoie de donne sur html
-    getDBMangaID: (req, res) => {
-        res.render()
-    }
+    // getDBMangaID: (req, res) => {
+    //   res.render()
+    // }
 }
