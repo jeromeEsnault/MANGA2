@@ -1,21 +1,38 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const Arc = require('./Arc')
+const Tome = require('./tome')
+const Type = require('./type')
+const Genre = require('./genre')
 
 const MangaSchema = new mongoose.Schema({
 
-    nameVO: {
-        type: String
+    titlevo: {
+        String
     },
-    nameVF: {
-        type: String
+    titlevf: {
+        String
     },
     author: {
-        type: String
+        String
     },
-    arc: [{
+    dateEdit: {
+        Date
+    },
+    dateCreate: {
+        Date
+    },
+
+    tome: [{
         type: Schema.Types.ObjectId,
-        ref: 'Arc'
+        ref: 'tome'
+    }],
+    type: [{
+        type: Schema.Types.ObjectId,
+        ref: 'type'
+    }],
+    genre: [{
+        type: Schema.Types.ObjectId,
+        ref: 'genre'
     }]
 
 });
