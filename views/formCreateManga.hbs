@@ -1,9 +1,10 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form action="/manga/create" method="POST">
-
-                <table class="table table-dark">
+            <form action="/manga/create" method="POST" >
+                <input class="form-text" type="text" name="titlevf">
+                <input class="form-text" type="text" name="titlevo">
+                {{!-- <table class="table table-dark">
                     <thead>
                         <tr>
                             <th scope="col"></th>
@@ -32,14 +33,14 @@
                             <td><label class="form-label" for="">nom du manga en
                                     vo</label></td>
                             <td><input class="form-text" type="text"
-                                    name="nameVO"></td>
+                                    name="titlevo"></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
                             <td><label class="form-label" for="">nom de manga en
                                     vf</label></td>
                             <td><input class="form-text" type="text"
-                                    name="nameVF"></td>
+                                    name="titlevf"></td>
                         </tr>
                         <tr>
                             <th scope="row">5</th>
@@ -53,27 +54,25 @@
                             <th scope="row">6</th>
                             <td><label class="form-label" for="">dessin</label></td>
                             <td><input class="form-text" type="text"
-                                    id="#dessin"></td>
+                                    name="dessin"></td>
                         </tr>
                         <tr>
                             <th scope="row">7</th>
                             <td><label class="form-label" for="">scenariste</label></td>
                             <td><input class="form-text" type="text"
-                                    id="#scenariste"></td>
+                                    name="scenariste"></td>
 
                         </tr>
                         <tr>
                             <th scope="row">8</th>
                             <td><label class="form-label" for="">traducteur</label></td>
                             <td><input class="form-text" type="text"
-                                    id="#traducteur"></td>
+                                    name="traducteur"></td>
 
                         </tr>
 
                     </tbody>
                 </table>
-            </div>
-            <div>
                 <table class="table table-dark">
                     <thead>
                         <tr>
@@ -83,61 +82,55 @@
                         </tr>
                     </thead>
                     <tbody>
- 
+
                         <tr>
                             <th scope="row">9</th>
                             <td><label class="form-label" for="">editeur vf</label></td>
                             <td><input class="form-text" type="text"
-                                    id="#editeur-vf"></td>
+                                    name="editeur-vf"></td>
 
                         </tr>
                         <tr>
                             <th scope="row">10</th>
                             <td><label class="form-label" for="">type</label></td>
-                            <td><input class="form-text" type="text" id="#type"></td>
+                            <td><input class="form-text" type="text"
+                                    name="type"></td>
                         </tr>
                         <tr>
                             <th scope="row">11</th>
                             <td><label class="form-label" for="">genre</label></td>
                             <td><input class="form-text" type="text"
-                                    id="#genre"></td>
+                                    name="genre"></td>
                         </tr>
                         <tr>
                             <th scope="row">12</th>
                             <td><label class="form-label" for="">editeur en vo</label></td>
                             <td><input class="form-text" type="text"
-                                    id="#editeur-vo"></td>
+                                    name="editeur-vo"></td>
                         </tr>
                         <tr>
                             <th scope="row">13</th>
                             <td><label class="form-label" for="">prepublication</label></td>
                             <td><input class="form-text" type="text"
-                                    id="#prépublication"></td>
+                                    name="prépublication"></td>
 
                         </tr>
+
                         <tr>
                             <th scope="row">14</th>
-                            <td><label class="form-label" for="">nom du manga en
-                                    vo</label></td>
+                            <td><label class="form-label" for="">origine</label></td>
                             <td><input class="form-text" type="text"
-                                    id="nom-du-manga-en-vo"></td>
-
+                                    name="origine"></td>
                         </tr>
                         <tr>
                             <th scope="row">15</th>
-                            <td><label class="form-label" for="">origine</label></td>
-                            <td><input class="form-text" type="text"
-                                    id="#origine"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">16</th>
                             <td><label class="form-label" for="">illustration</label></td>
                             <td><input class="form-text" type="text"
-                                    id="#illustration"></td>
+                                    name="illustration"></td>
 
                         </tr>
                     </tbody>
-                </table>
+                </table> --}}
 
                 <button type="submit">Créé un manga</button>
             </form>
@@ -147,7 +140,6 @@
     </div>
 
     <div class="comtainer justify-content-center">
-
         <div class="row justify-content-center">
             <div class="col-md-12 justify-content-center">
                 <button type="submit" class="btn btn-dark

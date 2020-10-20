@@ -7,21 +7,20 @@ const Genre = require('./genre')
 const MangaSchema = new mongoose.Schema({
 
     titlevo: {
-        String
+        type: String
     },
     titlevf: {
-        String
+        type: String
     },
     author: {
-        String
+        type: String
     },
     dateEdit: {
-        Date
+        type: Date
     },
     dateCreate: {
-        Date
+        type: Date
     },
-
     tome: [{
         type: Schema.Types.ObjectId,
         ref: 'tome'

@@ -34,15 +34,16 @@ router.route('/manga')
     // Page Article Website
     .get(mangaController.getMangaPage)
 
-router.route('/manga/:id')
-    // Page Manga ID
-    .get(mangaController.getMangaPageID)
-
 router.route('/manga/create')
     // Page Formulaire create Article
     .get(mangaController.getPageFormCreateArticle)
     // Action du Formulaire
     .post(mangaController.createArticleForm)
+
+router.route('/manga/:id')
+    // Page Manga ID
+    .get(mangaController.getMangaPageID)
+    .delete(mangaController.deleteOne)
 
 /*
  * Contact

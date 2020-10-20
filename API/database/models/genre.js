@@ -14,6 +14,6 @@ const genreSchema = new mongoose.Schema({
 });
 
 
-const Genre = mongoose.model('type', genreSchema)
+const Genre = mongoose.model('genre', genreSchema)
 
 module.exports = Genre

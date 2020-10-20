@@ -15,6 +15,7 @@ module.exports = {
     },
     // GET : Page Manga ID ( Utilisateur )
     getMangaPageID: (req, res) => {
+        console.log(req.params.id)
         Manga.findById(req.params.id)
             // .populate('arc')
             .exec((err, data) => {
@@ -36,11 +37,19 @@ module.exports = {
         console.log(req.body)
         Manga.create({...req.body }, (err) => {
             if (err) console.log(err)
-            res.render('formCreateManga')
+                // res.render('formCreateManga')
+            res.redirect('/')
         })
     },
-    // envoie de donne sur html
-    // getDBMangaID: (req, res) => {
-    //   res.render()
-    // }
+    deleteOne: (req, res) => {
+            Manga.findByIdAndDelete(req.params.id, (err) => {
+                if (err) console.log(err)
+                res.redirect('/')
+            })
+
+        }
+        // envoie de donne sur html
+        // getDBMangaID: (req, res) => {
+        //   res.render()
+        // }
 }

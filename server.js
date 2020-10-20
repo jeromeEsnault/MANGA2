@@ -9,10 +9,26 @@ const express = require('express'),
     //upload = require('express-fileupload'),
     //exhbs = require('express-handlebars'),
     //session = require('express-session'),
+    methodOverride = require('method-override'),
     handlebars = require('handlebars'),
     handlebarshelpers = require('handlebars-helpers'),
     handlebarsmoment = require('handlebars.moment');
 
+require('dotenv').config()
+app.use(methodOverride('_method'))
+
+// mongoose
+const mongoose = require('mongoose');
+// Express-session// Mongoose
+mongoose
+    .connect(process.env.MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: true,
+        useCreateIndex: true
+    })
+    .then(() => console.log('Connecter a MongoDB'))
+    .catch(err => console.log(err))
 
 
 // Handlebars
@@ -28,24 +44,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-// mongoose
-const mongoose = require('mongoose');
-require('dotenv').config()
-
-const connect = mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: true,
-    useCreateIndex: true
-});
-
 
 app.use(express.static('public'));
 
 const ROUTER = require('./API/router');
 app.use('/', ROUTER)
 
-
+app.use('*', (req, res) => {
+    res.send('Erreur 404')
+})
 
 app.listen(port, () => {
     console.log('le serveur tourne sur :' + port);
