@@ -4,9 +4,10 @@ module.exports = {
     // GET : Page manga list ( Utilisateur )
     getMangaPage: (req, res) => {
         Manga.find({})
-            // .populate('arc')
+            .populate('Manga', 'type', 'genre')
             .exec((err, data) => {
                 if (err) console.log(err)
+                console.log('je suis dans le .getMangaPage')
                 console.log(data)
                 res.render('manga', {
                     manga: data
@@ -17,11 +18,12 @@ module.exports = {
     getMangaPageID: (req, res) => {
         console.log(req.params.id)
         Manga.findById(req.params.id)
-            // .populate('arc')
+            .populate('Manga', 'type', 'genre')
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log(data)
-                res.render('mangaID', {
+                console.log('je suis dans le .getMangaPageID')
+                res.render('mangaid', {
                     manga: data
                 })
             })
@@ -37,8 +39,9 @@ module.exports = {
         console.log(req.body)
         Manga.create({...req.body }, (err) => {
             if (err) console.log(err)
-                // res.render('formCreateManga')
-            res.redirect('/')
+            console.log('je suis dans le .createArticleForm')
+            res.render('formCreateManga')
+
         })
     },
     deleteOne: (req, res) => {

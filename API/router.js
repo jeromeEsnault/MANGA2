@@ -44,6 +44,12 @@ router.route('/manga/:id')
     // Page Manga ID
     .get(mangaController.getMangaPageID)
     .delete(mangaController.deleteOne)
+    /*
+     * booking
+     * ******* */
+router.route('/booking')
+    .get(bookingController.getBookingPage)
+    //.get(bookingController.getMangaPageID)
 
 /*
  * Contact
@@ -81,10 +87,6 @@ router.route('/admin')
 router.route('/user')
     .get(userController.getUserPage)
 
-/*
- * booking
- * ******* */
-router.route('/booking')
-    .get(bookingController.get)
+
 
 module.exports = router;

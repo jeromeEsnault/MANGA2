@@ -4,11 +4,11 @@ const Schema = mongoose.Schema
 
 const genreSchema = new mongoose.Schema({
 
-    name: {
-        String
+    nameGenre: {
+        type: String
     },
     dateCreate: {
-        Date
+        type: Date
     }
 
 });

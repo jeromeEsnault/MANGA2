@@ -1,10 +1,10 @@
+<!-- CREATION DE MANGA  -->
+
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <form action="/manga/create" method="POST" >
-                <input class="form-text" type="text" name="titlevf">
-                <input class="form-text" type="text" name="titlevo">
-                {{!-- <table class="table table-dark">
+        <form action="/manga/create" method="POST">
+            <div class="col-md-6">
+                <table class="table table-dark">
                     <thead>
                         <tr>
                             <th scope="col"></th>
@@ -73,6 +73,10 @@
 
                     </tbody>
                 </table>
+
+            </div>
+            <div class="col-md-6">
+
                 <table class="table table-dark">
                     <thead>
                         <tr>
@@ -87,32 +91,47 @@
                             <th scope="row">9</th>
                             <td><label class="form-label" for="">editeur vf</label></td>
                             <td><input class="form-text" type="text"
-                                    name="editeur-vf"></td>
+                                    name="editeurVF"></td>
 
                         </tr>
                         <tr>
                             <th scope="row">10</th>
                             <td><label class="form-label" for="">type</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="type"></td>
+                            <td> <select name="nameType">
+                                    <option value="selection">choisissez votre
+                                        type
+                                    </option>
+                                    <option value="shonen">shonen</option>
+                                    <option value="shojo">shojo</option>
+                                    <option value="seinen">seinen</option>
+                                    <option value="kodomo">kodomo</option>
+                                </select></td>
                         </tr>
                         <tr>
                             <th scope="row">11</th>
-                            <td><label class="form-label" for="">genre</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="genre"></td>
+                            <td><label class="form-label" for="">Genre</label></td>
+                            <td><select name="nameGenre">
+                                    <option value="selection">Choisissez votre
+                                        genre
+                                    </option>
+                                    <option value="Fantastique">Fantastique</option>
+                                    <option value="Romance">Romance</option>
+                                    <option value="Action">Action</option>
+                                    <option value="SF">Science-Fiction</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <th scope="row">12</th>
                             <td><label class="form-label" for="">editeur en vo</label></td>
                             <td><input class="form-text" type="text"
-                                    name="editeur-vo"></td>
+                                    name="editeurVO"></td>
                         </tr>
                         <tr>
                             <th scope="row">13</th>
-                            <td><label class="form-label" for="">prepublication</label></td>
+                            <td><label class="form-label" for="prepublication">prepublication</label></td>
                             <td><input class="form-text" type="text"
-                                    name="prépublication"></td>
+                                    name="prepublication"></td>
 
                         </tr>
 
@@ -130,25 +149,27 @@
 
                         </tr>
                     </tbody>
-                </table> --}}
+                </table>
 
-                <button type="submit">Créé un manga</button>
-            </form>
 
-        </div>
-
-    </div>
-
-    <div class="comtainer justify-content-center">
-        <div class="row justify-content-center">
-            <div class="col-md-12 justify-content-center">
-                <button type="submit" class="btn btn-dark
-                    justify-content-center">
-                    enregistrer
-                </button>
+                <div class="comtainer justify-content-center">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 justify-content-center">
+                            <button type="submit" class="btn btn-dark
+                                justify-content-center">
+                                enregistrer
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </form>
+
+
+
     </div>
+
+
 
 
 </div>

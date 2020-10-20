@@ -1,26 +1,15 @@
-<div id="#n° de l'article" class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
+<div  class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
     <div class="container  ">
         <div class="card m-3">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img id="#image" src="assets/img/bookimg/naruto_1.jpg" class="card-img" alt="naruto">
+                    <img name="image" src="assets/img/bookimg/naruto_1.jpg" class="card-img" alt="naruto">
                 </div>
                 <div class="col-md-8 justify-content-center">
                     <div class="card-body justify-content-evenly">
-                        <p class="card-text  font-weight-bold text-lg-left" id="#descrit">Naruto
-                            est un garçon un peu spécial.
-                            Solitaire au caractère fougueux,
-                            il n'est pas des plus appréciés dans son village.
-                            Malgré cela, il garde
-                            au fond de lui une ambition: celle de devenir un
-                            "maître Hokage", la plus
-                            haute distinction dans l'ordre des ninjas, et ainsi
-                            obtenir la reconnaissance
-                            de ses pairs mais cela ne sera pas de tout repos ...
-                            Suivez l'éternel farceur
-                            dans sa quête du secret de sa naissance et de la
-                            conquête des fruits
-                            de son ambition !</p>
+                        <p class="card-text  font-weight-bold text-lg-left" name="description">
+                            {{ Manga.description }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -34,7 +23,7 @@
                         <label for="">nom du manga en vo</label>
                     </div>
                     <div class="col-md-6">
-                        <p id="#nom-manga-vo">ナルト</p>
+                        <p name="nom-manga-vo">{{ Manga.titlevo }}</p>
                     </div>
                 </div>
                 <div class="row m-3">
@@ -42,7 +31,7 @@
                         <label for="">nom de manga en vf</label>
                     </div>
                     <div class="col-md-6">
-                        <p id="#nom-manga-de-langue-server">Naruto</p>
+                        <p name="nom-manga-de-langue-server">{{ Manga.titlevf }}</p>
 
                     </div>
                 </div>
@@ -51,7 +40,7 @@
                         <label for="">date de parution</label>
                     </div>
                     <div class="col-md-6">
-                        <p id="#date-de-parution">2000</p>
+                        <p name="date-de-parution">{{ Manga.description }}</p>
                     </div>
                 </div>
                 <div class="row m-3">
@@ -59,7 +48,7 @@
                         <label for="">dessin</label>
                     </div>
                     <div class="col-md-6">
-                        <p id="#dessin"> KISHIMOTO Masashi</p>
+                        <p name="dessin"> {{ Manga.description }}</p>
                     </div>
                 </div>
                 <div class="row m-3">
@@ -67,7 +56,7 @@
                         <label for="">scenariste</label>
                     </div>
                     <div class="col-md-6">
-                        <p id="#scenariste"> KISHIMOTO Masashi</p>
+                        <p name="scenariste"> {{ Manga.description }}</p>
 
                     </div>
                 </div>
@@ -76,7 +65,7 @@
                         <label for="">traducteur</label>
                     </div>
                     <div class="col-md-6">
-                        <p id="#traducteur">RAILLARD Misato , RIPPEL Theresia</p>
+                        <p name="traducteur">{{ Manga.description }}</p>
                     </div>
                 </div>
                 <div class="row m-3">
@@ -84,12 +73,12 @@
                         <label for="">editeur en vf</label>
                     </div>
                     <div class="col-md-6">
-                        <p id="#editeur-vf">Kana / France Loisirs</p>
+                        <p name"editeur-vf">{{ Manga.description }}</p>
                     </div>
                 </div>
             </ul>
             <div class="col-md-4">
-                <img id="#img-de-manga" src="assets/img/NARUTOH.jpg" alt="naruto" class="card-img">
+                <img name="img-de-manga" src="assets/img/NARUTOH.jpg" alt="naruto" class="card-img">
             </div>
             <ul class="col-md-4">
                 <div class="row m-3">
@@ -97,7 +86,7 @@
                         <label for="">type</label>
                     </div>
                     <div class="col-md-6">
-                        <p id="#type">Shonen</p>
+                        <p name="type">{{ Manga.description }}</p>
 
                     </div>
                 </div>
@@ -107,7 +96,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <p id="#genre">Action, Aventure</p>
+                        <p name="genre">{{ Manga.description }}</p>
 
                     </div>
                 </div>
@@ -117,7 +106,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <p id="#editeur-vo">Shûeisha</p>
+                        <p iname"editeur-vo">{{ Manga.description }}</p>
 
                     </div>
                 </div>
@@ -127,7 +116,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <p id="#prépublication">Shônen Jump</p>
+                        <p name="prépublication">{{ Manga.description }}</p>
 
                     </div>
                 </div>
@@ -137,7 +126,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <p id="#illustration"> n&b</p>
+                        <p name="illustration"> n&b</p>
 
                     </div>
                 </div>
@@ -147,7 +136,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <p id="#origine">Japon - 2000</p>
+                        <p name="origine">Japon - 2000</p>
 
                     </div>
                 </div>
@@ -157,7 +146,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <p id="#code-EAN"> KA01</p>
+                        <p name="code-EAN"> KA01</p>
 
                     </div>
                 </div>
@@ -176,7 +165,7 @@
                         </div>
 
                         <div class="m-5 ">
-                            <p class="" id="#age-conseillé">10+</p>
+                            <p class="" name="age-conseillé">10+</p>
                         </div>
                     </div>
                     <div class="col-md-6justify-content-center">
@@ -184,7 +173,7 @@
                             <label for="note de redaction" class="justify-content-center">prix</label>
                         </div>
                         <div class="m-5 justify-content-center">
-                            <p class=" justify-content-center" id="#prix">6.99</p>
+                            <p class=" justify-content-center" name="prix">6.99</p>
                         </div>
 
                     </div>
@@ -200,13 +189,13 @@
                     <tbody>
                         <tr>
                             <th scope="row ">les volumes en vo</th>
-                            <td id="#tome-vo">50</td>
-                            <td id="#statut-tome-vo">terminer</td>
+                            <td name="tome-vo">50</td>
+                            <td name="statut-tome-vo">terminer</td>
                         </tr>
                         <tr>
                             <th scope="row">les volumes en vf</th>
-                            <td id="#tome-vf">40</td>
-                            <td id="#statut-tome-vf">en cours</td>
+                            <td name="tome-vf">40</td>
+                            <td name="statut-tome-vf">en cours</td>
                         </tr>
 
                     </tbody>

@@ -23,15 +23,15 @@ const MangaSchema = new mongoose.Schema({
     },
     tome: [{
         type: Schema.Types.ObjectId,
-        ref: 'tome'
+        ref: Tome
     }],
     type: [{
         type: Schema.Types.ObjectId,
-        ref: 'type'
+        ref: Type
     }],
     genre: [{
         type: Schema.Types.ObjectId,
-        ref: 'genre'
+        ref: Genre
     }]
 
 });
