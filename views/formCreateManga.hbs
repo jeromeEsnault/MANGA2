@@ -1,175 +1,249 @@
-<!-- CREATION DE MANGA  -->
-
-<div class="container">
-    <div class="row">
-        <form action="/manga/create" method="POST">
-            <div class="col-md-6">
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">label</th>
-                            <th scope="col">enregistrement</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td><label class="form-label" for="file">image du
-                                    manga</label></td>
-                            <td><input class="form-file" type="file"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td><label class="form-label" for="description">description
-                                    du
-                                    manga</label></td>
-                            <td><textarea name="description" cols="30"
-                                    rows="10"></textarea></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td><label class="form-label" for="">nom du manga en
-                                    vo</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="titlevo"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td><label class="form-label" for="">nom de manga en
-                                    vf</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="titlevf"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td><label class="form-label" for="">date de
-                                    parution</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="datedeparution"></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td><label class="form-label" for="">dessin</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="dessin"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">7</th>
-                            <td><label class="form-label" for="">scenariste</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="scenariste"></td>
-
-                        </tr>
-                        <tr>
-                            <th scope="row">8</th>
-                            <td><label class="form-label" for="">traducteur</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="traducteur"></td>
-
-                        </tr>
-
-                    </tbody>
-                </table>
-
+<div class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
+    <form action="/manga/create" method="POST">
+        <div class="container">
+            <div class="card m-3">
+                <div class="form-input">
+                    <label for="">nom du manga en vo</label> 
+                    <input type="text" name="titrevo">
+                </div>
+                <div class="form-input">
+                    <label for="">nom du manga en vo</label>
+                    <input type="text" name="titrevf">
+                </div>
+                <div class="form-input">
+                    <label for="">nom du manga en vo</label>
+                    <input type="text" name="author">
+                </div>
+                <div class="form-input">
+                    <label for="">nom du manga en vo</label>
+                    <input type="text" name="dateedit">
+                </div>
+                <div class="form-input">
+                    <label for="">nom du manga en vo</label>
+                    <input type="text" name="dateCreate">
+                </div>
+            
             </div>
-            <div class="col-md-6">
+        </div>
 
-                <table class="table table-dark">
-                    <thead>
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col">label</th>
-                            <th scope="col">enregistrement</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+    </form>
+</div>
+    <div class="container bg-success">
+        <form action="/manga/create" method="POST">
+        <div class="row text-decoration-none">
+            <ul class="col-md-4">
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">volume</label>
+                    </div>
+                    <div class="col-md-6">
+                       <input type="text" name="volume">
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">description du manga</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" name="description">
 
-                        <tr>
-                            <th scope="row">9</th>
-                            <td><label class="form-label" for="">editeur vf</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="editeurVF"></td>
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">date de parution</label>
+                    </div>
+                    <div class="col-md-6">
+                         <input type="date" name="datedeparution">
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">dessin</label>
+                    </div>
+                    <div class="col-md-6">
+                       <input type="text" name="dessin">
+                    </div>
+                </div>
+                 <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">Illustrution</label>
+                    </div>
+                    <div class="col-md-6">
+                       <input type="text" name="illustrution">
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">Scénariste</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" name="scenariste">
 
-                        </tr>
-                        <tr>
-                            <th scope="row">10</th>
-                            <td><label class="form-label" for="">type</label></td>
-                            <td> <select name="nameType">
-                                    <option value="selection">choisissez votre
-                                        type
-                                    </option>
-                                    <option value="shonen">shonen</option>
-                                    <option value="shojo">shojo</option>
-                                    <option value="seinen">seinen</option>
-                                    <option value="kodomo">kodomo</option>
-                                </select></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">11</th>
-                            <td><label class="form-label" for="">Genre</label></td>
-                            <td><select name="nameGenre">
-                                    <option value="selection">Choisissez votre
-                                        genre
-                                    </option>
-                                    <option value="Fantastique">Fantastique</option>
-                                    <option value="Romance">Romance</option>
-                                    <option value="Action">Action</option>
-                                    <option value="SF">Science-Fiction</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">12</th>
-                            <td><label class="form-label" for="">editeur en vo</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="editeurVO"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">13</th>
-                            <td><label class="form-label" for="prepublication">prepublication</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="prepublication"></td>
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">Traducteur</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" name="traducteur">
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">editeur en vf</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" name="editeurvf"></p>
+                    </div>
+                </div>
+            </ul>
+            <div class="col-md-4">
+                <img name="img-de-manga" src="/img/NARUTOH.jpg" alt="naruto"
+                    class="card-img">
+            </div>
+            <ul class="col-md-4">
+               
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">éditeur en vo</label>
+                    </div>
+                    <div class="col-md-6">
 
-                        </tr>
+                        <input type="file" name="editeurvo">
 
-                        <tr>
-                            <th scope="row">14</th>
-                            <td><label class="form-label" for="">origine</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="origine"></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">15</th>
-                            <td><label class="form-label" for="">illustration</label></td>
-                            <td><input class="form-text" type="text"
-                                    name="illustration"></td>
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">prépublication</label>
+                    </div>
+                    <div class="col-md-6">
 
-                        </tr>
-                    </tbody>
-                </table>
+                       <input type="file" name="image">
+
+                    </div>
+                </div>
+                
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">origine</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="file" name="image">
+                       
+
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">date de creation</label>
+                    </div>
+                    <div class="col-md-6">
+
+                       
+                        <input type="file" name="image">
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">date d'edition</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="file" name="image">
+                       
+
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">image du tome</label>
+                    </div>
+                    <div class="col-md-6">
+
+                       <input type="file" name="image">
+
+                    </div>
+                </div>
+               
 
 
-                <div class="comtainer justify-content-center">
-                    <div class="row justify-content-center">
-                        <div class="col-md-12 justify-content-center">
-                            <button type="submit" class="btn btn-dark
-                                justify-content-center">
-                                enregistrer
-                            </button>
+            </ul>
+        </div>
+    </div>
+        </form>
+        
+<div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">type</label>
+                    </div>
+                    <div class="col-md-6">
+                       
+
+                    </div>
+                </div>
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="">genre</label>
+                    </div>
+                    <div class="col-md-6">
+
+                      
+
+                    </div>
+                </div>
+
+    <div class="container mt-5 p-4 bg-warning">
+        <form action="" method="post">
+            <div class="row bg-white">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 justify-content-center">
+                            <div class="m-5">
+                                <label for="" class="">Age Conseillé</label>
+                            </div>
+
+                            <div class="m-5">
+                                <p class="" name="age-conseillé">10+</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6justify-content-center">
+                            <div class="m-5 justify-content-center">
+                                <label for="note de redaction"
+                                    class="justify-content-center">prix</label>
+                            </div>
+                            <div class="m-5 justify-content-center">
+                                <p class="justify-content-center" name="prix">6.99</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12 bg-contact p-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">les volume en cours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">les volumes en vo</th>
+                                <td name="tome-vo">50</td>
+                                <td name="statut-tome-vo">terminer</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">les volumes en vf</th>
+                                <td name="tome-vf">40</td>
+                                <td name="statut-tome-vf">en cours</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </form>
-
-
-
-    </div>
-
-
-
-
+        </div>
+    </form>
 </div>

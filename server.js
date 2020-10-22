@@ -3,16 +3,18 @@ const express = require('express'),
     port = 1989,
     hbs = require('express-handlebars'),
     bodyParser = require('body-parser'),
+    { stripTags, limit } = require('./API/helper/hbs'),
     //bcrypt = require('bcrypt'),
     //flash = require('connect-flash'),
     //mongostore = require('connect-mongo'),
     //upload = require('express-fileupload'),
-    //exhbs = require('express-handlebars'),
     //session = require('express-session'),
     methodOverride = require('method-override'),
     handlebars = require('handlebars'),
-    handlebarshelpers = require('handlebars-helpers'),
-    handlebarsmoment = require('handlebars.moment');
+    handlebarshelpers = require('handlebars-helpers');
+//handlebarsmoment = require('handlebars.moment');
+
+//handlebarsmoment.registerHelpers(handlebars)
 
 require('dotenv').config()
 app.use(methodOverride('_method'))
@@ -34,6 +36,10 @@ mongoose
 // Handlebars
 app.set('view engine', 'hbs');
 app.engine('hbs', hbs({
+    //helpers: {
+    //   stripTags: stripTags,
+    //    limit: limit
+    // },
     extname: 'hbs',
     defaultLayout: 'main',
     adminLayout: 'adminLayout'
@@ -50,9 +56,9 @@ app.use(express.static('public'));
 const ROUTER = require('./API/router');
 app.use('/', ROUTER)
 
-app.use('*', (req, res) => {
-    res.send('Erreur 404')
-})
+//app.use('*', (req, res) => {
+//    res.send('Erreur 404')
+//})
 
 app.listen(port, () => {
     console.log('le serveur tourne sur :' + port);

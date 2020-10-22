@@ -1,14 +1,15 @@
 <div  class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
+   
     <div class="container  ">
         <div class="card m-3">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img name="image" src="assets/img/bookimg/naruto_1.jpg" class="card-img" alt="naruto">
+                    <img name="image" src="/img/bookimg/naruto_1.jpg" class="card-img" alt="naruto">
                 </div>
                 <div class="col-md-8 justify-content-center">
                     <div class="card-body justify-content-evenly">
-                        <p class="card-text  font-weight-bold text-lg-left" name="description">
-                            {{ Manga.description }}
+                        <p class="card-text  font-weight-bold text-lg-left">
+                            {{ manga.titlevo }}
                         </p>
                     </div>
                 </div>
@@ -23,7 +24,7 @@
                         <label for="">nom du manga en vo</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="nom-manga-vo">{{ Manga.titlevo }}</p>
+                        <p name="nom-manga-vo"> {{ manga.titlevo }}</p>
                     </div>
                 </div>
                 <div class="row m-3">
@@ -31,7 +32,7 @@
                         <label for="">nom de manga en vf</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="nom-manga-de-langue-server">{{ Manga.titlevf }}</p>
+                        <p name="nom-manga-de-langue-server"> {{ manga.titlevf }}</p>
 
                     </div>
                 </div>
@@ -40,7 +41,7 @@
                         <label for="">date de parution</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="date-de-parution">{{ Manga.description }}</p>
+                        <p name="date-de-parution"> {{ manga.titlevo }}</p>
                     </div>
                 </div>
                 <div class="row m-3">
@@ -48,7 +49,7 @@
                         <label for="">dessin</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="dessin"> {{ Manga.description }}</p>
+                        <p name="dessin">  {{ manga.tome.dessin }}</p>
                     </div>
                 </div>
                 <div class="row m-3">
@@ -56,7 +57,7 @@
                         <label for="">scenariste</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="scenariste"> {{ Manga.description }}</p>
+                        <p name="scenariste">  {{ manga.titlevo }}</p>
 
                     </div>
                 </div>
@@ -65,7 +66,7 @@
                         <label for="">traducteur</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="traducteur">{{ Manga.description }}</p>
+                        <p name="traducteur">{{ manga.traducteur }}</p>
                     </div>
                 </div>
                 <div class="row m-3">
@@ -73,12 +74,12 @@
                         <label for="">editeur en vf</label>
                     </div>
                     <div class="col-md-6">
-                        <p name"editeur-vf">{{ Manga.description }}</p>
+                        <p name"editeur-vf">{{ manga.editeurVF }}</p>
                     </div>
                 </div>
             </ul>
             <div class="col-md-4">
-                <img name="img-de-manga" src="assets/img/NARUTOH.jpg" alt="naruto" class="card-img">
+                <img name="img-de-manga" src="/img/NARUTOH.jpg" alt="naruto" class="card-img">
             </div>
             <ul class="col-md-4">
                 <div class="row m-3">
@@ -86,7 +87,7 @@
                         <label for="">type</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="type">{{ Manga.description }}</p>
+                        <p name="type">{{ manga.type.nameType }}</p>
 
                     </div>
                 </div>
@@ -96,7 +97,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <p name="genre">{{ Manga.description }}</p>
+                        <p name="genre">{{ manga.nameType }}</p>
 
                     </div>
                 </div>
@@ -106,7 +107,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <p iname"editeur-vo">{{ Manga.description }}</p>
+                        <p iname"editeur-vo">{{ manga.editeurvo }}</p>
 
                     </div>
                 </div>
@@ -116,17 +117,17 @@
                     </div>
                     <div class="col-md-6">
 
-                        <p name="prépublication">{{ Manga.description }}</p>
+                        <p name="prépublication">{{ manga.prepublication }}</p>
 
                     </div>
                 </div>
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">nom du manga en vo</label>
+                        <label for="">numero du volume</label>
                     </div>
                     <div class="col-md-6">
 
-                        <p name="illustration"> n&b</p>
+                        <p name="volume">{{ manga.volume }} </p>
 
                     </div>
                 </div>
@@ -136,7 +137,7 @@
                     </div>
                     <div class="col-md-6">
 
-                        <p name="origine">Japon - 2000</p>
+                        <p name="origine"> {{ manga.origine }}</p>
 
                     </div>
                 </div>

@@ -40,16 +40,15 @@ router.route('/manga/create')
     // Action du Formulaire
     .post(mangaController.createArticleForm)
 
-router.route('/manga/:id')
-    // Page Manga ID
-    .get(mangaController.getMangaPageID)
-    .delete(mangaController.deleteOne)
-    /*
-     * booking
-     * ******* */
+/*
+ * booking
+ * ******* */
 router.route('/booking')
     .get(bookingController.getBookingPage)
-    //.get(bookingController.getMangaPageID)
+
+router.route('/booking/:id')
+    .get(bookingController.getMangaPageID)
+    .delete(bookingController.deleteOne)
 
 /*
  * Contact
