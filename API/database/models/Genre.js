@@ -3,13 +3,13 @@ const Manga = require('./Manga')
 const Schema = mongoose.Schema
 
 
-const typeSchema = new mongoose.Schema({
+const GenreSchema = new mongoose.Schema({
     mangaID: {
         type: Schema.Types.ObjectId,
         ref: 'manga'
     },
 
-    nameType: {
+    nameGenre: {
         type: String
     },
     dateCreate: {
@@ -19,6 +19,6 @@ const typeSchema = new mongoose.Schema({
 });
 
 
-const Type = mongoose.model('type', typeSchema)
+const Genre = mongoose.model('Genre', GenreSchema)
 
-module.exports = Type
+module.exports = Genre

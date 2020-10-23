@@ -5,6 +5,7 @@ const router = express.Router();
 //accueil
 const homeController = require('./Controllers/home/homeController'), //ok
     //manga
+    mangaTestController = require('./Controllers/article/mangaControllerTest'),
     mangaController = require('./Controllers/article/mangaController'), //ok
     //contact
     contactController = require('./Controllers/Contact/contactController'), //ok
@@ -38,7 +39,16 @@ router.route('/manga/create')
     // Page Formulaire create Article
     .get(mangaController.getPageFormCreateArticle)
     // Action du Formulaire
-    .post(mangaController.createArticleForm)
+    .post(mangaTestController.postManga)
+
+router.route('/manga/edit/:id')
+    .put(mangaTestController.editID)
+
+router.route('/tome/create')
+    .post(mangaTestController.postTome)
+
+router.route('/tome/delete/:id')
+    .get(mangaTestController.deleteOneTome)
 
 /*
  * booking

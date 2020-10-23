@@ -2,55 +2,56 @@ const mongoose = require('mongoose')
 const Manga = require('./Manga')
 const Schema = mongoose.Schema
 
-const tomeSchema = new mongoose.Schema({
+const TomeSchema = new mongoose.Schema({
     mangaID: {
         type: Schema.Types.ObjectId,
         ref: 'manga'
     },
-
-
+    name: {
+        type: String
+    },
     volume: {
-        Number
+        type: Number
     },
     description: {
-        String
+        type: String
     },
     dateDeParution: {
-        Number
+        type: Number
     },
     dessin: {
-        String
+        type: String
     },
     illustration: {
-        String
+        type: String
     },
     Scenariste: {
-        String
+        type: String
     },
     Traducteur: {
-        String
+        type: String
     },
     EditeurVF: {
-        String
+        type: String
     },
     EditeurVO: {
-        String
+        type: String
     },
     prepublication: {
-        String
+        type: String
     },
     origine: {
-        String
+        type: String
     },
     dateCreate: {
-        Date
+        type: Date
     },
     dateEdit: {
-        Date
+        type: Date
     }
 });
 
 
-const Tome = mongoose.model('tome', tomeSchema)
+const Tome = mongoose.model('Tome', TomeSchema)
 
 module.exports = Tome

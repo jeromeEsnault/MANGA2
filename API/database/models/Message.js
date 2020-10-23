@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 
-const messageSchema = new mongoose.Schema({
+const MessageSchema = new mongoose.Schema({
 
     author: {
         type: String
@@ -29,6 +29,6 @@ const messageSchema = new mongoose.Schema({
 });
 
 
-const Message = mongoose.model('message', messageSchema)
+const Message = mongoose.model('Message', MessageSchema)
 
 module.exports = Message

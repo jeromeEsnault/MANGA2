@@ -1,180 +1,205 @@
-<div  class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
-   
-    <div class="container  ">
+<div class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
+
+    <div class="container">
         <div class="card m-3">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                    <img name="image" src="/img/bookimg/naruto_1.jpg" class="card-img" alt="naruto">
+                    <img name="image" src="/img/bookimg/naruto_1.jpg"
+                        class="card-img" alt="naruto">
                 </div>
                 <div class="col-md-8 justify-content-center">
                     <div class="card-body justify-content-evenly">
-                        <p class="card-text  font-weight-bold text-lg-left">
-                            {{ manga.titlevo }}
+                        <p class="card-text font-weight-bold text-lg-left">
+                            title: {{ manga.titlevo }}
                         </p>
+
+                        {{#each manga.tome }}
+                            <p class="card-text font-weight-bold text-lg-left">
+                                Volume: #{{ volume }}
+                            </p>
+                            <p class="card-text font-weight-bold text-lg-left">
+                                Description: #{{ description }}
+                            </p>
+                            <a href="/tome/delete/{{_id}}" class="btn bg-warning"> Delete </a>
+                        {{/each}}
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="container bg-success">
-        <div class="row text-decoration-none">
-            <ul class="col-md-4">
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">nom du manga en vo</label>
+        <form action="/manga/edit/{{manga._id}}?_method=PUT" method="post">
+            <div class="row text-decoration-none">
+                <ul class="col-md-4">
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">nom du manga en vo</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p name="nom-manga-vo"> {{ manga.titlevo }}</p>
+                        </div>
+                        <input type="text" name='titlevo' value="{{
+                            manga.titlevo }}">
                     </div>
-                    <div class="col-md-6">
-                        <p name="nom-manga-vo"> {{ manga.titlevo }}</p>
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">nom de manga en vf</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="nom-manga-de-langue-server"> {{ manga.titlevf }}</p>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">nom de manga en vf</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p name="nom-manga-de-langue-server"> {{
+                                manga.titlevf }}</p>
+                        </div>
+                        <input type="text" name='titlevf' value="{{
+                            manga.titlevf }}">
 
                     </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">date de parution</label>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">Tome</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p name="date-de-parution"> {{ manga.tome.name }}</p>
+                        </div>
+                        <select name="tome">
+                            <option value="">-- Choisir le tome --</option>
+                            {{#each tome }}
+                            <option value="{{ _id }}">{{ volume }} & {{ name }}</option>
+                            {{/each}}
+                        </select>
                     </div>
-                    <div class="col-md-6">
-                        <p name="date-de-parution"> {{ manga.titlevo }}</p>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">dessin</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p name="dessin"> {{ manga.tome.dessin }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">dessin</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="dessin">  {{ manga.tome.dessin }}</p>
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">scenariste</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="scenariste">  {{ manga.titlevo }}</p>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">scenariste</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p name="scenariste"> {{ manga.titlevo }}</p>
 
+                        </div>
                     </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">traducteur</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p name="traducteur">{{ manga.traducteur }}</p>
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">editeur en vf</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p name" editeur-vf">{{ manga.editeurVF }}</p>
+                        </div>
+                    </div>
+                </ul>
+                <div class="col-md-4">
+                    <img name="img-de-manga" src="/img/NARUTOH.jpg" alt="naruto"
+                        class="card-img">
                 </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">traducteur</label>
+                <ul class="col-md-4">
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">type</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p name="type">{{ manga.type.nameType }}</p>
+
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <p name="traducteur">{{ manga.traducteur }}</p>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">genre</label>
+                        </div>
+                        <div class="col-md-6">
+
+                            <p name="genre">{{ manga.nameType }}</p>
+
+                        </div>
                     </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">editeur en vf</label>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">éditeur en vo</label>
+                        </div>
+                        <div class="col-md-6">
+
+                            <p iname" editeur-vo">{{ manga.editeurvo }}</p>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <p name"editeur-vf">{{ manga.editeurVF }}</p>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">prépublication</label>
+                        </div>
+                        <div class="col-md-6">
+
+                            <p name="prépublication">{{ manga.prepublication }}</p>
+                        </div>
                     </div>
-                </div>
-            </ul>
-            <div class="col-md-4">
-                <img name="img-de-manga" src="/img/NARUTOH.jpg" alt="naruto" class="card-img">
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">numero du volume</label>
+                        </div>
+                        <div class="col-md-6">
+
+                            <p name="volume">{{ manga.volume }} </p>
+
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">origine</label>
+                        </div>
+                        <div class="col-md-6">
+
+                            <p name="origine"> {{ manga.origine }}</p>
+
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">code-EAN</label>
+                        </div>
+                        <div class="col-md-6">
+
+                            <p name="code-EAN"> KA01</p>
+
+                        </div>
+                    </div>
+                </ul>
             </div>
-            <ul class="col-md-4">
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">type</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="type">{{ manga.type.nameType }}</p>
+            <button type="submit">Valider</button>
+        </form>
 
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">genre</label>
-                    </div>
-                    <div class="col-md-6">
-
-                        <p name="genre">{{ manga.nameType }}</p>
-
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">éditeur en vo</label>
-                    </div>
-                    <div class="col-md-6">
-
-                        <p iname"editeur-vo">{{ manga.editeurvo }}</p>
-
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">prépublication</label>
-                    </div>
-                    <div class="col-md-6">
-
-                        <p name="prépublication">{{ manga.prepublication }}</p>
-
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">numero du volume</label>
-                    </div>
-                    <div class="col-md-6">
-
-                        <p name="volume">{{ manga.volume }} </p>
-
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">origine</label>
-                    </div>
-                    <div class="col-md-6">
-
-                        <p name="origine"> {{ manga.origine }}</p>
-
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">code-EAN</label>
-                    </div>
-                    <div class="col-md-6">
-
-                        <p name="code-EAN"> KA01</p>
-
-                    </div>
-                </div>
-
-
-            </ul>
-        </div>
     </div>
-    <div class="container mt-5 p-4  bg-warning">
+    <div class="container mt-5 p-4 bg-warning">
         <div class="row bg-white">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-6 justify-content-center ">
-                        <div class="m-5 ">
+                    <div class="col-md-6 justify-content-center">
+                        <div class="m-5">
                             <label for="" class="">Age Conseillé</label>
                         </div>
 
-                        <div class="m-5 ">
+                        <div class="m-5">
                             <p class="" name="age-conseillé">10+</p>
                         </div>
                     </div>
                     <div class="col-md-6justify-content-center">
                         <div class="m-5 justify-content-center">
-                            <label for="note de redaction" class="justify-content-center">prix</label>
+                            <label for="note de redaction"
+                                class="justify-content-center">prix</label>
                         </div>
                         <div class="m-5 justify-content-center">
-                            <p class=" justify-content-center" name="prix">6.99</p>
+                            <p class="justify-content-center" name="prix">6.99</p>
                         </div>
 
                     </div>
@@ -189,7 +214,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row ">les volumes en vo</th>
+                            <th scope="row">les volumes en vo</th>
                             <td name="tome-vo">50</td>
                             <td name="statut-tome-vo">terminer</td>
                         </tr>

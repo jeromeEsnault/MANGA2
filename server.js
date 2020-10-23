@@ -26,7 +26,7 @@ mongoose
     .connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: true,
+        useFindAndModify: false,
         useCreateIndex: true
     })
     .then(() => console.log('Connecter a MongoDB'))

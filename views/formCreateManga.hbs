@@ -1,202 +1,262 @@
 <div class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
-    <form action="/manga/create" method="POST">
+    <form action="/manga/create"  method="POST">
         <div class="container">
-            <div class="card m-3">
-                <div class="form-input">
-                    <label for="">nom du manga en vo</label> 
-                    <input type="text" name="titrevo">
-                </div>
-                <div class="form-input">
-                    <label for="">nom du manga en vo</label>
-                    <input type="text" name="titrevf">
-                </div>
-                <div class="form-input">
-                    <label for="">nom du manga en vo</label>
-                    <input type="text" name="author">
-                </div>
-                <div class="form-input">
-                    <label for="">nom du manga en vo</label>
-                    <input type="text" name="dateedit">
-                </div>
-                <div class="form-input">
-                    <label for="">nom du manga en vo</label>
-                    <input type="text" name="dateCreate">
-                </div>
-            
-            </div>
-        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Manga</h2>
 
+                    <div class="form-input">
+                        <div class="form">
+                            <label for="titrevo">titre en vo</label> 
+                        </div>
+                        <div class="form">
+                            <input type="text" name="titlevo">
+                        </div>
+                    </div>
+
+                    <div class="form-input">
+                        <div class="form">
+                            <label for="titlevf">titre en vf</label> 
+                        </div>
+                        <div class="form">
+                            <input type="text" name="titlevf">
+                        </div>
+                    </div>
+
+                    <div class="form-input">
+                        <div class="form">
+                            <label for="">Auteur</label>
+                        </div>
+                        <div class="form">
+                            <input type="text" name="author">
+                        </div>
+                    </div>
+
+                    <div class="form-input">
+                        <label for="">date édition</label>
+                        <input type="date" name="dateEdit">
+                    </div>
+                    <div class="form-input">
+                        <label for="">date de creation</label>
+                        <input type="date" name="dateCreate">
+                    </div>
+
+                </div>
+            </div>
+           
+            <div class="col-md-12">
+                <button type="submit" > enregistrer</button>
+            </div>
+
+        </div>
     </form>
 </div>
     <div class="container bg-success">
-        <form action="/manga/create" method="POST">
-        <div class="row text-decoration-none">
-            <ul class="col-md-4">
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">volume</label>
+        <h2>Tome</h2>
+        <form action="/tome/create"  method="POST">
+            <div class="row text-decoration-none">
+                <ul class="col-md-6">
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">volume</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" name="volume">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                       <input type="text" name="volume">
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="name">
+                        </div>
                     </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">description du manga</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="description">
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">description du manga</label>
+                        </div>
+                        <div class="col-md-6">
+                            
+                            <textarea name="description" cols="30" rows="10" placeholder="description"></textarea>
 
+                        </div>
                     </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">date de parution</label>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">date de parution</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="date" name="datedeparution">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                         <input type="date" name="datedeparution">
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">dessin</label>
+                        </div>
+                        <div class="col-md-6">
+                        <input type="text" name="dessin">
+                        </div>
                     </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">dessin</label>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">Illustrution</label>
+                        </div>
+                        <div class="col-md-6">
+                        <input type="text" name="illustrution">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                       <input type="text" name="dessin">
-                    </div>
-                </div>
-                 <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">Illustrution</label>
-                    </div>
-                    <div class="col-md-6">
-                       <input type="text" name="illustrution">
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">Scénariste</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="scenariste">
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">Scénariste</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="scenariste">
 
+                        </div>
                     </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">Traducteur</label>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">Traducteur</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="traducteur">
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                        <input type="text" name="traducteur">
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">editeur en vf</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="editeurvf"></p>
+                        </div>
                     </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">editeur en vf</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" name="editeurvf"></p>
-                    </div>
-                </div>
-            </ul>
-            <div class="col-md-4">
-                <img name="img-de-manga" src="/img/NARUTOH.jpg" alt="naruto"
-                    class="card-img">
-            </div>
-            <ul class="col-md-4">
-               
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">éditeur en vo</label>
-                    </div>
-                    <div class="col-md-6">
-
-                        <input type="file" name="editeurvo">
-
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">prépublication</label>
-                    </div>
-                    <div class="col-md-6">
-
-                       <input type="file" name="image">
-
-                    </div>
-                </div>
+                </ul>
                 
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">origine</label>
+                <ul class="col-md-6">
+                
                     </div>
-                    <div class="col-md-6">
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">éditeur en vo</label>
+                        </div>
+                        <div class="col-md-6">
+
+                            <input type="text" name="editeurvo">
+
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">prépublication</label>
+                        </div>
+                        <div class="col-md-6">
+
+                        <input type="text" name="prepublication">
+
+                        </div>
+                    </div>
+                    
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">origine</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="origine">
+                        
+
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">date de creation</label>
+                        </div>
+                        <div class="col-md-6">
+
+                        
+                            <input type="date" name="dateCreate">
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">date d'edition</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="date" name="dateedit">
+                        
+
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-md-6">
+                            <label for="">image du tome</label>
+                        </div>
+                        <div class="col-md-6">
+
                         <input type="file" name="image">
-                       
 
+                        </div>
                     </div>
+                </ul>
+            </div>
+             <div class="col-md-12">
+                <button type="submit" > enregistrer</button>
+            </div>
+        </form>
+    </div>  
+<div class="container mt-5 p-4 bg-warning">
+    <div>
+        <h2>Type</h2>
+        <form action="/type/create"  method="POST">
+            <div class="row m-3">
+                <div class="col-md-6">
+                    <label for="">type</label>
                 </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">date de creation</label>
-                    </div>
-                    <div class="col-md-6">
+                <div class="col-md-6">
+                    
+                <select name="nameType" >
+                    <option value="selection">choisir le type de manga</option>
+                    <option value="selection">shonen</option>
+                    <option value="selection">shojo</option>
+                    <option value="selection">seinen</option>
+                    <option value="selection">kodomo</option>
+                </select>
 
-                       
-                        <input type="file" name="image">
-                    </div>
                 </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">date d'edition</label>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="file" name="image">
-                       
+            </div>
+             <div class="col-md-12">
+                <button type="submit" > enregistrer</button>
+            </div>
+        </form>
+        <h2>Genre</h2>
+       <form action="/genre/create"  method="POST">
 
-                    </div>
+            <div class="row m-3">
+                <div class="col-md-6">
+                    <label for="">genre</label>
                 </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">image du tome</label>
-                    </div>
-                    <div class="col-md-6">
+                <div class="col-md-6">
 
-                       <input type="file" name="image">
+                    <input type="text"name="nameGenre">
 
-                    </div>
                 </div>
-               
-
-
-            </ul>
+            </div>
+             <div class="col-md-12">
+                <button type="submit" > enregistrer</button>
+            </div>
+       </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <button type="submit" > enregistrer</button>
         </div>
     </div>
-        </form>
-        
-<div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">type</label>
-                    </div>
-                    <div class="col-md-6">
-                       
-
-                    </div>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">genre</label>
-                    </div>
-                    <div class="col-md-6">
-
-                      
-
-                    </div>
-                </div>
+</div>
 
     <div class="container mt-5 p-4 bg-warning">
-        <form action="" method="post">
+        <form method="post">
             <div class="row bg-white">
                 <div class="col-md-12">
                     <div class="row">
