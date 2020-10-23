@@ -72,9 +72,21 @@ module.exports = {
     },
     // Create Tome (Model)
     postTome: async(req, res) => {
+        // verifie les valeur envoyer
         console.log(req.body)
-
+        // creation  des donnée dans le model
         Tome.create({...req.body }, (err) => {
+            if (err) console.log(err)
+            res.redirect('/')
+
+        })
+    },
+     // Create Genre (Model)
+    postGenre: async(req, res) => {
+        // verifie les valeur envoyer
+        console.log(req.body)
+        // creation  des donnée dans le model
+        Genre.create({...req.body }, (err) => {
             if (err) console.log(err)
             res.redirect('/')
 

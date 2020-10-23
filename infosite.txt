@@ -1,7 +1,31 @@
-depense installer
-
-bcrypt body-parser connect-flash connect-mongo dotenv express 
+dependence  installer
+************************
+bcrypt 
+body-parser 
+connect-flash 
+connect-mongo 
+dotenv express 
 express-fileupload 
-express-handlebars express-session handlebars-helpers 
+express-handlebars 
+express-session 
+handlebars-helpers 
 handlebars.moment 
 mongoose handlebars
+
+************************
+front end **************
+************************
+
+typo: manga,
+
+colorimetrie: 
+
+outil utiliser:  BOOTSTRAP, handlebars
+
+***********************
+BACK-END  *************
+***********************
+
+
+
+
