@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Tome = require('./Tome')
-const Type = require('./Type')
+
 const Genre = require('./Genre')
 
 // model de construction pour la base de donnée
@@ -24,14 +24,14 @@ const MangaSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    nameType: {
+        type: String
+    },
     tome: [{
         type: Schema.Types.ObjectId,
         ref: 'Tome'
     }],
-    type: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Type'
-    }],
+
     genre: [{
         type: Schema.Types.ObjectId,
         ref: 'Genre'

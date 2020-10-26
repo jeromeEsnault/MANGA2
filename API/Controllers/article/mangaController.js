@@ -1,7 +1,6 @@
 const Manga = require('../../database/models/Manga')
 const Tome = require('../../database/models/Tome')
 const Genre = require('../../database/models/Genre')
-const Type = require('../../database/models/Type')
 
 module.exports = {
     // GET : Page manga list ( Utilisateur )

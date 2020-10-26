@@ -5,7 +5,7 @@ const router = express.Router();
 //accueil
 const homeController = require('./Controllers/home/homeController'), //ok
     //manga
-    mangaTestController = require('./Controllers/article/mangaControllerTest'),
+    mangaTestController = require('./Controllers/article/mangaControllerTest'), //ok
     mangaController = require('./Controllers/article/mangaController'), //ok
     //contact
     contactController = require('./Controllers/Contact/contactController'), //ok
@@ -16,9 +16,11 @@ const homeController = require('./Controllers/home/homeController'), //ok
     // user
     userController = require('./Controllers/user/userController'), //ok
     //book de livre
-    bookingController = require('./Controllers/booking/bookingController'); //ok
-//middleware
-//au
+    bookingController = require('./Controllers/booking/bookingController'), //ok
+    //book de livre
+    modalController = require('./Controllers/modal/modalController'), //ok
+    //middleware
+    upload = require('./middleware/img'); //ok
 //authAdminController = require('./Controllers/admin/auth');
 
 
@@ -27,10 +29,10 @@ const homeController = require('./Controllers/home/homeController'), //ok
  * **** */
 router.route('/')
     .get(homeController.getHomePage)
-
-/*
- * manga
- * ******* */
+    /*********************************** */
+    /*
+     * manga
+     * ******* */
 router.route('/manga')
     // Page Article Website
     .get(mangaController.getMangaPage)
@@ -43,9 +45,10 @@ router.route('/manga/create')
 
 router.route('/manga/edit/:id')
     .put(mangaTestController.editID)
-
+    /******************************************************** */
 router.route('/tome/create')
-    .post(mangaTestController.postTome)
+    // Ici nous appelons le middleware de multer pour pouvoir traiter notre image dans notre controller
+    //.post(upload.single('image'), mangaTestController.postTome)
 
 router.route('/tome/delete/:id')
     .get(mangaTestController.deleteOneTome)
@@ -59,10 +62,16 @@ router.route('/booking')
 router.route('/booking/:id')
     .get(bookingController.getMangaPageID)
     .delete(bookingController.deleteOne)
-
-/*
- * Contact
- * ********/
+    /*
+     * modal
+     * ********/
+router.route('/modal')
+    .get(modalController.getModalPage)
+    // Ici nous appelons le middleware de multer pour pouvoir traiter notre image dans notre controller
+    .post(upload.single('image'), mangaTestController.postTome)
+    /*
+     * Contact
+     * ********/
 router.route('/contact')
     .get(contactController.getContactPage)
 

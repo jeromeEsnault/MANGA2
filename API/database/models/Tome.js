@@ -48,6 +48,13 @@ const TomeSchema = new mongoose.Schema({
     },
     dateEdit: {
         type: Date
+    },
+    image: {
+        name: String,
+        originalName: String,
+        path: String,
+        urlSharp: String,
+        createAt: Date
     }
 });
 
