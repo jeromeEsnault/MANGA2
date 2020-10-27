@@ -11,11 +11,12 @@ const multer = require('multer');
 const storage = multer.diskStorage({
     // Ici la destination (ou seront stocker nos fichiers par default)
     destination: (req, file, cb) => {
-        cb(null, './public/img')
+        cb(null, './public/img/bookimg')
     },
     // Ici est définit le format du nom de l'image à stocker
     filename: (req, file, cb) => {
         const ext = file.originalname,
+
             date = Date.now()
         cb(null, ext)
     }
@@ -39,6 +40,7 @@ const upload = multer({
             file.mimetype === "image/jpeg"
         ) {
             cb(null, true)
+            console.log('je suis dans le middleware pour img')
         } else {
             cb(null, false)
             cb(new Error('Le fichier doit être au format png, jpg, jpeg ou gif.'))

@@ -9,7 +9,7 @@ module.exports = {
         const dbTome = await Tome.find({})
         console.log(req.params.id)
         Manga.findById(req.params.id)
-            .populate('tome genre type')
+            .populate('tome genre')
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log(data)

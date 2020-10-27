@@ -39,12 +39,7 @@ module.exports = {
                  res.render('formCreateManga')
 
              })
-             // formulaire 3
-         Type.create({...req.body }, (err) => {
-                 if (err) console.log(err)
-                 console.log('je suis dans le .createArticleForm pour type')
-                 res.render('formCreateManga')
-
+        
              })
              // formulaire 4
          Tome.create({...req.body }, (err) => {

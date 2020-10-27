@@ -7,7 +7,7 @@ module.exports = {
     // GET : Page manga list ( Utilisateur )
     getMangaPage: (req, res) => {
         Manga.find({})
-            .populate('tome type genre')
+            .populate('tome genre')
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log('je suis dans le .getMangaPage')
@@ -53,7 +53,8 @@ module.exports = {
     // Create Tome (Model)
     postTome: async(req, res) => {
         console.log(req.body)
-            // Condition pour verifier si aucun fichier est envoyer dans le formulaire
+        console.log('je suis bien dans le postTome');
+        // Condition pour verifier si aucun fichier est envoyer dans le formulaire
         if (!req.file) res.redirect('/')
 
         else { // creation  des donnée dans le model 
@@ -63,13 +64,14 @@ module.exports = {
                 ...req.body,
                 // Ici on viens formater le chemin de notre image 
                 // qui sera stocker dans notre DB
-                image: `/public/img/${req.file.originalname}`,
+                image: `./img/bookimg/${req.file.originalname}`,
                 // On stock aussi le nom de l'image
                 name: req.file.originalname
             }, (err, post) => {
                 if (err) console.log(err)
+                console.log(req.file.originalname)
                 console.log('je suis dans le .postTome')
-                res.render(`{{> modal/genre}}`)
+                res.redirect(`/genre`)
 
             })
         }
@@ -94,19 +96,19 @@ module.exports = {
         let tomeArray = mangaExist.tome
         let genreArray = mangaExist.genre
 
-        if (req.body.tome) {
-            tomeArray.push(req.body.tome)
+        if (req.body.tome && req.body.genre) {
+            tomeArray.push(req.body.tome),
+                genreArray.push(req.body.genre)
         }
         // on recupére le tableau de tome
         console.log(tomeArray)
+        console.log(genreArray)
         console.log(' je suis dans le tomeArray')
             //
-        if (req.body.genre) {
-            genreArray.push(req.body.genre)
-        }
+
         // on recupére le tableau de genre
-        console.log(genreArray)
-            //
+
+        //
         Manga.findByIdAndUpdate(req.params.id, {
             tome: tomeArray,
             genre: genreArray
