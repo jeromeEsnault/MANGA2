@@ -24,32 +24,7 @@ module.exports = {
 
     },
     // Create Manga (Model)
-    postManga: async(req, res) => {
-        // Récuperation de la liste complète de Model
-        const dbModel = await Manga.find({})
 
-        // On demande à notre Model de créé un nouvelle Obj Model
-        Manga.create({
-            // On récupère les variables du formulaire
-            // il faut biensur qu'il soit en corélation avec le Model
-            titlevo: req.body.titlevo,
-            titlevf: req.body.titlevf,
-            author: req.body.author,
-            nameType: req.body.nameType
-                // ...req.body
-
-        }, (err) => {
-            if (err) console.log(err)
-                // Une fois que la function create a été éffectuer il 
-                // nous redirige
-                // et log notre formulaire envoyer
-            console.log(req.body)
-            console.log('je suis dans le .postManga') //ok
-            res.redirect('/modal')
-
-
-        })
-    },
     // Create Tome (Model)
     postTome: async(req, res) => {
         console.log(req.body)
@@ -84,7 +59,7 @@ module.exports = {
         Genre.create({...req.body }, (err) => {
             if (err) console.log(err)
             console.log('je suis dans le .postGenre')
-            res.redirect('/')
+            res.redirect('/manga')
 
         })
     },
@@ -117,7 +92,6 @@ module.exports = {
             console.log(data)
             console.log('je suis dans le .editid')
         })
-
         res.end()
 
     },

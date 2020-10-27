@@ -1,0 +1,76 @@
+<div class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
+    <form action="/manga/create"  method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Manga</h2>
+
+                    <div class="form-input">
+                        <div class="form">
+                            <label for="titrevo">titre en vo</label> 
+                        </div>
+                        <div class="form">
+                            <input type="text" name="titlevo">
+                        </div>
+                    </div>
+
+                    <div class="form-input">
+                        <div class="form">
+                            <label for="titlevf">titre en vf</label> 
+                        </div>
+                        <div class="form">
+                            <input type="text" name="titlevf">
+                        </div>
+                    </div>
+
+                    <div class="form-input">
+                        <div class="form">
+                            <label for="">Auteur</label>
+                        </div>
+                        <div class="form">
+                            <input type="text" name="author">
+                        </div>
+                    </div>
+                     <div class="form-input">
+                        <div class="form">
+                            <label for="">type</label>
+                        </div>
+                        <div class="form">
+                              <select name="nameType" >
+                    <option value="selection">choisir le type de manga</option>
+                    <option value="selection">shonen</option>
+                    <option value="selection">shojo</option>
+                    <option value="selection">seinen</option>
+                    <option value="selection">kodomo</option>
+                </select>
+                        </div>
+                    </div>
+
+                    <div class="form-input">
+                        <label for="">date édition</label>
+                        <input type="date" name="dateEdit">
+                    </div>
+                    <div class="form-input">
+                        <label for="">date de creation</label>
+                        <input type="date" name="dateCreate">
+                    </div>
+
+                </div>
+            </div>
+           
+            <div class="col-md-12">
+              
+            
+               
+            <button type="submit">
+                 enregistrer 
+                
+            </button>
+
+
+
+            </div>
+        </div>
+    </form>
+</div>
+    
