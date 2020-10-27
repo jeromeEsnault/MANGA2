@@ -29,7 +29,7 @@ module.exports = {
         Manga.create({...req.body }, (err) => {
             if (err) console.log(err)
             console.log('je suis dans le .createArticleForm pour manga')
-            res.render('formCreateTome')
+            res.render('/formCreateTome')
         })
     },
 
@@ -38,7 +38,7 @@ module.exports = {
         Tome.create({...req.body }, (err) => {
             if (err) console.log(err)
             console.log('je suis dans le .createArticleForm pour tomes')
-            res.render('formCreateGenre')
+            res.render('/formCreateGenre')
         })
     },
     creategenreForm: (req, res) => {
@@ -46,7 +46,7 @@ module.exports = {
         Genre.create({...req.body }, (err) => {
             if (err) console.log(err)
             console.log('je suis dans le .createArticleForm pour genre')
-            res.render('formCreateGenre')
+            res.render('/')
         })
     },
 
