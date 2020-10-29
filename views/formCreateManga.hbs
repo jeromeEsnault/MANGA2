@@ -1,6 +1,6 @@
 <!-- CREATION DE MANGA  -->
 <div class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
-    <form action="/tome/create/:id" method="POST" enctype="multipart/form-data">
+    <form action="/manga/create" method="POST">
         <div class="container">
             <h1>creation de manga</h1>
             <div class="card m-3">
@@ -9,12 +9,12 @@
                         <label for="">nom du manga en vo</label>
                     </div>
                     <div>
-                        <input type="text" name="titrevo">
+                        <input type="text" name="titlevo">
                     </div>
                 </div>
                 <div class="form-input">
                     <label for="">nom du manga en vf</label>
-                    <input type="text" name="titrevf">
+                    <input type="text" name="titlevf">
                 </div>
                 <div class="form-input">
                     <label for="">author</label>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-input">
                     <label for="">date edition</label>
-                    <input type="date" name="dateedit">
+                    <input type="date" name="dateEdit">
                 </div>
                 <div class="form-input">
                     <label for="">date de creation</label>
@@ -48,7 +48,8 @@
             </div>
         </div>
 
-<button type="submit">enregistrer</button>
+
+        <button type="submit">enregistrer</button>
     </form>
 
 </div>

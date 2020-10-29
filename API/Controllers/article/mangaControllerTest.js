@@ -68,7 +68,7 @@ module.exports = {
         console.log('Controller Edit ID')
             // recupérer lid du manga et le mettre en attente 
         const mangaExist = await Manga.findById(req.params.id)
-        let tomeArray = mangaExist.tome
+        let tomeArray = mangaExist.tomes
         let genreArray = mangaExist.genre
 
         if (req.body.tome && req.body.genre) {

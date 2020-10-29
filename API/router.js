@@ -45,13 +45,17 @@ router.route('/manga/create')
     // Action du Formulaire
     .post(mangaCreateController.createMangaForm)
 
-router.route('/tome/create/:id')
+router.route('/tome/create')
+    // Page Formulaire create tome
+    .get(mangaCreateController.getPageFormTome)
     // Ici nous appelons le middleware de multer pour pouvoir traiter notre image dans notre controller
-    .post(upload.single('image'), mangaCreateController.createtomeForm)
+    .post(upload.single('image'), mangaCreateController.createTomeForm)
 
-router.route('/genre/create/:id')
+router.route('/genre/create')
+    // Page Formulaire create genre
+    .get(mangaCreateController.getPageFormGenre)
     // Ici nous appelons le middleware de multer pour pouvoir traiter notre image dans notre controller
-    .post(upload.single('image'), mangaCreateController.createtomeForm)
+    .post(upload.single('image'), mangaCreateController.createGenreForm)
 
 
 /******************************************************* */

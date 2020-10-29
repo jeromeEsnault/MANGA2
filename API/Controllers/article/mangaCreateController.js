@@ -21,32 +21,78 @@ module.exports = {
     getPageFormCreateArticle: (req, res) => {
         res.render('formCreateManga')
     },
+    // GET : Page create Article
+    getPageFormTome: (req, res) => {
+        res.render('formCreateTome')
+    },
+    // GET : Page create Article
+    getPageFormGenre: (req, res) => {
+        res.render('formCreateGenre')
+    },
     // POST : Action d'envoi du formulaire CreateArticle 
-    createMangaForm: (req, res) => {
-        // formulaire 1
+    createMangaForm: async(req, res) => {
+        const mangaExist = await Manga.findById(req.params.id)
+            // formulaire 1
         console.log('Controller Action Formulaire Create Article')
-        console.log(req.body)
-        Manga.create({...req.body }, (err) => {
+        Manga.create({...req.body
+        }, (err) => {
             if (err) console.log(err)
-            console.log('je suis dans le .createArticleForm pour manga')
-            res.render('formCreateTome')
+            console.log('je suis dans le .createMangaForm pour manga')
+            console.log(req.body);
+            res.redirect(`/manga/edit/` + mangaExist)
+
+
         })
     },
 
-    createtomeForm: (req, res) => {
+
+
+
+    createTomeForm: (req, res) => {
+
+
+
+
         // formulaire 3
-        Tome.create({...req.body }, (err) => {
+        Tome.create({
+            manga: manga._id,
+            _id: req.body._id,
+            ...req.body, // Ici on viens formater le chemin de notre image // qui sera stocker dans notre DB
+            image: `./img/bookimg/${req.file.originalname}`, // On stock aussi le nom de l'image 
+            name: req.file.originalname
+
+        }, (err) => {
             if (err) console.log(err)
-            console.log('je suis dans le .createArticleForm pour tomes')
-            res.render('formCreateGenre')
+            else(!req.tome._id)
+            console.log('je suis dans le .createTomeForm pour tomes')
+            console.log(req.body);
+            manga.save(function(err) {
+
+                if (err) console.log(err);
+
+                const tome = new Tome({
+                    ...req.body,
+                    manga: manga._id // assign the _id from the person
+                });
+
+                tome.save(function(err) {
+                    if (err) console.log(err);
+
+                });
+            });
+            console.log(req.file);
+            res.redirect('/genre/create')
+
+
         })
     },
-    creategenreForm: (req, res) => {
+    createGenreForm: (req, res) => {
         // formulaire 2
         Genre.create({...req.body }, (err) => {
             if (err) console.log(err)
-            console.log('je suis dans le .createArticleForm pour genre')
-            res.render('formCreateGenre')
+            console.log('je suis dans le .createGenreForm pour genre')
+            console.log(req.body);
+            res.redirect('/admin')
         })
     },
 
