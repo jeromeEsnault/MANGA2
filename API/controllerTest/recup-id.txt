@@ -1,0 +1,22 @@
+var nowRoomID = this.now.room;
+                var Conversation = mongoose.model('Conversation');
+                Conversation.findById(convID, function(error, conversation) {
+                    var Blip = mongoose.model('Blip');
+                    var createdBlip = new Blip();
+                    createdBlip.author= nowUserName;
+                    createdBlip.authorid = parsed.authorid;
+                    createdBlip.body = revisedText;
+                    createdBlip.created_at = new Date();
+                    createdBlip.modified_at = new Date();
+
+                    conversation.blips.push(createdBlip);
+                    parsed._id = createdBlip._id;  //NOTE: ID ACCESSED HERE
+                    message = JSON.stringify(parsed);
+
+                    conversation.save(function (err) {
+                        if (!err) {
+                            console.log('Success - saved a blip onto a conversation!');
+                            nowjs.getGroup(nowRoomID).now.receiveMessage(nowUserName, message);
+                        }
+
+                    });

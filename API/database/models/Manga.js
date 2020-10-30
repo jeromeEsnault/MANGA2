@@ -2,11 +2,12 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Tome = require('./Tome')
-
 const Genre = require('./Genre')
+
 
 // model de construction pour la base de donnée
 const MangaSchema = new mongoose.Schema({
+    
 
     titlevo: {
         type: String
