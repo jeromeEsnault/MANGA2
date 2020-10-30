@@ -19,54 +19,40 @@ module.exports = {
     },
 
     // GET : Page Create Article ( Utilisateur )
+    getPageFormTomecreate: (req, res) => {
+        res.render('/booking')
+
+
+    },
+    // GET : Page Create Article ( Utilisateur )
     getPageFormCreateArticle: (req, res) => {
         res.render('formCreateManga')
-
+        // Create Manga (Model)
     },
-    // Create Manga (Model)
-
-    // Create Tome (Model)
-    postTome: async(req, res) => {
-        console.log(req.body)
-        console.log('je suis bien dans le postTome');
-        // Condition pour verifier si aucun fichier est envoyer dans le formulaire
-        if (!req.file) res.redirect('/')
-
-        else { // creation  des donnée dans le model 
-            console.log(req.file)
-            Tome.create({
-                // On stock toute les infos de notre req.body
-                ...req.body,
-                // Ici on viens formater le chemin de notre image 
-                // qui sera stocker dans notre DB
-                image: `./img/bookimg/${req.file.originalname}`,
-                // On stock aussi le nom de l'image
-                name: req.file.originalname
-            }, (err, post) => {
+    //
+    getMangaPageID: async (req, res) => {
+        const dbTome = await Tome.find({})
+        const dbGenre = await Genre.find({})
+        console.log(req.params.id)
+        Manga.findById(req.params.id)
+            .populate('tome genre ')
+            .exec((err, data) => {
                 if (err) console.log(err)
-                console.log(req.file.originalname)
-                console.log('je suis dans le .postTome')
-                res.redirect(`/genre`)
-
+                console.log(data)
+                console.log('je suis dans le .getMangaPageID de booking')
+                res.render('booking', {
+                    manga: data,
+                    tome: dbTome,
+                    genre: dbGenre
+                })
             })
-        }
     },
-    // Create Genre (Model)
-    postGenre: async(req, res) => {
-        // verifie les valeur envoyer
-        console.log(req.body)
-            // creation  des donnée dans le model
-        Genre.create({...req.body }, (err) => {
-            if (err) console.log(err)
-            console.log('je suis dans le .postGenre')
-            res.redirect('/manga')
 
-        })
-    },
+   
     //appeler  le await pour incorporer les donnée avec async
-    editID: async(req, res) => {
+    editID: async (req, res) => {
         console.log('Controller Edit ID')
-            // recupérer lid du manga et le mettre en attente 
+        // recupérer lid du manga et le mettre en attente 
         const mangaExist = await Manga.findById(req.params.id)
         let tomeArray = mangaExist.tomes
         let genreArray = mangaExist.genre
@@ -79,7 +65,7 @@ module.exports = {
         console.log(tomeArray)
         console.log(genreArray)
         console.log(' je suis dans le tomeArray')
-            //
+        //
 
         // on recupére le tableau de genre
 
@@ -97,7 +83,7 @@ module.exports = {
     },
 
     // supression des donnée
-    deleteOneTome: async(req, res) => {
+    deleteOneTome: async (req, res) => {
         console.log('Controller delete tome Single')
         const tomeExistOnManga = await Manga.findOne({ tome: req.params.id })
 

@@ -1,0 +1,41 @@
+ // Create Tome (Model)
+    postTome: async (req, res) => {
+        console.log(req.body)
+        console.log('je suis bien dans le postTome');
+        // Condition pour verifier si aucun fichier est envoyer dans le formulaire
+        if (!req.file) res.redirect('/')
+
+        else { // creation  des donnée dans le model 
+            console.log(req.file)
+            Tome.create({
+                // On stock toute les infos de notre req.body
+                ...req.body,
+                // Ici on viens formater le chemin de notre image 
+                // qui sera stocker dans notre DB
+                image: `./img/bookimg/${req.file.originalname}`,
+                // On stock aussi le nom de l'image
+                name: req.file.originalname
+            }, (err, post) => {
+                if (err) console.log(err)
+                console.log(req.file.originalname)
+                console.log('je suis dans le .postTome')
+                res.redirect(`/genre`)
+
+            })
+        }
+    },
+   // =====================================================================================
+
+
+    // Create Genre (Model)
+    postGenre: async (req, res) => {
+        // verifie les valeur envoyer
+        console.log(req.body)
+        // creation  des donnée dans le model
+        Genre.create({ ...req.body }, (err) => {
+            if (err) console.log(err)
+            console.log('je suis dans le .postGenre')
+            res.redirect('/manga')
+
+        })
+    },

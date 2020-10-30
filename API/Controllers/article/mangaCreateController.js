@@ -35,43 +35,24 @@ module.exports = {
         const mangaExist = await Manga.findById(req.body._id)
         // formulaire 
         console.log('Controller Action Formulaire Create Article')
-        /*============================*/
-
-        // BasicDBObject doc = new BasicDBObject( "name", "Matt" ); 
-        // collection.insert( doc ); 
-
-
-        // ====================================
-
-
-
-        //=============================//
-
+       
         Manga.create({
             ...req.body,
-        }, (err) => {
+        }, (err,data) => {
+
 
             if (err) console.log(err)
-            //.set("_id", new ObjectId())
+
             else {
-
-                console.log('avant le .set pour le id');
-
-                console.log('après le .set pour le id');
-
-                console.log('je suis dans le .createMangaForm pour manga')
-                console.log(req.body);
-                Manga.save(function (err) {
-                    if (err) console.log(err);
-                    req.body
-                });
-
-                Manga.findOne({}, { _id: { $_id: -1 } })
-                console.log(req.body._id);
-                console.log($_id);
-
-                res.redirect(`/manga/edit/_id`)
+               
+               console.log(data);
+              
+                res.redirect(`/manga/edit/`+ data._id)
             }
+            //  Manga.save((err) => {
+            //     if (err) console.log(err);
+            // });
+
 
 
 

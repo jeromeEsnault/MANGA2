@@ -30,21 +30,27 @@ const homeController = require('./Controllers/home/homeController'), //ok
  * **** */
 router.route('/')
     .get(homeController.getHomePage)
-    /*********************************** */
+/*********************************** */
 
 /*
  * manga
  * ******* */
 router.route('/manga')
-    // Page de presentation
+    // Page de presentation  liste de manga
     .get(mangaCreateController.getMangaPage)
 
 router.route('/manga/create')
-    // Page Formulaire create manga
+    // Page Formulaire create manga 
     .get(mangaCreateController.getPageFormCreateArticle)
     // Action du Formulaire
     .post(mangaCreateController.createMangaForm)
+/******************************************************* */
+router.route('/manga/edit/data.id')
+    //page de tome du manga
+    .get(mangaTestController.getPageFormTomecreate)
+    .put(mangaTestController.getMangaPageID)
 
+/******************************************************** */
 router.route('/tome/create')
     // Page Formulaire create tome
     .get(mangaCreateController.getPageFormTome)
@@ -58,11 +64,7 @@ router.route('/genre/create')
     .post(upload.single('image'), mangaCreateController.createGenreForm)
 
 
-/******************************************************* */
-router.route('/manga/edit/:id')
-    .put(mangaTestController.editID)
 
-/******************************************************** */
 
 
 router.route('/tome/delete/:id')
