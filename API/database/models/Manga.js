@@ -19,7 +19,8 @@ const MangaSchema = new mongoose.Schema({
         type: String
     },
     dateEdit: {
-        type: Date
+        type: Date,
+        default: Date.now()
     },
     dateCreate: {
         type: Date,

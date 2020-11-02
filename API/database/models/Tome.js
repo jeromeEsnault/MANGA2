@@ -44,10 +44,12 @@ const TomeSchema = new mongoose.Schema({
         type: String
     },
     dateCreate: {
-        type: Date
+        type: Date,
+        default: Date.now()
     },
     dateEdit: {
-        type: Date
+        type: Date,
+        default: Date.now()
     },
     image: {
         type: String

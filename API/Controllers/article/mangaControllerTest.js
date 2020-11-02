@@ -20,8 +20,7 @@ module.exports = {
 
     // GET : Page Create Article ( Utilisateur )
     getPageFormTomecreate: (req, res) => {
-        res.render('/booking')
-
+        res.render('/editAdmin')
 
     },
     // GET : Page Create Article ( Utilisateur )

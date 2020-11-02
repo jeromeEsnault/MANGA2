@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-// Controller
+/*
+* Appel des  Controller
+/**********************/
 //accueil
 const homeController = require('./Controllers/home/homeController'), //ok
     //manga
@@ -32,20 +34,31 @@ router.route('/')
     .get(homeController.getHomePage)
 /*********************************** */
 
-/*
- * manga
- * ******* */
 router.route('/manga')
     // Page de presentation  liste de manga
     .get(mangaCreateController.getMangaPage)
 
+/*
+ * booking
+ * ******* */
+router.route('/booking')
+    .get(bookingController.getBookingPage)
+
+router.route('/booking/:id')
+    .get(bookingController.getMangaPageID)
+    .delete(bookingController.deleteOne)
+
+/*
+ * manga admin
+ * ******* */
 router.route('/manga/create')
     // Page Formulaire create manga 
     .get(mangaCreateController.getPageFormCreateArticle)
     // Action du Formulaire
     .post(mangaCreateController.createMangaForm)
+
 /******************************************************* */
-router.route('/manga/edit/data.id')
+router.route('/editAdmin/data.id')
     //page de tome du manga
     .get(mangaTestController.getPageFormTomecreate)
     .put(mangaTestController.getMangaPageID)

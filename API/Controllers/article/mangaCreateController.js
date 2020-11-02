@@ -5,7 +5,7 @@ const { isValidObjectId } = require('mongoose')
 
 module.exports = {
     // GET : Page manga list ( Utilisateur )
-    getMangaPage: (req, res) => {
+    getMangaPage: (req, res) => { //ok
         Manga.find({})
             .populate('tome genre')
             .exec((err, data) => {
@@ -19,19 +19,19 @@ module.exports = {
     },
 
     // GET : Page Create Article ( Utilisateur )
-    getPageFormCreateArticle: (req, res) => {
+    getPageFormCreateArticle: (req, res) => { //ok
         res.render('formCreateManga')
     },
     // GET : Page create Article
-    getPageFormTome: (req, res) => {
+    getPageFormTome: (req, res) => { //ok
         res.render('formCreateTome')
     },
     // GET : Page create Article
-    getPageFormGenre: (req, res) => {
+    getPageFormGenre: (req, res) => {//?
         res.render('formCreateGenre')
     },
     // POST : Action d'envoi du formulaire CreateArticle 
-    createMangaForm: async (req, res) => {
+    createMangaForm: async (req, res) => {//ok
         const mangaExist = await Manga.findById(req.body._id)
         // formulaire 
         console.log('Controller Action Formulaire Create Article')
@@ -47,7 +47,7 @@ module.exports = {
                
                console.log(data);
               
-                res.redirect(`/manga/edit/`+ data._id)
+                res.redirect(`editAdmin/`+ data._id)
             }
             //  Manga.save((err) => {
             //     if (err) console.log(err);
@@ -63,7 +63,7 @@ module.exports = {
 
 
 
-    createTomeForm: (req, res) => {
+    createTomeForm: (req, res) => {//ok
 
 
 
@@ -101,7 +101,7 @@ module.exports = {
 
         })
     },
-    createGenreForm: (req, res) => {
+    createGenreForm: (req, res) => {//ok
         // formulaire 2
         Genre.create({ ...req.body }, (err) => {
             if (err) console.log(err)
