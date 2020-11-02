@@ -8,217 +8,139 @@
         Description: #{{ description }}
     </p>
     <a href="/tome/delete/{{_id}}" class="btn bg-warning"> Delete </a>
-    {{/each}}
+    {{/each }}
     <select name="tome">
         <option value="">-- Choisir le tome --</option>
+
         {{#each tome }}
         <option value="{{ _id }}">{{ volume }} & {{ name }}</option>
         {{/each}}
     </select>
 
-</div>
+    <div class="">
+        <button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#newsTome">
+            <span aria-hidden="true" class=""> créer un nouveaux tome </span>
+        </button>
+        {{> modal/tome }}
+    </div>
 
 </div>
-</div>
-</div>
-</div>
+
 <div class="container bg-success">
-    <form action="/manga/edit/{{manga._id}}?_method=PUT" method="post">
+    <form action="/editAdmin/{{manga._id}}?_method=PUT" method="post">
         <div class="row text-decoration-none">
             <ul class="col-md-4">
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">nom du manga en vo</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="nom-manga-vo"> {{ manga.titlevo }}</p>
-                    </div>
-                    <input type="text" name='titlevo' value="{{
-                            manga.titlevo }}">
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">nom de manga en vf</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="nom-manga-de-langue-server"> {{
-                                manga.titlevf }}</p>
-                    </div>
-                    <input type="text" name='titlevf' value="{{
-                            manga.titlevf }}">
-
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">Tome</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="date-de-parution"> {{ manga.tome.name }}</p>
-                    </div>
-                    <select name="tome">
-                        <option value="">-- Choisir le tome --</option>
-                        {{#each tome }}
-                        <option value="{{ _id }}">{{ volume }} & {{ name }}</option>
-                        {{/each}}
-                    </select>
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">dessin</label>
+                        <label for="">desin</label>
                     </div>
                     <div class="col-md-6">
                         <p name="dessin"> {{ manga.tome.dessin }}</p>
                     </div>
+                    <input type="text" name='dessin' value="{{
+                            manga.tome.dessin }}">
                 </div>
+
                 <div class="row m-3">
                     <div class="col-md-6">
                         <label for="">scenariste</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="scenariste"> {{ manga.titlevo }}</p>
-
+                        <p name="scenariste"> {{ manga.tome.scenariste }}</p>
                     </div>
+                    <input type="text" name='scenariste' value="{{
+                           manga.tome.scenariste }}">
                 </div>
+
                 <div class="row m-3">
                     <div class="col-md-6">
                         <label for="">traducteur</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="traducteur">{{ manga.traducteur }}</p>
+                        <p name="titlevo"> {{ manga.tome.traducteur }}</p>
                     </div>
+                    <input type="text" name='titlevo' value="{{
+                            manga.tome.traducteur  }}">
                 </div>
+
                 <div class="row m-3">
                     <div class="col-md-6">
                         <label for="">editeur en vf</label>
                     </div>
                     <div class="col-md-6">
-                        <p name" editeur-vf">{{ manga.editeurVF }}</p>
+                        <p name="titlevo"> {{ manga.tome.editeurvf }}</p>
                     </div>
+                    <input type="text" name='titlevo' value="{{
+                            manga.tome.editeurvf  }}">
                 </div>
-            </ul>
-            <div class="col-md-4">
-                <img name="img-de-manga" src="/img/NARUTOH.jpg" alt="naruto" class="card-img">
-            </div>
-            <ul class="col-md-4">
+
                 <div class="row m-3">
                     <div class="col-md-6">
                         <label for="">type</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="type">{{ manga.type.nameType }}</p>
-
+                        <p name="nameType"> {{ manga.tome.nameType }}</p>
                     </div>
+                    <input type="text" name='nameType' value="{{
+                            manga.tome.nameType  }}">
                 </div>
+
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">genre</label>
+                        <label for="">editeur en vo</label>
                     </div>
                     <div class="col-md-6">
-
-                        <p name="genre">{{ manga.nameType }}</p>
-
+                        <p name="editeurvo"> {{ manga.tome.editeurvo }}</p>
                     </div>
+                    <input type="text" name='editeurvo' value="{{
+                            manga.tome.editeurvo  }}">
                 </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">éditeur en vo</label>
-                    </div>
-                    <div class="col-md-6">
-
-                        <p iname" editeur-vo">{{ manga.editeurvo }}</p>
-                    </div>
+            </ul>
+            <ul class="col-md-6">
+                <div class="col-md-4">
+                    <img name="img-de-manga" src="/img/NARUTOH.jpg" alt="naruto" class="card-img">
                 </div>
                 <div class="row m-3">
                     <div class="col-md-6">
                         <label for="">prépublication</label>
                     </div>
                     <div class="col-md-6">
-
-                        <p name="prépublication">{{ manga.prepublication }}</p>
+                        <p name="prepublication"> {{ manga.tome.prepublication }}</p>
                     </div>
+                    <input type="text" name='prepublication' value="{{
+                            manga.tome.prepublication  }}">
                 </div>
                 <div class="row m-3">
                     <div class="col-md-6">
                         <label for="">numero du volume</label>
                     </div>
                     <div class="col-md-6">
-
-                        <p name="volume">{{ manga.volume }} </p>
-
+                        <p name="volume"> {{ manga.tome.volume }}</p>
                     </div>
+                    <input type="text" name='volume' value="{{
+                            manga.tome.volume  }}">
                 </div>
                 <div class="row m-3">
                     <div class="col-md-6">
                         <label for="">origine</label>
                     </div>
                     <div class="col-md-6">
-
-                        <p name="origine"> {{ manga.origine }}</p>
-
+                        <p name="origine"> {{ manga.tome.origine }}</p>
                     </div>
+                    <input type="text" name='origine' value="{{
+                            manga.tome.origine  }}">
                 </div>
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">code-EAN</label>
+                        <label for="">origine</label>
                     </div>
                     <div class="col-md-6">
-
-                        <p name="code-EAN"> KA01</p>
-
+                        <p name="titlevo"> {{ manga.tome.description }}</p>
                     </div>
+                    <input type="text" name='titlevo' value="{{
+                            manga.tome.origine  }}">
                 </div>
             </ul>
         </div>
         <button type="submit">Valider</button>
     </form>
-
-</div>
-<div class="container mt-5 p-4 bg-warning">
-    <div class="row bg-white">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6 justify-content-center">
-                    <div class="m-5">
-                        <label for="" class="">Age Conseillé</label>
-                    </div>
-
-                    <div class="m-5">
-                        <p class="" name="age-conseillé">10+</p>
-                    </div>
-                </div>
-                <div class="col-md-6justify-content-center">
-                    <div class="m-5 justify-content-center">
-                        <label for="note de redaction" class="justify-content-center">prix</label>
-                    </div>
-                    <div class="m-5 justify-content-center">
-                        <p class="justify-content-center" name="prix">6.99</p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="col-md-12 bg-contact p-4">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">les volume en cours</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">les volumes en vo</th>
-                        <td name="tome-vo">50</td>
-                        <td name="statut-tome-vo">terminer</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">les volumes en vf</th>
-                        <td name="tome-vf">40</td>
-                        <td name="statut-tome-vf">en cours</td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-</div>

@@ -20,14 +20,10 @@ module.exports = {
 
     // GET : Page Create Article ( Utilisateur )
     getPageFormTomecreate: (req, res) => {
-        res.render('/editAdmin')
+        res.render('editAdmin')
 
     },
-    // GET : Page Create Article ( Utilisateur )
-    getPageFormCreateArticle: (req, res) => {
-        res.render('formCreateManga')
-        // Create Manga (Model)
-    },
+   
     //
     getMangaPageID: async (req, res) => {
         const dbTome = await Tome.find({})

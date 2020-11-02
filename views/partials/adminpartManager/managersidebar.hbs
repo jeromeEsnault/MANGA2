@@ -1,4 +1,4 @@
-<div class="accordion w-100 m-5" id="accordion-manager">
+<div class="accordion w-100 m-5" id="managersidebar">
     <div class="card row">
         <div class="card-header " id="managerOne">
             <h2 class="mb-1 ">
@@ -9,11 +9,11 @@
             </h2>
         </div>
 
-        <div id="manag-navbar" class="collapse show" aria-labelledby="managerOne" data-parent="#accordion-manager">
+        <div id="manag-navbar" class="collapse show" aria-labelledby="managerOne" data-parent="#managersidebar">
             <div class="card-body p-2">
 
 
-                {{> adminpart/navbarcont}}
+                {{> adminpartManager/navbarcont}}
 
             </div>
         </div>
@@ -28,27 +28,27 @@
                 </button>
             </h2>
         </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion-manager">
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#managersidebar">
             <div class="card-body">
            
-                {{> adminpart/navarticle }}
+                {{> adminpartManager/navarticle }}
             </div>
         </div>
     </div>
     <div class="card">
-        <div class="card-header" id="headingThree">
+        <div class="card-header" id="heading10">
             <h2 class="mb-1">
                 <button class="btn btn-link btn-block text-center text-decoration-none link-dark collapsed"
-                    type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                    aria-controls="collapseThree">
+                    type="button" data-toggle="collapse" data-target="#collapse10" aria-expanded="false"
+                    aria-controls="collapse10">
                     contact
                 </button>
             </h2>
         </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion-manager">
+        <div id="collapseThree" class="collapse" aria-labelledby="heading10" data-parent="#managersidebar">
             <div class="card-body">
                
-                {{> adminpart/navcontact}}
+                {{> adminpartManager/navcontact }}
 
 
             </div>

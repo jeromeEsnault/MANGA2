@@ -1,0 +1,21 @@
+<div class="accordion container mb-5" >
+   
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-center text-decoration-none link-dark collapsed"
+                    type="button" data-toggle="collapse" data-target="#ouvertureUser" aria-expanded="false"
+                    aria-controls="ouvertureUser">
+                    compte utilisateur
+                </button>
+            </h2>
+        </div>
+        <div id="ouvertureUser" class="collapse" aria-labelledby="headingTwo" data-parent="#admin">
+            <div class="card-body">
+              {{> adminpartUser/user }}
+            </div>
+        </div>
+    </div>
+   
+    
+</div>

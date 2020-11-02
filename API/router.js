@@ -58,17 +58,18 @@ router.route('/manga/create')
     .post(mangaCreateController.createMangaForm)
 
 /******************************************************* */
-router.route('/editAdmin/data.id')
+router.route('/editAdmin/:id')
     //page de tome du manga
-    .get(mangaTestController.getPageFormTomecreate)
+    .get(mangaTestController.getPageFormTomecreate) 
+    .post(upload.single('image'), mangaCreateController.createTomeForm)
     .put(mangaTestController.getMangaPageID)
 
 /******************************************************** */
 router.route('/tome/create')
     // Page Formulaire create tome
     .get(mangaCreateController.getPageFormTome)
-    // Ici nous appelons le middleware de multer pour pouvoir traiter notre image dans notre controller
-    .post(upload.single('image'), mangaCreateController.createTomeForm)
+   
+   
 
 router.route('/genre/create')
     // Page Formulaire create genre
@@ -116,7 +117,7 @@ router.route('/reference')
  * admin
  * ******* */
 router.route('/admin')
-    .get(adminController.getAdminPage)
+    .get(adminController.getAdminMangaPageID)
 
 /*
  *

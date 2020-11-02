@@ -12,7 +12,7 @@
     } else {
         
     }
-});**/
+});*
 /*bcrypt.compare(User, function(err, result) {
     // result == false
-});
+});*/
