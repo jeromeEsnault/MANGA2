@@ -5,7 +5,7 @@ module.exports = {
     },
     limit: function(arr, limit) {
         if (!Array.isArray(arr)) { //"limit" pour réduire les cards
-            return [];
+            return [9];
         }
         return arr.slice(0, limit);
     }

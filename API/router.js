@@ -7,8 +7,8 @@ const router = express.Router();
 //accueil
 const homeController = require('./Controllers/home/homeController'), //ok
     //manga
-    mangaTestController = require('./Controllers/article/mangaControllerTest'), //ok
-    mangaCreateController = require('./Controllers/article/mangaCreateController'), //ok
+    mangaController = require('./Controllers/manga/mangaController'), //ok
+    mangaCreateAdminController = require('./Controllers/admin/mangaCreateAdminController'), //ok
     // mangatest = require('./Controllers/article/TEST'),
     genreController = require('./Controllers/genre/genreController'), //ok
     //contact
@@ -25,23 +25,27 @@ const homeController = require('./Controllers/home/homeController'), //ok
     // modalController = require('./Controllers/modal/modalController'), //ok
     //middleware
     upload = require('./middleware/img'); //ok
-    //auth =require('./middleware/auth');
+const modalController = require('./Controllers/modal/modalController');
+//auth =require('./middleware/auth');
 //authAdminController = require('./Controllers/admin/auth');
 
 /*
- * Home
- * **** */
+ * Page Home
+ * *********** */
 router.route('/')
     .get(homeController.getHomePage)
 /*********************************** */
+/*
+ * Page manga
+ * *********** */
 
 router.route('/manga')
     // Page de presentation  liste de manga
-    .get(mangaCreateController.getMangaPage)
+    .get(mangaController.getMangaPage)
 
 /*
- * booking
- * ******* */
+ * page booking pour voir les manga
+ * ********************************* */
 router.route('/booking')
     .get(bookingController.getBookingPage)
 
@@ -55,39 +59,40 @@ router.route('/booking/:id')
 
 router.route('/admin')
     .get(adminController.getAdminPage)
-    
+
 router.route('/manga/create')
     // Page Formulaire create manga 
-    .get(mangaCreateController.getPageFormCreateArticle)
+    .get(mangaCreateAdminController.getPageFormCreateArticle)
     // Action du Formulaire
-    .post(mangaCreateController.createMangaForm)
+    .post(mangaCreateAdminController.createMangaForm)
 
 /******************************************************* */
 router.route('/editAdmin/:id')
     //page de tome du manga
-    .get(mangaCreateController.getMangaPageID,mangaTestController.getPageFormTomecreate,) 
-    .post(upload.single('image'), mangaCreateController.createTomeForm)
-    .put(mangaCreateController.editID)
+    .get(mangaCreateAdminController.getMangaPageID)
+    .put(mangaCreateAdminController.editID)
+
+router.route('/modal/:id')
+    .post(upload.single('image'), mangaCreateAdminController.createTomeForm)
+
 
 /******************************************************** */
-router.route('/tome/create')
-    // Page Formulaire create tome
-    .get(mangaCreateController.getPageFormTome)
-   
-   
+
+
+
 
 router.route('/genre/create')
     // Page Formulaire create genre
-    .get(mangaCreateController.getPageFormGenre)
+    .get(mangaCreateAdminController.getPageFormGenre)
     // Ici nous appelons le middleware de multer pour pouvoir traiter notre image dans notre controller
-    .post(upload.single('image'), mangaCreateController.createGenreForm)
+    .post(upload.single('image'), mangaCreateAdminController.createGenreForm)
 
 
 
 
 
 router.route('/tome/delete/:id')
-    .get(mangaTestController.deleteOneTome)
+    .get(mangaController.deleteOneTome)
 
 
 /***************************************************** */

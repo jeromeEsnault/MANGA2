@@ -1,6 +1,9 @@
 module.exports = {
     getModalPage: (req, res) => {
-        res.render('modal')
+        res.render('modal',{
+            manga: data,
+            tome: data
+        })
     },
 
 

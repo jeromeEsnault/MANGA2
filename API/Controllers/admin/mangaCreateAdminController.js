@@ -4,35 +4,37 @@ const Genre = require('../../database/models/Genre')
 const { isValidObjectId } = require('mongoose')
 
 module.exports = {
-    // GET : Page manga list ( Utilisateur )
-    getMangaPage: (req, res) => { //ok
-        Manga.find({})
-            .populate('tome genre')
+
+    getMangaPageID: async (req, res) => {//ok
+        const dbTome = await Tome.find({})
+        const dbGenre = await Genre.find({})
+        console.log(req.params.id)
+        Manga.findById(req.params.id)
+            .populate('tome genre ')
             .exec((err, data) => {
                 if (err) console.log(err)
-                console.log('je suis dans le .getMangaPage')
                 console.log(data)
-                res.render('manga', {
-                    manga: data
+                console.log('je suis dans le .getMangaPageID de booking')
+                res.render('booking', {
+                    manga: data,
+                    tome: dbTome,
+                    genre: dbGenre
                 })
             })
     },
 
     // GET : Page Create Article ( Utilisateur )
-    getPageFormCreateArticle: (req, res) => { //ok
+    getPageFormCreateArticle: (req, res) => {
         res.render('formCreateManga')
     },
+
     // GET : Page create Article
-    getPageFormTome: (req, res) => { //ok
-        res.render('formCreateTome')
-    },
-    // GET : Page create Article
-    getPageFormGenre: (req, res) => {//?
+    getPageFormGenre: (req, res) => {
         res.render('formCreateGenre')
     },
     // POST : Action d'envoi du formulaire Createmanga
     createMangaForm: async (req, res) => {//ok
-        const mangaExist = await Manga.findById(req.body._id)
+        const mangaExist = await Manga.findById(req.params._id)
         // formulaire 
         console.log('Controller Action Formulaire Create Article')
 
@@ -87,26 +89,28 @@ module.exports = {
 
     },
     getMangaPageID: async (req, res) => {
-      
-        const dbmanga = await Manga.find({})
+        const dbTome = await Tome.find({})
+        const dbGenre = await Genre.find({})
         console.log(req.params.id)
         Manga.findById(req.params.id)
             .populate('tome genre ')
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log(data)
-                console.log('je suis dans le .getMangaPageID de admin')
-                res.render(`/editAdmin/` + data._id, {
-                    manga: dbmanga
-                   
+                console.log('je suis dans le .getMangaPageID de editadmin')
+                res.render('editAdmin', {
+                    manga: data,
+                    tome: dbTome,
+                    genre: dbGenre
                 })
             })
     },
     createTomeForm: async (req, res) => {
-
-        const manga = await Manga.findById(req.params._id)
+        console.log('je suis dans le .createTomeForm de editadmin')
+        const manga = await Manga.findById(req.params.id)
         // On définit query comme un objet acceuillant notre req.params.id
         console.log(manga);
+        console.log(req.body);
         // On définit notre construction de Commentaire
         const tome = new Tome({
             mangaID: manga._id,
@@ -117,15 +121,21 @@ module.exports = {
         })
         // Ici on incrémente nos commentaire dans nos model en relation
         manga.tome.push(tome._id)
+        console.log(tome._id);
+        console.log(manga);
         // On sauvegarde nous modification
+
         tome.save((err) => {
-            if (err) return handleError(err)
+            if (err) return console.log(err)
+            manga.save((err) => {
+                if (err) return console.log(err)
+                console.log('coucou');
+                // Et on redirige sur notre article parent
+                res.redirect(`/editAdmin/${manga._id}`)
+            })
         })
-        manga.save((err) => {
-            if (err) return handleError(err)
-        })
-        // Et on redirige sur notre article parent
-        res.redirect(`/editAdmin/${manga._id}`)
+
+
     },
     // formulaire 3
     /*Tome.create({

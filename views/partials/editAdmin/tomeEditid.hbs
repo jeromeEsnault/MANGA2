@@ -18,16 +18,17 @@
     </select>
 
     <div class="">
-        <button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#newsTome">
-            <span aria-hidden="true" class=""> créer un nouveaux tome </span>
+        <button type="button" class="close" aria-label="Close" data-toggle="modal"
+         data-target="#newsTome{{manga._id}}">
+            <span aria-hidden="true" class="btn"> créer un nouveaux tome {{manga._id}} </span>
         </button>
-        {{> modal/tome }}
+        {{> modal/tome manga=manga }}
     </div>
 
 </div>
 
 <div class="container bg-success">
-    <form action="/editAdmin/{{manga._id}}?_method=PUT" method="post">
+    <form action="/editAdmin/{{manga._id}}" method="post">
         <div class="row text-decoration-none">
             <ul class="col-md-4">
                 <div class="row m-3">

@@ -4,9 +4,16 @@ const Tome = require('../../database/models/Tome')
 
 module.exports = {
     getBookingPage: (req, res) => {
-        res.render('booking')
+        const dbTome = Tome.find({})
+        const dbGenre = Genre.find({})
+        
+        res.render('booking', {
+            manga: data,
+            genre: dbGenre.data,
+            tome: dbTome.data
+        })
     },
-    getMangaPageID: async(req, res) => {
+    getMangaPageID: async (req, res) => {
         const dbTome = await Tome.find({})
         const dbGenre = await Genre.find({})
         console.log(req.params.id)
