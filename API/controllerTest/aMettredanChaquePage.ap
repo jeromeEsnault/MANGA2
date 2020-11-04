@@ -1,0 +1,5 @@
+const sess = req.session
+console.log(sess)
+
+sess: sess
+

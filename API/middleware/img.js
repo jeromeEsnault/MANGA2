@@ -41,6 +41,7 @@ const upload = multer({
         ) {
             cb(null, true)
             console.log('je suis dans le middleware pour img')
+            console.log('redirection vers le controller');
         } else {
             cb(null, false)
             cb(new Error('Le fichier doit être au format png, jpg, jpeg ou gif.'))

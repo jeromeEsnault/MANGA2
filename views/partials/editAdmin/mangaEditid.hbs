@@ -3,24 +3,39 @@
     <div class="container">
         <div class="card m-3">
             <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img name="image" src="/img/bookimg/naruto_1.jpg" class="card-img" alt="naruto">
+                <div class="col-md-4 bg-dark">
+                    <img name="image" src=" {{manga.tome.image}} " class="card-img" alt="naruto">
                 </div>
                 <div class="col-md-8 justify-content-center">
                     <div class="card-body justify-content-evenly">
                         <p class="card-text font-weight-bold text-lg-left">
-                            title en vo: {{ manga.titlevo }}
+                        <div class="card-text">
+
                             title en vf: {{ manga.titlevf }}
-                            Auteur: {{ manga.author }}
-                            type de manga: {{ manga.namesType }}
-                            date d'edition: {{ manga.dateEdit }}
-                            title: {{ manga.titlevo }}
-                            title: {{ manga.titlevo }}
-                            title: {{ manga.titlevo }}
+                        </div>
+                        <div class="card-text">
+
+                            title en vo: {{ manga.titlevo }}
+                        </div>
+                        <div class="card-text">
+
+                            title en vo: {{ manga.titlevo }}
+                        </div>
+                        <div class="card-text">
+
+                            title en vo: {{ manga.titlevo }}
+                        </div>
+
+                        title en vf: {{ manga.titlevf }}
+                        Auteur: {{ manga.author }}
+                        type de manga: {{ manga.namesType }}
+                        date d'edition: {{ manga.dateEdit }}
+                        title: {{ manga.titlevo }}
+                        title: {{ manga.titlevo }}
+                        title: {{ manga.titlevo }}
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-  

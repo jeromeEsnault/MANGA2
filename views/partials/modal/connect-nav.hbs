@@ -14,12 +14,12 @@
                         <div class="col-md-12">
                             <ul class="nav btn-group justify-content-center" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link link-dark active" id="home-tab" data-toggle="tab" href="#admin" role="tab"
-                                        aria-controls="home" aria-selected="true">inscription</a>
+                                    <a class="nav-link link-dark active" id="home-tab" data-toggle="tab" href="#admin"
+                                        role="tab" aria-controls="home" aria-selected="true">inscription</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link link-dark" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                        aria-controls="profile" aria-selected="false">Connexion</a>
+                                    <a class="nav-link link-dark" id="profile-tab" data-toggle="tab" href="#profile"
+                                        role="tab" aria-controls="profile" aria-selected="false">Connexion</a>
                                 </li>
 
                             </ul>
@@ -30,73 +30,74 @@
                                 <div class="tab-pane fade show active" id="admin" role="tabpanel"
                                     aria-labelledby="home-tab">
                                     <h3 class="register-heading">
-                                         <form  action="/inscription.hbs" role="tabpanel" >
-                                        <div class="form-group m-4">
-                                            <input type="email" class="form-control" value="" name="Email-user"
-                                                placeholder="Email" aria-describedby="email">
-                                        </div>
-                                        <div class="form-group m-4">
-                                            <input type="password" class="form-control" value="" name="password-user"
-                                                placeholder="mots de passe" aria-describedby="password-user">
-                                        </div>
+                                        <form action="/inscription.hbs" role="tabpanel">
+                                            <div class="form-group m-4">
+                                                <input type="email" class="form-control" value="" name="Email-user"
+                                                    placeholder="Email" aria-describedby="email">
+                                            </div>
+                                            <div class="form-group m-4">
+                                                <input type="password" class="form-control" value=""
+                                                    name="password-user" placeholder="mots de passe"
+                                                    aria-describedby="password-user">
+                                            </div>
 
-                                        <div class="form-group m-4">
-                                            <input type="Nom" class="form-control" value="" placeholder="Nom"
-                                                name="nom-user">
-                                        </div>
-                                        <div class="form-group m-4">
-                                            <input type="prenom" class="form-control" value="" placeholder="prenom"
-                                                name="prenom-user">
-                                        </div>
+                                            <div class="form-group m-4">
+                                                <input type="Nom" class="form-control" value="" placeholder="Nom"
+                                                    name="nom-user">
+                                            </div>
+                                            <div class="form-group m-4">
+                                                <input type="prenom" class="form-control" value="" placeholder="prenom"
+                                                    name="prenom-user">
+                                            </div>
 
-                                        <div class="row m-4">
+                                            <div class="row m-4">
 
-                                            <div class="col-md-6">
+                                                <div class="col-md-6">
 
-                                                <select class="form-control " value="" name="Select-genre">
-                                                    <option value="selected">préférence
-                                                        de
-                                                        genre</option>
-                                                    <option value="shonen">shonen</option>
-                                                    <option value="seinen">seinen</option>
-                                                    <option value="shojo">shojo</option>
-                                                    <option value="josei">josei</option>
-                                                    <option value="kodomo">kodomo</option>
-                                                </select>
+                                                    <select class="form-control " value="" name="Select-genre">
+                                                        <option value="selected">préférence
+                                                            de
+                                                            genre</option>
+                                                        <option value="shonen">shonen</option>
+                                                        <option value="seinen">seinen</option>
+                                                        <option value="shojo">shojo</option>
+                                                        <option value="josei">josei</option>
+                                                        <option value="kodomo">kodomo</option>
+                                                    </select>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+
+                                                    <input type="pseudo" class="form-control" value="" name="pseudo"
+                                                        placeholder="pseudo" aria-describedby="pseudo">
+                                                </div>
+
+                                            </div>
+                                            <div class="d-flex justify-content-center m-3 mt-0 ml-5 mr-5">
+                                                <input type="date" class="form-control" name="date-de-naissance"
+                                                    value="" placeholder="date de naissance" min="1900-01-01"
+                                                    max="2010-12-31">
                                             </div>
 
 
-                                            <div class="col-md-6">
-
-                                                <input type="pseudo" class="form-control" value="" name="pseudo"
-                                                    placeholder="pseudo" aria-describedby="pseudo">
-                                            </div>
-
-                                        </div>
-                                        <div class="d-flex justify-content-center m-3 mt-0 ml-5 mr-5">
-                                            <input type="date" class="form-control" name="date-de-naissance"
-                                                 value="" placeholder="date de naissance"
-                                                min="1900-01-01" max="2010-12-31">
-                                        </div>
-
-
-                                        <div class="d-flex justify-content-center mb-3">
-                                            <button type="button submit" class="btn
+                                            <div class="d-flex justify-content-center mb-3">
+                                                <button type="button submit" class="btn
                         btn-secondary" data-dismiss="modal">Envoyer</button>
 
-                                    </form>
+                                        </form>
                                     </h3>
 
-                                   
+
                                 </div>
 
-                                     <!-- Modal-form incription -->
+                                <!-- Modal-form incription -->
 
                                 <div class="tab-pane fade show" id="profile" role="tabpanel"
                                     aria-labelledby="profile-tab">
                                     <h3 class="register-heading">
 
-                                        <form  action="/connection" method="POST" role="tabpanel">
+                                        <form action="/connection" method="POST" role="tabpanel">
                                             <div class="form-group m-4">
                                                 <input type="email" class="form-control" name="Email-user"
                                                     placeholder="Email" aria-describedby="email">
@@ -106,7 +107,9 @@
                                                     placeholder="mots de passe" aria-describedby="password-user">
                                             </div>
                                             <div class="d-flex justify-content-center mt-0 mb-4">
-                                                <a href="/password-oublie" class=" link-dark text-decoration-none font-weight-bold">mots de passe oublié</a>
+                                                <a href="/password-oublie"
+                                                    class=" link-dark text-decoration-none font-weight-bold">mots de
+                                                    passe oublié</a>
                                             </div>
 
                                             <div class=" d-flex justify-content-center mb-3">
@@ -130,11 +133,44 @@
 
 
 
-
-
-
-
-
-
-
-
+{{!-- Script --}}
+<script>
+    // Déclaration de constante
+    const form = document.getElementById('form');
+    const input = form.getElementsByTagName('input');
+    // Fonction pour checker le formulaire (Le mot de passe sur notre exemple)
+    function checkForm(event) {
+        // On récupère les fonctionnalité par défault de notre formulaire et on les ré-initialise
+        // dans notre cas on demande à notre formulaire de ne pas s'envoyer
+        event.preventDefault()
+        // Définition de nos constantes
+        const pass = document.getElementById('password').value;
+        const passConfirm = document.getElementById('passwordConfirm').value;
+        const accept = document.getElementById('accept').checked;
+        const flash = document.getElementById('flash');
+        const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+        // console.log(pass)
+        // Condition pour matché notre password avec la regex
+        if (!pass.match(regex)) {
+            // Gestion du flash (error)
+            flash.style.color = 'red';
+            flash.innerText = 'Le mot de passe ne respect pas la chartes !';
+            // Condition pour checker si password est bien égale avec passwordConfim
+        } else if (pass !== passConfirm) {
+            // Gestion du flash (error)
+            flash.style.color = 'red';
+            flash.innerText = 'Les mots de passe ne sont pas identique !';
+            // Condition pour checker si les conditions on été acceptez
+        } else if (!accept) {
+            // Gestion du flash (error)
+            flash.style.color = 'red';
+            flash.innerText = 'Vous devez acceptez les conditions !';
+            // Et si toute les conditions son respecter alors on envoit le formulaire
+        } else if (pass.match(regex) && pass === passConfirm && accept === true) {
+            alert("Confirmer l'envoir du formulaire");
+            alert("Confirmer l'envoie du formulaire");
+            // C'est ici que le formulaire s'envoie
+            form.submit();
+        }
+    }
+</script>

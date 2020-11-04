@@ -25,6 +25,7 @@ const homeController = require('./Controllers/home/homeController'), //ok
     // modalController = require('./Controllers/modal/modalController'), //ok
     //middleware
     upload = require('./middleware/img'); //ok
+    //auth =require('./middleware/auth');
 //authAdminController = require('./Controllers/admin/auth');
 
 /*
@@ -51,6 +52,10 @@ router.route('/booking/:id')
 /*
  * manga admin
  * ******* */
+
+router.route('/admin')
+    .get(adminController.getAdminPage)
+    
 router.route('/manga/create')
     // Page Formulaire create manga 
     .get(mangaCreateController.getPageFormCreateArticle)
@@ -60,9 +65,9 @@ router.route('/manga/create')
 /******************************************************* */
 router.route('/editAdmin/:id')
     //page de tome du manga
-    .get(mangaTestController.getPageFormTomecreate) 
+    .get(mangaCreateController.getMangaPageID,mangaTestController.getPageFormTomecreate,) 
     .post(upload.single('image'), mangaCreateController.createTomeForm)
-    .put(mangaTestController.getMangaPageID)
+    .put(mangaCreateController.editID)
 
 /******************************************************** */
 router.route('/tome/create')
@@ -117,7 +122,7 @@ router.route('/reference')
  * admin
  * ******* */
 router.route('/admin')
-    .get(adminController.getAdminMangaPageID)
+    .get(adminController.getAdminPage)
 
 /*
  *

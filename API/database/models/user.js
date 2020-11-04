@@ -33,6 +33,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'l email est obligatoire'],
         unique: true
+    },
+    imgProfil: {
+        type: String,
+        default: '/img/imgDefault/profil.jpeg'
     }
 
 });

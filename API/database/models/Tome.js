@@ -52,7 +52,8 @@ const TomeSchema = new mongoose.Schema({
         default: Date.now()
     },
     image: {
-        type: String
+        type: String,
+        default: '/img/imgDefault/imgmanga.jpg'
     }
 });
 
