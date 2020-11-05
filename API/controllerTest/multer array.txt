@@ -1,89 +1,59 @@
-//  config fichier
-//************************
-// Multer
-const multer = require('multer')
+const Carousel = require('../../database/models/caroussel'),
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './public/images')
-  },
-  filename: (req, file, cb) => {
-    const ext = file.originalname,
-      date = Date.now()
-    cb(null, ext)
-  }
-})
-
-const upload = multer({
-    storage: storage,
-    limits: {
-        fileSize: 1 * 4098 * 4098,
-        files: 4
-    },
-    fileFilter: (req, file, cb) => {
-        if (
-            file.mimetype === "image/png" ||
-            file.mimetype === "image/jpg" ||
-            file.mimetype === "image/gif" ||
-            file.mimetype === "image/jpeg"
-        ) {
-            cb(null, true)
-        } else {
-            cb(null, false)
-            cb(new Error('Le fichier doit être au format png, jpg, jpeg ou gif.'))
-        }
-    }
-})
-
-module.exports = upload
-//****************************************** 
-// controller de articleController.js
-//******************************************
-//
-// Import
-const Article = require('../database/Article'),
     path = require('path'),
-    fs = require('fs')
+    fs = require('fs'),
+    upload = require('../../middleware/imgarray')
 
-/*
- * Controller
- *************/
-module.exports = {
-    // Method Get (Récupération de nos data grace à mongoose et son constructeur)
-    get: async (req, res) => {
-        const dbArticle = await Article.find({})
+
+ // Method Get (Récupération de nos data grace à mongoose et son constructeur)
+    /*getHomePage: async (req, res) => {
+        const dbCarousel = await Carousel.find({})
         // Renvoie de la view article et c'est data
-        res.render('article', {
-            dbArticle // = dbArticle: dbArticle
+        res.render('home', {
+            dbCarousel // = dbArticle: dbArticle
         })
     },
     // Method Post (nous créons un article avec ses image)
-    post: async (req, res, next) => {
-        const dbArticle = await Article.find({}),
+    postCarouselHome: async (req, res, next) => {
+        console.log("vous ete bien dans le postCarouselHome");
+        const dbCarousel = await Carousel.find({}),
             // tableau du req.files
-            files = req.files,
+            files = req.file,
             // Définition d'un tableau que l'on va agrémenté avec nos data pour l'inscrire dans la DB
-            arrayFiles = []
-
+            arrayFiles = [];
+        console.log(dbCarousel);
+        console.log(req.file);
         // Boucle parcours notre req.files afin de récupéré les datas que l'on veux avant d'inscrire
         // nos objets dans le tableaux
         for (let i = 0; i < files.length; i++) {
+            console.log('1.0 de for'+files);
             if (files) {
                 // C'est grace à la method push que nous inscrivont nos data dans nos Objets
                 // Et nos objets dans le tableau
                 arrayFiles.push({
                     name: files[i].filename,
-                    filename: `/assets/images/${files[i].filename}`,
+                    filename: `/img/carousel/${files[i].filename}`,
                     originalname: files[i].originalname
                 })
             }
+            console.log('1.1 de for'+files);
+        }
+        console.log(files);
+        console.log(filename);
+        console.log(originalname);
+        if (req.fileValidationError) {
+            return res.render('home', {
+                dbCarousel,
+                error: req.fileValidationError
+            });
         }
 
         // Si il n'y a pas de req.files tu redirige
-        if (!req.files) res.redirect('/')
+        console.log("redirection car pas de req.file");
+        if (!req.files) res.redirect('/admin')
         else {
             // On push nos data dans la DB grace Mongoose
-            Article.create({
+            Carousel.create({
                 ...req.body,
                 // imgArticle: `/assets/images/${req.file.originalname}`,
                 galleryImg: arrayFiles
@@ -91,13 +61,14 @@ module.exports = {
                 // CallBack de la function Mongoose
             }, (err) => {
                 if (err) throw err
-                res.redirect('/article')
+                res.redirect('/admin')
             })
         }
     },
     // Method Put ()
-    put: async (req, res, next) => {
-        const dbArticle = await Article.findById(req.params.id),
+    putCarouselHome: async (req, res, next) => {
+        console.log("vous ete bien dans le  putCarouselHome");
+        const dbCarousel = await Carousel.findById(req.params.id),
             // Query est l'id passé dans le formulaire de req post
             query = {
                 _id: req.params.id
@@ -105,7 +76,7 @@ module.exports = {
             // raccourcie
             files = req.files,
             // Tableau existant
-            existImg = dbArticle.galleryImg,
+            existImg = dbCarousel.galleryImg,
             // On check si req.files n'a aucun objet
             noImg = files.length === 0,
             // On check si req.files à 1 objet
@@ -120,23 +91,23 @@ module.exports = {
             /*
              *  Changer Texte
              **********************/
-            console.log('edit title (no file)')
+        /*    console.log('edit title (no file)')
             // Function Mongoose
-            Article.updateOne(query, {
+            Carousel.updateOne(query, {
                 title: req.body.title
 
                 // CallBack de la function mongoose
             }, (err) => {
                 if (err) throw err
-                res.redirect('/article')
+                res.redirect('/admin')
             })
-        // Ajouter une image dans notre galleryImg (MAX 3)
+            // Ajouter une image dans notre galleryImg (MAX 3)
         } else if (req.body.addImg === '') {
             /*
              *  Ajouter Une Image
              **********************/
-            console.log('Add One Image')
-            const dbFiles = dbArticle.galleryImg
+        /*    console.log('Add One Image')
+            const dbFiles = dbCarousel.galleryImg
 
             // Boucle pour chercher les files existant dans la DB et les ajouter au tableau arrayFiles
             for (let i = 0; i < dbFiles.length; i++) {
@@ -164,24 +135,24 @@ module.exports = {
             }
 
             // Fonction update Mongoose
-            Article.updateOne(query, {
+            Carousel.updateOne(query, {
                 ...req.body,
                 galleryImg: arrayFiles
 
                 // CallBack de la function Mongoose
             }, (err) => {
                 if (err) throw err
-                res.redirect('/article')
+                res.redirect('/admin')
             })
 
-        
-        // delete 1 image de notre galleryImg
+
+            // delete 1 image de notre galleryImg
         } else if (req.body.deleteImg) {
             /*
              *  Supprimer Une Image
              **********************/
-            console.log('delete single img')
-            const files = dbArticle.galleryImg
+         /*   console.log('delete single img')
+            const files = dbCarousel.galleryImg
 
             // boucle de selection de l'objet à supprimer
             for (let i = 0; i < files.length; i++) {
@@ -200,7 +171,7 @@ module.exports = {
             }
 
             // Fonction update Mongoose
-            Article.updateOne(query, {
+            Carousel.updateOne(query, {
                 ...req.body,
                 galleryImg: arrayFiles
 
@@ -209,18 +180,18 @@ module.exports = {
                 if (err) throw err
                 // unlink suprimera l'élément égale a notre req.body
                 // voir le input dans la view html
-                fs.unlink(path.resolve('public/images/' + req.body.deleteImg), (err) => {
+                fs.unlink(path.resolve('/img/carousel/' + req.body.deleteImg), (err) => {
                     if (err) throw err
-                    res.redirect('/article')
+                    res.redirect('/admin')
                 })
             })
 
-        // editer 1 image de notre galleryImg
+            // editer 1 image de notre galleryImg
         } else if (singleImg) {
             /*
              *  Éditer une seule images
              ************************** */
-            console.log('edit single img')
+        /*    console.log('edit single img')
 
             const arrayFiles = existImg
 
@@ -234,24 +205,24 @@ module.exports = {
             }
 
             // Fonction mongoose pour mettre à jour nos data
-            Article.updateOne(query, {
+            Carousel.updateOne(query, {
                 galleryImg: arrayFiles
 
                 // Callback function mongoose
             }, (err) => {
                 if (err) throw err
-                fs.unlink(path.resolve('public/images/' + req.body.exImg), (err) => {
+                fs.unlink(path.resolve('/img/carousel/' + req.body.exImg), (err) => {
                     if (err) throw err
                 })
-                res.redirect('/article')
+                res.redirect('/admin')
             })
 
-        // Ajouter plusieurs image dans notre galleryImg
+            // Ajouter plusieurs image dans notre galleryImg
         } else if (multiple) {
             /*
              *  Éditer toutes les images
              *************************** */
-            console.log('add multiple img')
+       /*     console.log('add multiple img')
 
             // boucle pour créé notre nouveau tableau
             for (let i = 0; i < files.length; i++) {
@@ -259,7 +230,7 @@ module.exports = {
                     // On push nos nouveau objet de notre req.files dans notre arrayFiles
                     arrayFiles.push({
                         name: files[i].filename,
-                        filename: `/assets/images/${files[i].filename}`,
+                        filename: `/img/carousel/${files[i].filename}`,
                         originalname: files[i].originalname
                     }, (err) => {
                         if (err) throw err
@@ -268,7 +239,7 @@ module.exports = {
             }
 
             // Fonction mongoose pour mettre à jour nos data
-            Article.updateOne(query, {
+            Carousel.updateOne(query, {
                 ...req.body,
                 galleryImg: arrayFiles
 
@@ -278,28 +249,29 @@ module.exports = {
                 // Boucle pour la suppression des images existante
                 for (let i = 0; i < existImg.length; i++) {
                     if (existImg) {
-                        fs.unlink(path.resolve('public/images/' + existImg[i].name), (err) => {
+                        fs.unlink(path.resolve('/img/carousel/' + existImg[i].name), (err) => {
                             if (err) throw err
                         })
                     }
                 }
-                res.redirect('/article')
+                res.redirect('/admin')
             })
         }
-    },
+    },*/
     // Method delete un objet dans la db avec les image en relation
-    deleteOne: async (req, res, next) => {
+  /*  deleteOneCarouselHome: async (req, res, next) => {
         /*
          *  Supprimer notre article
          ***************************/
-        const dbArticle = await Article.findById(req.params.id),
+     /*   console.log("vous ete bien dans le deleteOneCarouselHome");
+        const dbCarousel = await Carousel.findById(req.params.id),
             query = {
                 _id: req.params.id
             },
-            files = dbArticle.galleryImg
+            files = dbCarousel.galleryImg
 
         // ici on supprime nos objet de la collection
-        Article.deleteOne(
+        Carousel.deleteOne(
             query,
 
             // Callback de la fonction mongoose
@@ -309,22 +281,23 @@ module.exports = {
                 for (let i = 0; i < files.length; i++) {
                     if (files) {
                         // ici on supprime toutes les images en relation avec notre objet
-                        fs.unlink(path.resolve('public/images/' + files[i].name), (err) => {
-                            if (err) throw err
+                        fs.unlink(path.resolve('/img/carousel/' + files[i].name), (err) => {
+                            if (err) console.log(err)
                         })
                     }
                 }
                 // puis on redirige
-                res.redirect('/article')
+                res.redirect('/admin')
             })
-    },
+    },*/
     // Method delete tout les objet et toute les images stocker
-    deleteAll: (req, res) => {
+  /*  deleteAllCarouselHome: (req, res) => {
+        console.log("vous ete bien dans le  deleteAllCarouselHome");
         // on définit notre répertoire parent de nos images pour allez les suprimer plus tard
-        const directory = path.resolve("public/images/")
+        const directory = path.resolve('/img/carousel/')
 
         // Ici on supprime tous les objets dans notre Collection
-        Article.deleteMany((err) => {
+        Carousel.deleteMany((err) => {
             if (err) throw err
             // on appel fs pour récupérer nos fichiers
             fs.readdir(directory, (err, files) => {
@@ -337,10 +310,7 @@ module.exports = {
                     })
                 }
                 // puis on redirige
-                res.redirect('/article')
+                res.redirect('/admin')
             })
         })
-    }
-}
-
- 
+    }*/

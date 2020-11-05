@@ -1,16 +1,34 @@
-// Model du carousel de l'acceuil sauvgarder dans la base de donnée
+/*
+ *
+ * Model de 'Article'
+ ******************************/
 
-const mongoose = require('mongoose') // Appel de la constante mongoose 
+// Import de Mongoose
+const mongoose = require('mongoose')
 
-// Shema enregistrer dans la base de données
-const CarouselAccueilSchema = new mongoose.Schema({
-
-    galleryImg: [] // tableau 
-
+// Création de notre Shéma (Model)
+// c'est le Model de (Model)
+const CarouselSchema = new mongoose.Schema({
+    // Première variable (basique)
+    title: String,
+   // price: String,
+    isSuspend: Boolean,
+   // description: String,
+   // imgArticle: String,
+    galleryImg: [],
+  //  imgDescr: String,
+  //  promo: Number,
+  //  taille: String,
+    name: String,
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+   // articleID: Number
 })
 
-// Cree une constante article selon le shema ci dessus
-const CarouselAccueil = mongoose.model('CarouselAccueil', CarouselAccueilSchema)
+// Et l'on export notre model grace à la passerelle Mongoose
+// Ce qui nous permettra de pouvoir l'utiliser sur d'autre page
+module.exports = mongoose.model('Carousel', CarouselSchema)
 
-// Exporte le contenue d'un article sur d'autre page sous le nom Article
-module.exports = CarouselAccueil
+ 
