@@ -25,9 +25,9 @@ const homeController = require('./Controllers/home/homeController'), //ok
     // modalController = require('./Controllers/modal/modalController'), //ok
     //middleware
     upload = require('./middleware/img'), //ok
-    uploadArray = require('./middleware/imgarray');
-//const modalController = require('./Controllers/modal/modalController');
-//auth =require('./middleware/auth');
+    uploadArray = require('./middleware/imgarray'),
+    //c modalController = require('./Controllers/modal/modalController');
+    auth = require('./middleware/auth');
 //authAdminController = require('./Controllers/admin/auth');
 
 /*
@@ -152,6 +152,16 @@ router.route('/admin')
  * ******* */
 router.route('/user')
     .get(userController.getUserPage)
+
+router.route('/register')
+    .post(auth.register)
+
+router.route('/login')
+   .post(auth.login)
+
+router.route('/logout')
+    .delete(auth.logout)
+
 
 
 

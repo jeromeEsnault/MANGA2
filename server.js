@@ -5,9 +5,9 @@ const express = require('express'),
     bodyParser = require('body-parser'),
     { stripTags, limit } = require('./API/helper/hbs'),
     //flash = require('connect-flash'),
-    //MongoStore = require('connect-mongo'),
+    MongoStore = require('connect-mongo'),
     //upload = require('express-fileupload'),
-    //expressSession = require('express-session'),
+    expressSession = require('express-session'),
     methodOverride = require('method-override'),
     handlebars = require('handlebars'),
     handlebarshelpers = require('handlebars-helpers');
@@ -32,7 +32,7 @@ mongoose
     .catch(err => console.log(err))
 
 // save session avec MongoDB
-//const mongoStore = MongoStore(expressSession)
+const mongoStore = MongoStore(expressSession)
 
 // Handlebars
 app.set('view engine', 'hbs');
@@ -47,7 +47,7 @@ app.engine('hbs', hbs({
 }));
 
 // Express-session
-/*app.use(expressSession({
+app.use (expressSession({
     secret: 'securite',
     name: 'cookie-sess',
     saveUninitialized: true,
@@ -55,7 +55,7 @@ app.engine('hbs', hbs({
     store: new mongoStore({
         mongooseConnection: mongoose.connection
     })
-}));*/
+}));
 
 
 app.use(bodyParser.json());

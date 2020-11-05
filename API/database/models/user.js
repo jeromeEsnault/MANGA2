@@ -5,16 +5,16 @@ const bcrypt = require('bcrypt')
 const userSchema = new mongoose.Schema({
 
     isAdmin: {
-        boolean: true
+        boolean: false
     },
     isVerified: {
-        boolean: true
+        boolean: false
     },
     isModo: {
-        boolean: true
+        boolean: false
     },
     isBan: {
-        boolean: true
+        boolean: false
     },
     bio: {
         type: String,
@@ -42,14 +42,14 @@ const userSchema = new mongoose.Schema({
 });
 
 
-/*userSchema.pre('save', function(next) {
+userSchema.pre('save', function(next) {
     const user = this
 
     bcrypt.hash(user.password, 10, (error, encryted) => {
         user.password = encryted
         next()
     })
-})*/
+})
 
 
 const User = mongoose.model('user', userSchema)

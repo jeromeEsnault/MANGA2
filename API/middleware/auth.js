@@ -106,16 +106,16 @@ module.exports = {
                             // Log Success Authentification OK
                             console.log('Success Authentification OK')
                             // Définition de la session
-                            sess.email = User.email
-                            sess.status = User.status
-                            sess.pseudo = User.pseudo
-                            sess.isVerified = User.isVerified
-                            sess.imgUser = User.imgUser
-                            sess.imgCover = User.imgCover
-                            sess.userId = User._id
-                            sess.isAdmin = User.isAdmin
-                            sess.isModo = User.isModo
-                            sess.bio = User.bio
+                            sess.email = User.email // email
+                            sess.status = User.status // statut
+                            sess.pseudo = User.pseudo // pseudo
+                            sess.isVerified = User.isVerified // verification
+                            sess.imgUser = User.imgUser // img de user
+                            sess.imgCover = User.imgCover // img
+                            sess.userId = User._id // id de user
+                            sess.isAdmin = User.isAdmin // si admin (false ou true)
+                            sess.isModo = User.isModo // si moderateur
+                            sess.bio = User.bio // bio de user
                             // Redirection vers home.hbs
                             res.render('home', {
                                 success: "vous etes connecter au nom de: " + User.pseudo,
