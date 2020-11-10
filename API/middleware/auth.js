@@ -2,7 +2,7 @@
  * Controller Auth
  * *************** */
 const bcrypt = require('bcrypt')
-const User = require('../database/models/user')
+const User = require('../database/models/User')
 module.exports = {
     // Method register
     register: (req, res) => {

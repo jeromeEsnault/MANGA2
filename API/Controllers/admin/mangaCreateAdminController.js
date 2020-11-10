@@ -15,13 +15,19 @@ module.exports = {
                 if (err) console.log(err)
                 console.log(data)
                 console.log('je suis dans le .getMangaPageID de booking')
-                res.render('booking', {
+               res.render('booking', {
                     manga: data,
                     tome: dbTome,
                     genre: dbGenre
                 })
+               /* res.json(
+                    data,
+                    dbTome,
+                    dbGenre
+                )*/
             })
     },
+    
 
     // GET : Page Create Article ( Utilisateur )
     getPageFormCreateArticle: (req, res) => {
@@ -36,7 +42,7 @@ module.exports = {
     createMangaForm: async (req, res) => {//ok
         const mangaExist = await Manga.findById(req.params._id)
         // formulaire 
-        console.log('Controller Action Formulaire Create Article')
+        console.log('Controller Action Formulaire Create manga')
 
         Manga.create({
             ...req.body,

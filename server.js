@@ -11,9 +11,15 @@ const express = require('express'),
     methodOverride = require('method-override'),
     handlebars = require('handlebars'),
     handlebarshelpers = require('handlebars-helpers');
+const chai = require('chai');
+
 //handlebarsmoment = require('handlebars.moment');
 
 //handlebarsmoment.registerHelpers(handlebars)
+
+// Swagger
+const swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./test/swagger/swagger.json');
 
 require('dotenv').config()
 app.use(methodOverride('_method'))
@@ -47,7 +53,7 @@ app.engine('hbs', hbs({
 }));
 
 // Express-session
-app.use (expressSession({
+app.use(expressSession({
     secret: 'securite',
     name: 'cookie-sess',
     saveUninitialized: true,
@@ -65,6 +71,10 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('public'));
 
+
+// Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 const ROUTER = require('./API/router');
 app.use('/', ROUTER)
 
@@ -75,3 +85,5 @@ app.use('/', ROUTER)
 app.listen(port, () => {
     console.log('le serveur tourne sur :' + port);
 })
+
+module.exports = app
