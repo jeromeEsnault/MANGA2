@@ -4,8 +4,7 @@ module.exports = {
     /*
      * Controller
      *************/
-    getHomePage: async (req, res) => {
-        
+    getHomePage:(req, res) => {
         // Renvoie de la view article et c'est data
         res.render('home')
     },

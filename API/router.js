@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+
 /*
 * Appel des  Controller
 /**********************/
@@ -34,9 +35,9 @@ const homeController = require('./Controllers/home/homeController'), //ok
  * *********** */
 router.route('/')
     .get(uploadArray.array('inputArticleArray', 3), homeController.getHomePage)
-    //.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
-    //.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
-    //.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
+//.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
+//.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
+//.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
 
 
 
@@ -65,9 +66,9 @@ router.route('/booking/:id')
 
 router.route('/admin')
     .get(adminController.getAdminPage)
-    //.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
-    //.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
-    //.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
+//.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
+//.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
+//.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
 
 
 
@@ -156,12 +157,10 @@ router.route('/register')
     .post(auth.register)
 
 router.route('/login')
-   .post(auth.login)
+    .post(auth.login)
 
 router.route('/logout')
     .delete(auth.logout)
-
-
 
 
 module.exports = router;

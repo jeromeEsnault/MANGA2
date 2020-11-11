@@ -10,16 +10,20 @@ const express = require('express'),
     expressSession = require('express-session'),
     methodOverride = require('method-override'),
     handlebars = require('handlebars'),
-    handlebarshelpers = require('handlebars-helpers');
-const chai = require('chai');
+    handlebarshelpers = require('handlebars-helpers'),
+    chai = require('chai');
+const // expressOasGenerator = require('express-oas-generator'),
+    swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./test/swagger/swagger.json');
+
+//expressOasGenerator.init(app, {})
 
 //handlebarsmoment = require('handlebars.moment');
 
 //handlebarsmoment.registerHelpers(handlebars)
 
-// Swagger
-const swaggerUi = require('swagger-ui-express'),
-    swaggerDocument = require('./test/swagger/swagger.json');
+
+
 
 require('dotenv').config()
 app.use(methodOverride('_method'))
@@ -71,16 +75,15 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('public'));
 
-
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const ROUTER = require('./API/router');
 app.use('/', ROUTER)
 
-//app.use('*', (req, res) => {
-//    res.send('Erreur 404')
-//})
+/*app.use('*', (req, res) => {
+    res.send('Erreur 404')
+})}*/
 
 app.listen(port, () => {
     console.log('le serveur tourne sur :' + port);

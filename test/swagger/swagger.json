@@ -1,0 +1,104 @@
+{
+  "definitions": {},
+  "info": {
+    "title": "manga2",
+    "version": "1.0.0",
+    "license": {
+      "name": "ISC"
+    },
+    "description": "Specification JSONs: [v2](/api-spec/v2), [v3](/api-spec/v3).\n\nprojet de manga"
+  },
+  "paths": {
+    "/booking/{id}": {
+      "get": {
+        "summary": "/booking/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+            
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "page admin"
+        ]
+      },
+      "delete": {
+        "summary": "/booking/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "page admin"
+        ]
+      }
+    },
+    "/manga/create": {
+     
+      "post": {
+        "summary": "/manga/create",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {},
+        "tags": [
+          "page admin"
+        ]
+      }
+    },
+    "/editAdmin/{id}": {
+      "get": {
+        "summary": "/editAdmin/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "page admin"
+        ]
+      },
+      "put": {
+        "summary": "/editAdmin/{id}",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {},
+        "tags": [
+          "page admin"
+        ]
+      }
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    "version de swagger"
+  ]
+}
