@@ -27,5 +27,34 @@ BACK-END  *************
 ***********************
 
 
+/*
+*  Controller
+/**********************/
+//accueil
+const homeController = require('./Controllers/home/homeController'), //ok
+
+//manga
+mangaController = require('./Controllers/manga/mangaController'), //ok
+mangaCreateAdminController = require('./Controllers/admin/mangaCreateAdminController'), //ok
+// mangatest = require('./Controllers/article/TEST'),
+genreController = require('./Controllers/genre/genreController'), //ok
+//contact
+contactController = require('./Controllers/Contact/contactController'), //ok
+//reference
+referenceController = require('./Controllers/Reference/referenceController'), //ok
+//admin
+adminController = require('./Controllers/admin/adminController'), //ok
+// user
+userController = require('./Controllers/user/userController'), //ok
+//book de livre
+bookingController = require('./Controllers/booking/bookingController'), //ok
+//modal
+// modalController = require('./Controllers/modal/modalController'), //ok
+//middleware
+upload = require('./middleware/img'), //ok
+uploadArray = require('./middleware/imgarray'),
+auth = require('./middleware/auth');
+//authAdminController = require('./Controllers/admin/auth');
+
 
 

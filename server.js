@@ -1,36 +1,69 @@
+//=====================================================
+//        1 DEPENDENCE DE EXPRESS POUR LE FONT
+//=====================================================
 const express = require('express'),
     app = express(),
-    port = 1989,
     hbs = require('express-handlebars'),
     bodyParser = require('body-parser'),
-    { stripTags, limit } = require('./API/helper/hbs'),
+    port = 1989;
+
+//=====================================================
+//        2  DEPENDENSE DE CONNECTION DB
+//=====================================================
+// mongoose
+const mongoose = require('mongoose'),
+    MongoStore = require('connect-mongo');
+
+//=====================================================
+//        3  DEPENDENSE POUR SESSION
+//=====================================================
+
+const expressSession = require('express-session'),
+    mongoStore = MongoStore(expressSession);
+
+//=====================================================
+//        4  DEPENDENSE DE CONNECTION DB
+//=====================================================
+
+const { stripTags, limit } = require('./API/helper/hbs'),
     //flash = require('connect-flash'),
-    MongoStore = require('connect-mongo'),
     //upload = require('express-fileupload'),
-    expressSession = require('express-session'),
+
     methodOverride = require('method-override'),
     handlebars = require('handlebars'),
-    handlebarshelpers = require('handlebars-helpers'),
-    chai = require('chai');
-const // expressOasGenerator = require('express-oas-generator'),
+    handlebarshelpers = require('handlebars-helpers');
+//=====================================================
+//          5 DEPENDENSE DE TEST
+//=====================================================
+const chai = require('chai'),
+    // expressOasGenerator = require('express-oas-generator'),
     swaggerUi = require('swagger-ui-express'),
     swaggerDocument = require('./test/swagger/swagger.json');
-
 //expressOasGenerator.init(app, {})
+//=====================================================
+//          6   RECUPERATION DES ROUTE
+//=====================================================
+
+const ROUTER = require('./API/router');
+
+//=====================================================
+//              A VOIR
+//=====================================================
 
 //handlebarsmoment = require('handlebars.moment');
-
 //handlebarsmoment.registerHelpers(handlebars)
 
+//=====================================================
+//              LECTURE DES DEPENDANCE
+//=====================================================
 
-
-
+// POUR FICHIER DE SECU DE DONNEE .ENV
 require('dotenv').config()
-app.use(methodOverride('_method'))
 
-// mongoose
-const mongoose = require('mongoose');
-// Express-session// Mongoose
+//=====================================================
+app.use(methodOverride('_method'))
+// Express-session
+// Mongoose
 mongoose
     .connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
@@ -40,9 +73,10 @@ mongoose
     })
     .then(() => console.log('Connecter a MongoDB'))
     .catch(err => console.log(err))
+//=====================================================
+//=====================================================
 
-// save session avec MongoDB
-const mongoStore = MongoStore(expressSession)
+
 
 // Handlebars
 app.set('view engine', 'hbs');
@@ -78,7 +112,6 @@ app.use(express.static('public'));
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-const ROUTER = require('./API/router');
 app.use('/', ROUTER)
 
 /*app.use('*', (req, res) => {
