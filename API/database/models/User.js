@@ -24,9 +24,29 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, 'le mot de passe est obligatoire'],
     },
-    name: {
+    nameP: {
         type: String,
-        required: [true, 'le mot de passe est obligatoire'],
+        required: [true, 'le nom est obligatoire'],
+        
+    },
+    nameM: {
+        type: String,
+        required: [true, 'le prénom est obligatoire est obligatoire'],
+        
+    },
+    typeUser: {
+        type: String,
+        required: [true, 'le prénom est obligatoire est obligatoire'],
+        
+    },
+    pseudo: {
+        type: String,
+        required: [true, 'le pseudo est obligatoire est obligatoire'],
+        unique: true
+    },
+    datedenaissance: {
+        type: String,
+        required: [true, 'la date de naissance est obligatoire est obligatoire'],
         unique: true
     },
     email: {

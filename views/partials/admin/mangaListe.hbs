@@ -1,28 +1,25 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center m-5">
+            <h2>liste des manga</h2>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <div class="row">
         <ul class="list-unstyled">
-            {{#each manga.tome }}
-            <li class="media">
-                <img src="{{ manga.image. }}" class="mr-3" alt="...">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">{{ manga.titlevf }}</h5>
-                    {{ description }}
-                </div>
-            </li>
-            <li class="media my-4">
-                <img src="{{ manga.image. }}" class="mr-3" alt="...">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">{{ manga.titlevf }}</h5>
-                    {{ description }}
-                </div>
-            </li>
-            <li class="media">
-                <img src="{{ manga.image. }}" class="mr-3" alt="...">
-                <div class="media-body">
-                    <h5 class="mt-0 mb-1">{{ manga.titlevf }}</h5>
-                    {{ description }}
-                </div>
-            </li>
+            {{#each manga }}
+            <a href="/editAdmin/{{ id }}">
+                <li class="media">
+                    <img src="{{ image }}" class="mr-3" alt="...">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{ titlevf }}</h5>
+                        {{ description }}
+                    </div>
+                </li>
+            </a>
             {{/each  }}
         </ul>
     </div>

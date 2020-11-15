@@ -40,7 +40,7 @@ module.exports = {
     },
     // POST : Action d'envoi du formulaire Createmanga
     createMangaForm: async (req, res) => {//ok
-        const mangaExist = await Manga.findById(req.params._id)
+       // const mangaExist = await Manga.findById(req.params._id)
         // formulaire 
         console.log('Controller Action Formulaire Create manga')
 
