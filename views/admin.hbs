@@ -1,30 +1,19 @@
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center m-5">
-            <h2>admin</h2>
+            <h2>bienvenue {{ user.pseudo }}</h2>
         </div>
     </div>
 </div>
-
 {{> admin/userAdmin }}
 <!--  controle de presentation du site -->
-{{> admin/adminCarousel }}
+
 {{> admin/manager }}
-
-{{> admin/navarticle }}
-{{> admin/navbarcont }}
-
+{{> admin/mangaListe }}
+{{> admin/messagerie }}
 <!--fin  controle de presentation du site -->
 <!--  controle des manga -->
 
-{{> admin/article }}
-{{> admin/mangaListe }}
-{{> admin/navarticle }}
-<!--fin controle des manga -->
-<!-- controle des utilisateur -->
 {{> admin/user }}
-<!--fin  controle des utilisateur  -->
-<!--  controle des message -->
-{{> admin/messagerie }}
-{{> admin/navcontact }}
-<!--fin  controle des message -->
+

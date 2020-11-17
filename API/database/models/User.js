@@ -5,16 +5,20 @@ const bcrypt = require('bcrypt')
 const userSchema = new mongoose.Schema({
 
     isAdmin: {
-        boolean: false
+        type: Boolean,
+        default: false
     },
     isVerified: {
-        boolean: false
+        type: Boolean,
+        default: false
     },
     isModo: {
-        boolean: false
+        type: Boolean,
+        default: false
     },
     isBan: {
-        boolean: false
+        type: Boolean,
+        default: false
     },
     bio: {
         type: String,
@@ -54,9 +58,17 @@ const userSchema = new mongoose.Schema({
         required: [true, 'l email est obligatoire'],
        // unique: true
     },
+    mangaID: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
+    Tome: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Tome'
+    }],
     imgProfil: {
         type: String,
-        default: '/img/imgDefault/profil.jpeg'
+        default: 'img/imgDefault/default-profil.jpg'
     }
 
 });

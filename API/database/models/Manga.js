@@ -33,6 +33,10 @@ const MangaSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Tome'
     }],
+    user: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }],
 
     genre: [{
         type: Schema.Types.ObjectId,

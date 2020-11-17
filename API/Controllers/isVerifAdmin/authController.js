@@ -3,22 +3,25 @@
  * *************** */
 const bcrypt = require('bcrypt')
 const User = require('../../database/models/User')
+const isAdmin = require('is-admin');
+
+
+
 
 
 module.exports = {
     // Method register
-    register: (req, res) => {
+    register: async (req, res) => {
+        const authAdmin = await isAdmin(false);
+        //=> false
         console.log('page de controller de register');
         // Racourcie pour accèder à la session
         const sess = req.session
         console.log(req.body)
         // ici on compare les 2 mot de passe
-        if (!req.body.password ) {
+        if (!req.body.password) {
             console.log('error password')
-            res.redirect('home', {
-                error: 'Nous rencontrons un problèmes avec votre mot de passe !',
-                sess: sess
-            })
+            res.redirect('/')
         } else {
             // ON log si la function est OK
             console.log('password OK')
@@ -26,6 +29,7 @@ module.exports = {
             User.create({
                 // On récupère notre formulaire
                 ...req.body,
+                
                 // Au cas ou une err survient en force
             }, (err, user) => {
                 console.log('voir si il y a erreur');
@@ -37,11 +41,11 @@ module.exports = {
                     res.redirect('/')
                 }
             })
-        }
+        } 
     },
     // Validation du login ( Conexion )
     login: async (req, res, next) => {
-        console.log(page );
+        console.log('page connection login');
         console.log(req.body)
         // On défini la variable userAuth qui execute une fonction de MongoDB
         // Qui demande de recherché parmis le Model (User) une adresse mail
@@ -59,11 +63,11 @@ module.exports = {
             // Log err
             console.log("pas dans la db");
             // Redirection sur home.hbs
-            res.redirect('home', {
+            res.redirect('/', {
                 error: "Ce compte n existe pas",
                 sess: sess
             })
-        // Sinon si userAuth est bien un mail qui éxiste dans la DB alors tu fais ça
+            // Sinon si userAuth est bien un mail qui éxiste dans la DB alors tu fais ça
         } else {
             // On défini que l'on va récupéré un Objet contenant email & password depuis req.body
             const { email, password } = req.body
@@ -77,12 +81,12 @@ module.exports = {
                 // Pour la sécurité c'est toujour mieux de géré les err avant la function réelle ;)
                 if (!User) {
                     // Redirection sur home.hbs
-                    res.redirect('home', {
+                    res.redirect('/', {
                         error: "Ce compte n existe pas",
                         sess: sess
                     })
-                // Sinon si notre req.body.email correspond avec un email éxistant
-                // Alors tu me fais ça
+                    // Sinon si notre req.body.email correspond avec un email éxistant
+                    // Alors tu me fais ça
                 } else {
                     // L'on récupère le req.body.password
                     // On le passe dans la moulinette de notre module Bcrypt
@@ -100,7 +104,7 @@ module.exports = {
                             // Log OK
                             console.log('Error mdp')
                             // Redirection vers home.hbs
-                            res.render('home', {
+                            res.redirect('/', {
                                 error: "Le mot de passe ne correspond pas !",
                                 sess: sess
                             })
@@ -118,11 +122,9 @@ module.exports = {
                             sess.isAdmin = User.isAdmin // si admin (false ou true)
                             sess.isModo = User.isModo // si moderateur
                             sess.bio = User.bio // bio de user
+
                             // Redirection vers home.hbs
-                            res.redirect('home', {
-                                success: "vous etes connecter au nom de: " + User.pseudo,
-                                sess: sess
-                            })
+                            res.redirect('/')
                         }
                     })
                 }
@@ -130,10 +132,10 @@ module.exports = {
         }
     },
     logout: (req, res) => {
-      req.session.destroy(() => {
-        res.clearCookie('cookie-sess')
-        console.log(req.session)
-        res.redirect('/')
-      })
+        req.session.destroy(() => {
+            res.clearCookie('cookie-sess')
+            console.log(req.session)
+            res.redirect('/')
+        })
     }
 }

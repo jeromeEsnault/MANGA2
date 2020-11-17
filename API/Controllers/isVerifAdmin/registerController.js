@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
     getRegisterPage: (req, res) => {
         res.render('/',{
             sess: req.session
@@ -6,4 +6,4 @@ module.exports = {
     },
 
 
-}
+}*/

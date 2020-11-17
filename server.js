@@ -19,7 +19,7 @@ const mongoose = require('mongoose'),
 //=====================================================
 
 const expressSession = require('express-session'),
-    dateFormat = require('date-format'),
+    
 
     //=====================================================
     //        4  DEPENDENSE DE CONNECTION DB
@@ -114,6 +114,15 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(express.static('public'));
+
+app.use('*', (req, res, next) => {
+    console.log(req.session);
+    res.locals.userObj = req.session;
+    res.locals.user = req.session.userId;
+    res.locals.isAdmin = req.session.isAdmin;
+    console.log("ID Session: " + res.locals.user);
+    next()
+})
 
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

@@ -30,31 +30,24 @@ module.exports = {
                 console.log(req.session.userId);
                 console.log(user.isAdmin);
                 console.log('isadmin');
-                if (err||!user.isAdmin) {
 
-                    next()
-                }
-                else {
-                    console.log('no 3');
-                    console.log('BONNE CONNECT visiteur');
-                    console.log('BONNE CONNECT visiteur'); next()
-                }
+                next()
+               
             }
 
         })
     },
     // Middleware isAdmin
-    sAdmin: (req, res, next) => {
-        const sess = req.session
-        console.log(sess)
+    isAdmin: (req, res, next) => {
+       
         // Connecte l'utilisateur dans la base de donné
-        User.findById(req.session.userId, sess, (err, user) => {
+        User.findById(req.session.userId, (err, user) => {
             console.log('isadmin');
             console.log(err);
             console.log(req.session.userId);
             console.log(user.isAdmin);
             console.log('isadmin');
-            if (err || !user.isAdmin || sess) res.redirect('/')
+            if (err || user.isAdmin !== true ) res.redirect('/')
             else next()
         })
     }

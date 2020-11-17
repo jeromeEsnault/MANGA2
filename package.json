@@ -38,6 +38,7 @@
         "express-session": "^1.17.1",
         "handlebars-helpers": "^0.10.0",
         "handlebars.moment": "^1.0.4",
+        "is-admin": "^3.0.0",
         "method-override": "^3.0.0",
         "mocha": "^8.2.1",
         "mongoose": "^5.10.9",

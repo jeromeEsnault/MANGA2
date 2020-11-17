@@ -37,7 +37,7 @@ const homeController = require('./Controllers/home/homeController'), //ok
  * Page Home
  * *********** */
 router.route('/')
-    .get(uploadArray.array('inputArticleArray', 3), homeController.getHomePage)
+    .get( homeController.getHomePage)
 //.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
 //.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
 //.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
@@ -57,18 +57,18 @@ router.route('/manga')
  * page booking pour voir les manga
  * ********************************* */
 router.route('/booking')
-    .get(bookingController.getBookingPage)
+    .get(auth.auth,bookingController.getBookingPage)
 
 router.route('/booking/:id')
-    .get(bookingController.getMangaPageID)
-    .delete(bookingController.deleteOne)
+    .get(auth.auth,bookingController.getMangaPageID)
+    .delete(auth.auth,bookingController.deleteOne)
 
 /*
  * manga admin
  * ******* */
 
 router.route('/admin')
-    .get(adminController.getAdminPage)
+    .get(auth.isAdmin,adminController.getAdminPage)
 //.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
 //.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
 //.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
@@ -77,9 +77,9 @@ router.route('/admin')
 
 router.route('/manga/create')
     // Page Formulaire create manga 
-    .get(mangaCreateAdminController.getPageFormCreateArticle)
+    .get(auth.auth,mangaCreateAdminController.getPageFormCreateArticle)
     // Action du Formulaire
-    .post(mangaCreateAdminController.createMangaForm)
+    .post(auth.auth,mangaCreateAdminController.createMangaForm)
 
 /******************************************************* */
 router.route('/editAdmin/:id')
