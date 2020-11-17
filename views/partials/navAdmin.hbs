@@ -26,19 +26,26 @@
                         <a class="nav-link text-white" href="/reference">référence</a>
                     </div>
 
-
+                    <h5>bien connecter a admin-user</h5>
                 </div>
 
             </div>
         </div>
 
         <div class="col-md-1 im w-icon">
-            <button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#connect">
-                <span aria-hidden="true" class=""><i class="far fa-user-circle
-                        float-left"></i> </span>
-            </button>
-
-            {{> modal/connect-nav}}
+            
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">
+                    <button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#connect">
+                        <span aria-hidden="true" class="">
+                            <i class="far fa-user-circle float-left"></i>
+                        </span>
+                    </button>
+                </a>
+                <a class="dropdown-item" href="/logout">déconnection</a>
+            </div>
+            {{> modal/connect-nav ./this }}
 
         </div>
 

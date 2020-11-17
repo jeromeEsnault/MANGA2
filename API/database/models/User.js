@@ -19,10 +19,10 @@ const userSchema = new mongoose.Schema({
     bio: {
         type: String,
     },
-
     password: {
         type: String,
         required: [true, 'le mot de passe est obligatoire'],
+        // unique: true
     },
     nameP: {
         type: String,
@@ -31,28 +31,28 @@ const userSchema = new mongoose.Schema({
     },
     nameM: {
         type: String,
-        required: [true, 'le prénom est obligatoire est obligatoire'],
+        required: [true, 'le prénom  est obligatoire'],
         
     },
     typeUser: {
         type: String,
-        required: [true, 'le prénom est obligatoire est obligatoire'],
+        required: [true, 'le prénom  est obligatoire'],
         
     },
     pseudo: {
         type: String,
-        required: [true, 'le pseudo est obligatoire est obligatoire'],
-        unique: true
+        required: [true, 'le pseudo  est obligatoire'],
+       // unique: true
     },
     datedenaissance: {
         type: String,
-        required: [true, 'la date de naissance est obligatoire est obligatoire'],
-        unique: true
+        required: [true, 'la date de naissance est obligatoire'],
+       // unique: true
     },
     email: {
         type: String,
         required: [true, 'l email est obligatoire'],
-        unique: true
+       // unique: true
     },
     imgProfil: {
         type: String,

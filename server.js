@@ -19,13 +19,13 @@ const mongoose = require('mongoose'),
 //=====================================================
 
 const expressSession = require('express-session'),
-    mongoStore = MongoStore(expressSession);
+    dateFormat = require('date-format'),
 
-//=====================================================
-//        4  DEPENDENSE DE CONNECTION DB
-//=====================================================
+    //=====================================================
+    //        4  DEPENDENSE DE CONNECTION DB
+    //=====================================================
 
-const { stripTags, limit } = require('./API/helper/hbs'),
+
     //flash = require('connect-flash'),
     //upload = require('express-fileupload'),
 
@@ -76,7 +76,7 @@ mongoose
 //=====================================================
 //=====================================================
 
-
+const { stripTags, limit } = require('./API/helper/hbs');
 
 // Handlebars
 app.set('view engine', 'hbs');
@@ -90,9 +90,15 @@ app.engine('hbs', hbs({
     adminLayout: 'adminLayout'
 }));
 
+const mongoStore = MongoStore(expressSession);
 // Express-session
 app.use(expressSession({
     secret: 'securite',
+    maxAge: 150,
+    domain:"",
+    expire:"",
+    httpOnly:"",
+    path:"/",
     name: 'cookie-sess',
     saveUninitialized: true,
     resave: false,

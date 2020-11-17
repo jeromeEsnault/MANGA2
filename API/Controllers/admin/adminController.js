@@ -7,6 +7,8 @@ module.exports = {
     //    res.render('admin')
     // },
     getAdminPage: (req, res) => {
+        const sess = req.session
+        console.log(sess)
         Manga.find({})
             .populate('tome genre')
             .exec((err, data) => {
@@ -14,7 +16,8 @@ module.exports = {
                 console.log('je suis dans le .getAdminPage')
                 console.log(data)
                 res.render('admin', {
-                    manga: data
+                    manga: data,
+                    sess:sess
                 })
             })
     },

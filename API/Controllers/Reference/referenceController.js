@@ -1,5 +1,9 @@
 module.exports = {
     getReferencePage: (req, res) => {
-        res.render('reference')
+        const sess = req.session
+        console.log(sess)
+        res.render('reference',{
+            sess:sess
+        })
     }
 }

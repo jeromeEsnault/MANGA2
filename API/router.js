@@ -22,13 +22,16 @@ const homeController = require('./Controllers/home/homeController'), //ok
     userController = require('./Controllers/user/userController'), //ok
     //book de livre
     bookingController = require('./Controllers/booking/bookingController'), //ok
-    //modal
-    // modalController = require('./Controllers/modal/modalController'), //ok
+   
     //middleware
     upload = require('./middleware/img'), //ok
     uploadArray = require('./middleware/imgarray'),
-    auth = require('./middleware/auth');
-//authAdminController = require('./Controllers/admin/auth');
+    auth = require('./middleware/auth'),
+   // loginController = require('./Controllers/isVerifAdmin/loginController'),
+   // registerController = require('./Controllers/isVerifAdmin/registerController'),
+   // logoutController = require('./Controllers/isVerifAdmin/logoutController'),
+    authController = require('./Controllers/isVerifAdmin/authController'); //ok
+
 
 /*
  * Page Home
@@ -48,7 +51,7 @@ router.route('/')
 
 router.route('/manga')
     // Page de presentation  liste de manga
-    .get(mangaController.getMangaPage)
+    .get(auth.auth,mangaController.getMangaPage)
 
 /*
  * page booking pour voir les manga
@@ -141,11 +144,7 @@ router.route('/reference')
 router.route('/admin')
     .get(adminController.getAdminPage)
 
-/*
- *
- * MODE BETA PAGE
- *
- *************************/
+
 
 /*
  * user
@@ -153,14 +152,21 @@ router.route('/admin')
 router.route('/user')
     .get(userController.getUserPage)
 
+//****************************** */
+
+/*
+ *
+ *  PAGE authentification
+ *
+ *************************/
 router.route('/register')
-    .post(auth.register)
+    .post(authController.register)
 
 router.route('/login')
-    .post(auth.login)
+    .post(authController.login)
 
 router.route('/logout')
-    .delete(auth.logout)
+    .get(authController.logout)
 
 
 module.exports = router;

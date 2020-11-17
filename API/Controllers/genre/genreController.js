@@ -1,6 +1,10 @@
 module.exports = {
     getGenrePage: (req, res) => {
-        res.render('genre')
+        const sess = req.session
+        console.log(sess)
+        res.render('genre',{
+            sess:sess
+        })
     },
 
 

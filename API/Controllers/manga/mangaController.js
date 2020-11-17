@@ -6,26 +6,35 @@ const Genre = require('../../database/models/Genre')
 module.exports = {
     // GET : Page manga list ( Utilisateur )
     getMangaPage: (req, res) => {
+        const sess = req.session
+        console.log(sess)
         Manga.find({})
             .populate('tome genre')
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log('je suis dans le .getMangaPage')
-                console.log(data)
+                //console.log(data)
                 res.render('manga', {
-                    manga: data
+                    manga: data,
+                    sess: sess
                 })
             })
     },
 
     // GET : Page Create Article ( Utilisateur )
     getPageFormTomecreate: (req, res) => {
-        res.render('editAdmin')
+        const sess = req.session
+        console.log(sess)
+        res.render('editAdmin', {
+            sess: sess
+        })
 
     },
-   
+
     //
     getMangaPageID: async (req, res) => {
+        const sess = req.session
+        console.log(sess)
         const dbTome = await Tome.find({})
         const dbGenre = await Genre.find({})
         console.log(req.params.id)
@@ -38,12 +47,14 @@ module.exports = {
                 res.render('booking', {
                     manga: data,
                     tome: dbTome,
-                    genre: dbGenre
+                    genre: dbGenre,
+                    sess: sess
+
                 })
             })
     },
 
-   
+
     //appeler  le await pour incorporer les donnée avec async
     editID: async (req, res) => {
         console.log('Controller Edit ID')

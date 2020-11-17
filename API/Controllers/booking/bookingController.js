@@ -4,16 +4,21 @@ const Tome = require('../../database/models/Tome')
 
 module.exports = {
     getBookingPage: (req, res) => {
+        const sess = req.session
+        console.log(sess)
         const dbTome = Tome.find({})
         const dbGenre = Genre.find({})
         
         res.render('booking', {
             manga: data,
             genre: dbGenre.data,
-            tome: dbTome.data
+            tome: dbTome.data,
+            sess: sess
         })
     },
     getMangaPageID: async (req, res) => {
+        const sess = req.session
+        console.log(sess)
         const dbTome = await Tome.find({})
         const dbGenre = await Genre.find({})
         console.log(req.params.id)
@@ -26,7 +31,8 @@ module.exports = {
                 res.render('booking', {
                     manga: data,
                     tome: dbTome,
-                    genre: dbGenre
+                    genre: dbGenre,
+                    sess: sess
                 })
             })
     },

@@ -2,7 +2,7 @@
 console.log("fichier connect");
 // Import de Mongoose
 
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
@@ -33,5 +33,5 @@ beforeEach((done) => {
   mongoose.connection.collections.tomes.drop(() => {
     done();
   });
-});
+});*/
 

@@ -1,5 +1,9 @@
 module.exports = {
     getUserPage: (req, res) => {
-        res.render('user')
+        const sess = req.session
+        console.log(sess)
+        res.render('user',{
+            sess:sess
+        })
     }
 }
