@@ -7,19 +7,12 @@
         </button>
         {{> modal/tome manga=manga }}
 
-        <select id="tomeEdit">
-            <option value="">-- Choisir le tome --</option>
-            {{#each manga.tome}}
-            <option value="{{ _id }}">{{ volume }} </option>
-            {{/each }}
-        </select>
-        
     </div>
 </div>
 
 <form action="/editAdmin/{{ _id }}" method="post">
-
-    <div class=" bg-success" >
+    
+    <div class=" bg-success">
         <div class="row text-decoration-none">
             <ul class="col-md-4">
                 <div class="row m-3">
@@ -158,6 +151,6 @@
                 </div>
             </ul>
         </div>
-     
+
         <button type="submit">Valider</button>
-</form>  
+</form>

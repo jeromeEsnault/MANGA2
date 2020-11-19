@@ -1,6 +1,7 @@
 const Manga = require('../../database/models/Manga')
 const Tome = require('../../database/models/Tome')
 const Genre = require('../../database/models/Genre')
+const User = require('../../database/models/User')
 const { isValidObjectId } = require('mongoose')
 
 module.exports = {
@@ -8,6 +9,7 @@ module.exports = {
     getMangaPageID: async (req, res) => {//ok
         const dbTome = await Tome.find({})
         const dbGenre = await Genre.find({})
+        const dbUser = await User.find({})
         console.log(req.params.id)
         Manga.findById(req.params.id)
             .populate('tome genre ')
@@ -15,19 +17,20 @@ module.exports = {
                 if (err) console.log(err)
                 console.log(data)
                 console.log('je suis dans le .getMangaPageID de booking')
-               res.render('booking', {
+                res.render('booking', {
                     manga: data,
                     tome: dbTome,
-                    genre: dbGenre
+                    genre: dbGenre,
+                    user: dbUser
                 })
-               /* res.json(
-                    data,
-                    dbTome,
-                    dbGenre
-                )*/
+                /* res.json(
+                     data,
+                     dbTome,
+                     dbGenre
+                 )*/
             })
     },
-    
+
 
     // GET : Page Create Article ( Utilisateur )
     getPageFormCreateArticle: (req, res) => {
@@ -40,7 +43,7 @@ module.exports = {
     },
     // POST : Action d'envoi du formulaire Createmanga
     createMangaForm: async (req, res) => {//ok
-       // const mangaExist = await Manga.findById(req.params._id)
+        // const mangaExist = await Manga.findById(req.params._id)
         // formulaire 
         console.log('Controller Action Formulaire Create manga')
 
@@ -68,15 +71,18 @@ module.exports = {
         // recupérer lid du manga et le mettre en attente 
         const mangaExist = await Manga.findById(req.params.id)
         let tomeArray = mangaExist.tomes
+        let userArray = mangaExist.user
         let genreArray = mangaExist.genre
 
         if (req.body.tome && req.body.genre) {
             tomeArray.push(req.body.tome),
-                genreArray.push(req.body.genre)
+                genreArray.push(req.body.genre),
+                userArray.push(req.body.user)
         }
         // on recupére le tableau de tome
         console.log(tomeArray)
         console.log(genreArray)
+        console.log(userArray);
         console.log(' je suis dans le tomeArray')
         //
 
@@ -85,6 +91,7 @@ module.exports = {
         //
         Manga.findByIdAndUpdate(req.params.id, {
             tome: tomeArray,
+            user: userArray,
             genre: genreArray
         }, (err, data) => {
             if (err) console.log(err)
@@ -95,11 +102,12 @@ module.exports = {
 
     },
     getMangaPageID: async (req, res) => {
+        console.log('je suis dans le .getMangaPageID de editadmin')
         const dbTome = await Tome.find({})
         const dbGenre = await Genre.find({})
         console.log(req.params.id)
         Manga.findById(req.params.id)
-            .populate('tome genre ')
+            .populate('tome user genre ')
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log(data)

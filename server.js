@@ -121,10 +121,10 @@ app.use('*', (req, res, next) => {
     console.log('donner local');
     res.locals.userObj = req.session;
     res.locals.isAdmin = req.session.isAdmin;
-    console.log(req.session);
-    console.log("ID Session: " + res.locals.user);
-    console.log(res.locals.user);
-    console.log("userObj:" + res.locals.userObj);
+    //console.log(req.session);
+    //console.log("ID Session: " + res.locals.user);
+    //console.log(res.locals.user);
+    //console.log("userObj:" + res.locals.userObj); 
     console.log('fin session');
     next()
 })

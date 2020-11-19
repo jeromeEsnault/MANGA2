@@ -5,17 +5,22 @@ const Genre = require('../../database/models/Genre')
 
 module.exports = {
     // GET : Page manga list ( Utilisateur )
-    getMangaPage: (req, res) => {
+    getMangaPage: async (req, res) => {
         const sess = req.session
         console.log(sess)
+        const dbManga = await Manga.find({})
+        const dbTome = await Tome.find({})
+        const dbGenre = await Genre.find({})
         Manga.find({})
             .populate('tome genre')
-            .exec((err, data) => {
+            .exec((err,data) => {
                 if (err) console.log(err)
                 console.log('je suis dans le .getMangaPage')
-                //console.log(data)
+                console.log(data)
                 res.render('manga', {
                     manga: data,
+                    tome: dbTome,
+                    genre: dbGenre,
                     sess: sess
                 })
             })

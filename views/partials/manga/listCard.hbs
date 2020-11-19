@@ -3,14 +3,13 @@
 <div class="container mb-5 card-deck">
     <div class="row">
         {{#each manga  }}
+         {{#each tome  }}
         <div class="col-md-4">
-
-
             <a href="/booking/{{ id }}">
                 <div class="card">
                     <div class="card-img img-thumbnail">
-                        {{#if tome.image }}
-                        <img src=" {{ tome.image.}} " class="card-img" alt="naruto">
+                        {{#if image }}
+                        <img src=" {{ image }} " class="card-img" alt="naruto">
                         {{else }}
                         <img src="/img/imgDefault/imgmanga.jpg " class="card-img" alt="img par default">
                         {{/if}}
@@ -25,9 +24,9 @@
                     </div>
                 </div>
             </a>
-
-
-        </div> {{/each }}
+        </div> 
+        {{/each }}
+        {{/each }}
     </div>
 </div>
 

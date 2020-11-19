@@ -43,9 +43,9 @@ module.exports = {
         // Connecte l'utilisateur dans la base de donné
         User.findById(req.session.userId, (err, user) => {
             console.log('isadmin');
-            console.log(err);
-            console.log(req.session.userId);
-            console.log(user.isAdmin);
+            //console.log(err);
+            //console.log(req.session.userId);
+            //console.log(user.isAdmin);
             console.log('isadmin');
 
             if (err||user.isAdmin !== true ) res.redirect('/')
