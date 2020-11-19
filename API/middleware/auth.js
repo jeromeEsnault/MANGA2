@@ -25,11 +25,11 @@ module.exports = {
             }
             else {
                 console.log('no 2');
-                console.log('isadmin');
+                console.log('auth');
                 console.log(err);
                 console.log(req.session.userId);
                 console.log(user.isAdmin);
-                console.log('isadmin');
+                console.log('auth');
 
                 next()
                
@@ -47,7 +47,8 @@ module.exports = {
             console.log(req.session.userId);
             console.log(user.isAdmin);
             console.log('isadmin');
-            if (err || user.isAdmin !== true ) res.redirect('/')
+
+            if (err||user.isAdmin !== true ) res.redirect('/')
             else next()
         })
     }

@@ -79,7 +79,7 @@ router.route('/manga/create')
     // Page Formulaire create manga 
     .get(auth.auth,mangaCreateAdminController.getPageFormCreateArticle)
     // Action du Formulaire
-    .post(auth.auth,mangaCreateAdminController.createMangaForm)
+    .post(mangaCreateAdminController.createMangaForm)
 
 /******************************************************* */
 router.route('/editAdmin/:id')
@@ -138,11 +138,7 @@ router.route('/contact')
 router.route('/reference')
     .get(referenceController.getReferencePage)
 
-/*
- * admin
- * ******* */
-router.route('/admin')
-    .get(adminController.getAdminPage)
+
 
 
 

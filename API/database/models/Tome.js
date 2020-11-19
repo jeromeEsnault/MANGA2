@@ -3,55 +3,59 @@ const Manga = require('./Manga')
 const Schema = mongoose.Schema
 
 const TomeSchema = new mongoose.Schema({
-    mangaID: {
+    mangaID: { //ok
         type: Schema.Types.ObjectId,
         ref: 'manga'
     },
-    name: {
+    userID: { //ok
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    name: { //pour array
         type: String
     },
-    volume: {
+    volume: { // ok
         type: Number
     },
-    description: {
+    description: { // ok
         type: String
     },
-    dateDeParution: {
+    dateDeParution: { //ok
         type: Number
     },
-    dessin: {
+    dessin: { // ok
         type: String
     },
     illustration: {
         type: String
     },
-    Scenariste: {
+    Scenariste: { //ok
         type: String
     },
-    Traducteur: {
+    Traducteur: { //ok
         type: String
     },
-    EditeurVF: {
+    EditeurVF: { //ok
         type: String
     },
-    EditeurVO: {
+    EditeurVO: { //ok
         type: String
     },
-    prepublication: {
+    prepublication: { //ok
         type: String
     },
-    origine: {
+    origine: { //ok
         type: String
     },
-    dateCreate: {
+    dateCreate: { //ok ne pas ajouter a put
         type: Date,
         default: Date.now()
     },
-    dateEdit: {
+    dateEdit: { //ok
         type: Date,
         default: Date.now()
     },
-    image: {
+    image: { //ok
         type: String,
         default: '/img/imgDefault/imgmanga.jpg'
     }

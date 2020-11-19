@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt')
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
 
     isAdmin: {
         type: Boolean,
@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema({
     },
     typeUser: {
         type: String,
-        required: [true, 'le prénom  est obligatoire'],
+        required: [true, 'le type  est obligatoire'],
         
     },
     pseudo: {
@@ -60,7 +60,7 @@ const userSchema = new mongoose.Schema({
     },
     mangaID: [{
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'manga'
     }],
     Tome: [{
         type: Schema.Types.ObjectId,
@@ -74,7 +74,7 @@ const userSchema = new mongoose.Schema({
 });
 
 
-userSchema.pre('save', function(next) {
+UserSchema.pre('save', function(next) {
     const user = this
 
     bcrypt.hash(user.password, 10, (error, encryted) => {
@@ -84,6 +84,6 @@ userSchema.pre('save', function(next) {
 })
 
 
-const User = mongoose.model('user', userSchema)
+const User = mongoose.model('User', UserSchema)
 
 module.exports = User

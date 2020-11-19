@@ -3,7 +3,7 @@
  * *************** */
 const bcrypt = require('bcrypt')
 const User = require('../../database/models/User')
-const isAdmin = require('is-admin');
+
 
 
 
@@ -113,16 +113,13 @@ module.exports = {
                             console.log('Success Authentification OK')
                             // Définition de la session
                             sess.email = User.email // email
-                            sess.status = User.status // statut
                             sess.pseudo = User.pseudo // pseudo
                             sess.isVerified = User.isVerified // verification
-                            sess.imgUser = User.imgUser // img de user
-                            sess.imgCover = User.imgCover // img
                             sess.userId = User._id // id de user
                             sess.isAdmin = User.isAdmin // si admin (false ou true)
                             sess.isModo = User.isModo // si moderateur
                             sess.bio = User.bio // bio de user
-
+                            sess.imgProfil = User.imgProfil // img de profil
                             // Redirection vers home.hbs
                             res.redirect('/')
                         }

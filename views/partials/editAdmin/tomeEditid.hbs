@@ -1,100 +1,80 @@
-<div class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
+<div class=" mb-5 pt-5 mt-5 pb-5 bg-primary">
+    <div class="text-center">
 
-    {{#each manga.tome }}
-    <p class="card-text font-weight-bold text-lg-left">
-        Volume: #{{ volume }}
-    </p>
-    <p class="card-text font-weight-bold text-lg-left">
-        Description: #{{ description }}
-    </p>
-    <a href="/tome/delete/{{_id}}" class="btn bg-warning"> Delete </a>
-    {{/each }}
-    <select name="tome">
-        <option value="">-- Choisir le tome --</option>
-
-        {{#each tome }}
-        <option value="{{ _id }}">{{ volume }} & {{ name }}</option>
-        {{/each}}
-    </select>
-
-    <div class="">
-        <button type="button" class="close" aria-label="Close" data-toggle="modal"
-         data-target="#newsTome{{manga._id}}">
-            <span aria-hidden="true" class="btn"> créer un nouveaux tome {{manga._id}} </span>
+        <button type="button" class=" btn btn-warning" aria-label="Close" aria-hidden="true" data-toggle="modal"
+            data-target="#newsTome{{manga._id}}">
+            <span>créer un nouveaux tome</span>
         </button>
         {{> modal/tome manga=manga }}
-    </div>
 
+        <select id="tomeEdit">
+            <option value="">-- Choisir le tome --</option>
+            {{#each manga.tome}}
+            <option value="{{ _id }}">{{ volume }} </option>
+            {{/each }}
+        </select>
+        
+    </div>
 </div>
 
-<div class="container bg-success">
-    <form action="/editAdmin/{{manga._id}}" method="post">
+<form action="/editAdmin/{{ _id }}" method="post">
+
+    <div class=" bg-success" >
         <div class="row text-decoration-none">
             <ul class="col-md-4">
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">desin</label>
+                        <label for="">dessin</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="dessin"> {{ manga.tome.dessin }}</p>
+                        <p name="dessin"> {{ dessin }}</p>
                     </div>
                     <input type="text" name='dessin' value="{{
-                            manga.tome.dessin }}">
+                            dessin }}">
                 </div>
 
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">scenariste</label>
+                        <label for="Scenariste">scenariste</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="scenariste"> {{ manga.tome.scenariste }}</p>
+                        <p name="Scenariste"> {{ Scenariste }}</p>
                     </div>
-                    <input type="text" name='scenariste' value="{{
-                           manga.tome.scenariste }}">
+                    <input type="text" name='Scenariste' value="{{
+                           Scenariste }}">
                 </div>
 
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">traducteur</label>
+                        <label for="Traducteur">traducteur</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="titlevo"> {{ manga.tome.traducteur }}</p>
+                        <p name="Traducteur"> {{ traducteur }}</p>
                     </div>
-                    <input type="text" name='titlevo' value="{{
-                            manga.tome.traducteur  }}">
+                    <input type="text" name='Traducteur' value="{{
+                            traducteur  }}">
                 </div>
 
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">editeur en vf</label>
+                        <label for="EditeurVF">editeur en vf</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="titlevo"> {{ manga.tome.editeurvf }}</p>
+                        <p name="EditeurVF"> {{ EditeurVF }}</p>
                     </div>
-                    <input type="text" name='titlevo' value="{{
-                            manga.tome.editeurvf  }}">
+                    <input type="text" name='EditeurVF' value="{{
+                            EditeurVF }}">
                 </div>
 
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">type</label>
+                        <label for="EditeurVO">editeur en vo</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="nameType"> {{ manga.tome.nameType }}</p>
+                        <p name="EditeurVO"> {{ EditeurVO }}</p>
                     </div>
-                    <input type="text" name='nameType' value="{{
-                            manga.tome.nameType  }}">
-                </div>
-
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">editeur en vo</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="editeurvo"> {{ manga.tome.editeurvo }}</p>
-                    </div>
-                    <input type="text" name='editeurvo' value="{{
-                            manga.tome.editeurvo  }}">
+                    <input type="text" name='EditeurVO' value="{{
+                            EditeurVO  }}">
                 </div>
             </ul>
             <ul class="col-md-4">
@@ -105,96 +85,79 @@
             <ul class="col-md-4">
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">prépublication</label>
+                        <label for="prepublication">prépublication</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="prepublication"> {{ manga.tome.prepublication }}</p>
+                        <p name="prepublication"> {{ prepublication }}</p>
                     </div>
                     <input type="text" name='prepublication' value="{{
-                            manga.tome.prepublication  }}">
+                            prepublication  }}">
                 </div>
                 <div class="row m-3">
                     <div class="col-md-6">
                         <label for="">numero du volume</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="volume"> {{ manga.tome.volume }}</p>
+                        <p name="volume"> {{ volume }}</p>
                     </div>
                     <input type="text" name='volume' value="{{
-                            manga.tome.volume  }}">
+                            volume  }}">
                 </div>
                 <div class="row m-3">
                     <div class="col-md-6">
                         <label for="">origine</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="origine"> {{ manga.tome.origine }}</p>
+                        <p name="origine"> {{ origine }}</p>
                     </div>
                     <input type="text" name='origine' value="{{
-                            manga.tome.origine  }}">
+                            origine  }}">
                 </div>
                 <div class="row m-3">
                     <div class="col-md-6">
                         <label for="">description</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="description"> {{ manga.tome.description }}</p>
+                        <p name="description"> {{ description }}</p>
                     </div>
-                    <textarea type="text" name='description'  cols="30" rows="10" value="{{
-                            manga.tome.description  }}"></textarea>
+                    <textarea type="text" name='description' cols="30" rows="10" value="{{
+                            description  }}"></textarea>
 
                 </div>
+
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">origine</label>
+                        <label for="">date de parution</label>
                     </div>
                     <div class="col-md-6">
-                        <p name="titlevo"> {{ manga.tome.description }}</p>
+                        <p name="dateDeParution"> {{ dateDeParution }}</p>
                     </div>
-                    <input type="text" name='titlevo' value="{{
+                    <input type="text" name='dateDeParution' value="{{
+                           dateDeParution  }}">
+                </div>
+
+                <div class="row m-3">
+                    <div class="col-md-6">
+                        <label for="image">image</label>
+                    </div>
+                    <div class="col-md-6">
+                        <p name="image"> {{ manga.tome.description }}</p>
+                    </div>
+                    <input type="file" name='image' value="{{
                             manga.tome.origine  }}">
                 </div>
                 <div class="row m-3">
                     <div class="col-md-6">
-                        <label for="">origine</label>
+                        <label for="dateEdit">date D'édition </label>
                     </div>
                     <div class="col-md-6">
-                        <p name="titlevo"> {{ manga.tome.description }}</p>
+                        <p name="dateEdit"> {{ dateEdit }}</p>
                     </div>
-                    <input type="text" name='titlevo' value="{{
-                            manga.tome.origine  }}">
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">origine</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="titlevo"> {{ manga.tome.description }}</p>
-                    </div>
-                    <input type="text" name='titlevo' value="{{
-                            manga.tome.origine  }}">
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">origine</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="titlevo"> {{ manga.tome.description }}</p>
-                    </div>
-                    <input type="text" name='titlevo' value="{{
-                            manga.tome.origine  }}">
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">origine</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="titlevo"> {{ manga.tome.description }}</p>
-                    </div>
-                    <input type="text" name='titlevo' value="{{
+                    <input type="text" name='dateEdit' value="{{
                             manga.tome.origine  }}">
                 </div>
             </ul>
         </div>
+     
         <button type="submit">Valider</button>
-    </form>
+</form>  

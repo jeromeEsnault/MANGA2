@@ -1,6 +1,7 @@
 const Manga = require('../../database/models/Manga')
 const Tome = require('../../database/models/Tome')
 const Genre = require('../../database/models/Genre')
+const User = require('../../database/models/User')
 
 
 module.exports = {
@@ -11,6 +12,7 @@ module.exports = {
     getHomePage: (req, res) => {
         const sess = req.session
         console.log(sess)
+        User.findById(req.session.userId)
         Manga.find({})
             .populate('tome genre')
             .exec((err, data) => {

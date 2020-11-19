@@ -6,7 +6,6 @@ const User = require('../../database/models/User')
 module.exports = {
     
     getAdminPage: (req, res) => {
-        User.findById(req.userID)
         const sess = req.session.User
         console.log(sess)
         Manga.find({})
@@ -16,11 +15,8 @@ module.exports = {
                 console.log('je suis dans le .getAdminPage')
                 console.log(data)
                 res.render('admin', {
-
                     layout: 'adminLayout',
-                    manga:data,
-                    user:data,
-                    sess:sess
+                    manga: data,
                 })
             })
     },

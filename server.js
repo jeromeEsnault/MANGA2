@@ -94,7 +94,7 @@ const mongoStore = MongoStore(expressSession);
 // Express-session
 app.use(expressSession({
     secret: 'securite',
-    maxAge: 150,
+    maxAge: 1500000,
     domain:"",
     expire:"",
     httpOnly:"",
@@ -115,12 +115,17 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('public'));
 
+
+
 app.use('*', (req, res, next) => {
-    console.log(req.session);
+    console.log('donner local');
     res.locals.userObj = req.session;
-    res.locals.user = req.session.userId;
     res.locals.isAdmin = req.session.isAdmin;
+    console.log(req.session);
     console.log("ID Session: " + res.locals.user);
+    console.log(res.locals.user);
+    console.log("userObj:" + res.locals.userObj);
+    console.log('fin session');
     next()
 })
 
