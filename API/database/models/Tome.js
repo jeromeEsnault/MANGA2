@@ -11,9 +11,6 @@ const TomeSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    name: { //pour array
-        type: String
-    },
     volume: { // ok
         type: Number
     },
