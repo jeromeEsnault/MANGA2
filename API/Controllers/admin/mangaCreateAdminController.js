@@ -119,6 +119,8 @@ module.exports = {
                 })
             })
     },
+
+
     createTomeForm: async (req, res) => {
         console.log('je suis dans le .createTomeForm de editadmin')
         const manga = await Manga.findById(req.params.id)
@@ -148,9 +150,14 @@ module.exports = {
                 res.redirect(`/editAdmin/${manga._id}`)
             })
         })
-
-
     },
+
+
+    
+
+
+
+    
     // formulaire 3
     /*Tome.create({
         mangaID: manga._id,

@@ -115,15 +115,6 @@ router.route('/genre')
     // Page genre pour edition
     .get(genreController.getGenrePage)
 
-/*
- * booking
- * ******* */
-router.route('/booking')
-    .get(bookingController.getBookingPage)
-
-router.route('/booking/:id')
-    .get(bookingController.getMangaPageID)
-    .delete(bookingController.deleteOne)
 
 
 /*
