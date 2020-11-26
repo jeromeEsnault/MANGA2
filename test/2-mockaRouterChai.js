@@ -1,5 +1,5 @@
 console.log("fichier routerchai");
-/*const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const Manga = require('../API/database/models/Manga')
 const assert = require('assert')
 // Config Chai
@@ -95,4 +95,4 @@ describe('CHAI // CONTROLLER //  MangaCreateAdminController', () => {
             });
     });
 
-});*/
+});

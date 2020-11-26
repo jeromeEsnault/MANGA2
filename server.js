@@ -115,8 +115,18 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('public'));
 
+/*
+*       seceriter de helmet
+*
+***********************************/ 
+
+const helmet = require('helmet')
+app.use(helmet())
 
 
+
+
+//******************************** */
 app.use('*', (req, res, next) => {
     console.log('donner local');
     res.locals.userObj = req.session;
@@ -129,14 +139,21 @@ app.use('*', (req, res, next) => {
     next()
 })
 
+
 // Swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+
+
 app.use('/', ROUTER)
 
-/*app.use('*', (req, res) => {
+
+
+app.use('*', (req, res) => {
     res.send('Erreur 404')
-})}*/
+})
+
+
 
 app.listen(port, () => {
     console.log('le serveur tourne sur :' + port);

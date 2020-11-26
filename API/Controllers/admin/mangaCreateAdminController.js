@@ -127,7 +127,7 @@ module.exports = {
         // On définit query comme un objet acceuillant notre req.params.id
         console.log(manga);
         console.log(req.body);
-        // On définit notre construction de Commentaire
+        // On définit notre construction de tome
         const tome = new Tome({
             mangaID: manga._id,
             ...req.body,
@@ -135,18 +135,18 @@ module.exports = {
             image: `./img/bookimg/${req.file.originalname}`, // On stock aussi le nom de l'image 
             name: req.file.originalname
         })
-        // Ici on incrémente nos commentaire dans nos model en relation
+        // Ici on incrémente nos mangas dans nos model en relation
         manga.tome.push(tome._id)
         console.log(tome._id);
         console.log(manga);
-        // On sauvegarde nous modification
+        // On sauvegarde nos modification
 
         tome.save((err) => {
             if (err) return console.log(err)
             manga.save((err) => {
                 if (err) return console.log(err)
                 console.log('coucou');
-                // Et on redirige sur notre article parent
+                // Et on redirige sur notre manga parent
                 res.redirect(`/editAdmin/${manga._id}`)
             })
         })

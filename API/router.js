@@ -56,8 +56,8 @@ router.route('/manga')
 /*
  * page booking pour voir les manga
  * ********************************* */
-router.route('/booking')
-    .get(auth.auth,bookingController.getBookingPage)
+//router.route('/booking')
+   // .get(auth.auth,bookingController.getBookingPage)
 
 router.route('/booking/:id')
     .get(auth.auth,bookingController.getMangaPageID)
@@ -96,11 +96,11 @@ router.route('/modal/:id')
 
 
 
-router.route('/genre/create')
+//router.route('/genre/create')
     // Page Formulaire create genre
-    .get(mangaCreateAdminController.getPageFormGenre)
+    //.get(mangaCreateAdminController.getPageFormGenre)
     // Ici nous appelons le middleware de multer pour pouvoir traiter notre image dans notre controller
-    .post(upload.single('image'), mangaCreateAdminController.createGenreForm)
+    //.post(upload.single('image'), mangaCreateAdminController.createGenreForm)
 
 
 
@@ -111,9 +111,9 @@ router.route('/tome/delete/:id')
 
 
 /***************************************************** */
-router.route('/genre')
+//router.route('/genre')
     // Page genre pour edition
-    .get(genreController.getGenrePage)
+   // .get(genreController.getGenrePage)
 
 
 
