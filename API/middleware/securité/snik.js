@@ -2,7 +2,7 @@ const request = require('request');
 
 request({
   method: 'POST',
-  url: 'https://snyk.io/api/v1/org/{orgId}/integrations/475fac73-0937-4241-b07f-3202e5cfb8ea/import',
+  url: 'https://snyk.io/api/v1/org/0f93fd49-edd9-48ce-9e11-294da69b12c3/integrations/475fac73-0937-4241-b07f-3202e5cfb8ea/import',
   headers: {
     'Content-Type': 'application/json; charset=utf-8',
     'Authorization': 'token API_KEY'
