@@ -2,7 +2,7 @@
 
   <button class="navbar bg-white" type="button" data-toggle="collapse" data-target="#navmobile1"
     aria-controls="navmobile1" aria-expanded="true" aria-label="Toggle navigation">
-      <img class="img-nav" style="width: 50px;height: 50px" src="/img/logo-manga.jpg" />
+    <img class="img-nav" style="width: 50px;height: 50px" src="/img/logo-manga.jpg" />
   </button>
 
   <div class="collapse navbar-collapse" id="navmobile1">
@@ -23,11 +23,9 @@
 
   </div>
   <div class="col-md-1 im w-icon">
-    <button type="button" class="close" aria-label="Close" data-toggle="modal" data-target="#connect">
-      <span aria-hidden="true" class=""><i class="far fa-user-circle float-left"></i> </span>
-    </button>
-
-    {{> modal/connect-nav ../this}}
+   {{> modal/connect-nav ../this}}  {{!-- --}}
+  
+    
 
   </div>
 </nav>

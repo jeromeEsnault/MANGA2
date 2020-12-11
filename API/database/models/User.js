@@ -6,15 +6,15 @@ const UserSchema = new mongoose.Schema({
 
     isAdmin: {
         type: Boolean,
-        default: false
+        default: true
     },
     isVerified: {
         type: Boolean,
-        default: false
+        default: true
     },
     isModo: {
         type: Boolean,
-        default: false
+        default: true
     },
     isBan: {
         type: Boolean,

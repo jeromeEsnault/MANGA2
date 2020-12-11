@@ -4,15 +4,11 @@
 const bcrypt = require('bcrypt')
 const User = require('../../database/models/User')
 
-
-
-
-
-
 module.exports = {
     // Method register
     register: async (req, res) => {
-        const authAdmin = await isAdmin(false);
+        // const authAdmin = await isAdmin(false);
+        // const authAdmin = await User.findOne({email: req.body.email, isAdmin: true});
         //=> false
         console.log('page de controller de register');
         // Racourcie pour accèder à la session

@@ -25,73 +25,11 @@
 
     <!--pour admin-->
     {{#if isAdmin}}
-    <div class="col-md-1 im w-icon">
 
-        <span aria-hidden="true">
-            <div class="btn  collapsed" type="button" data-toggle="collapse" data-target="#colapsedeconnection"
-                aria-expanded="false" aria-controls="colapsedeconnection"><img class=" img-nav"
-                    style="width: 50px;height: 50px" src="{{ userObj.imgProfil }}" alt=""></div>
-        </span>
-        </button>
+    {{> modal/admin }}
+    {{else}}
+    <!--pour user-->
+    {{> modal/user }}
 
-        <div class="collapse  float-right collapsing" id="colapsedeconnection">
-            <div class="card card-body">
-                <div class="card" style="width: 18rem;">
-                    <div>
-                        <img src="{{ userObj.imgProfil }}" class="card-img-top img-fluid" style="width: 4rem;"
-                            alt="profil">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ userObj.pseudo}}</h5>
-
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="/userput/{{userObj.userId}}">modifier votre profil</a></li>
-
-                        <li class="list-group-item"><a href="/admin">voir mon admin</a></li>
-
-                        <li class="list-group-item"><a href="/logout">deconnection</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-{{else}}
-<!--pour user-->
-
-
-     <div class="col-md-1 im w-icon">
-
-        <span aria-hidden="true">
-            <div class="btn  collapsed" type="button" data-toggle="collapse" data-target="#colapsedeconnection"
-                aria-expanded="false" aria-controls="colapsedeconnection"><img class=" img-nav"
-                    style="width: 50px;height: 50px" src="{{userObj.imgProfil}}" alt=""></div>
-        </span>
-        </button>
-
-        <div class="collapse  float-right collapsing" id="colapsedeconnection">
-            <div class="card card-body">
-                <div class="card" style="width: 18rem;">
-                    <div>
-                        <img src="{{ userObj.imgProfil }}" class="card-img-top img-fluid" style="width: 4rem;"
-                            alt="profil">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ user.pseudo}}</h5>
-
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="/userput/{{user._id}}">modifier votre profil</a></li>
-                        <li class="list-group-item"><a href="/userput/{{user._id}}">voir votre profil</a></li>
-                        <li class="list-group-item"><a href="/logout">deconnection</a></li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </div>
-{{/if }}
+    {{/if }}
 </nav>
