@@ -7,11 +7,11 @@ const router = express.Router();
 /**********************/
 //accueil
 const homeController = require('./Controllers/home/homeController'), //ok
+
     //manga
     mangaController = require('./Controllers/manga/mangaController'), //ok
     mangaCreateAdminController = require('./Controllers/admin/mangaCreateAdminController'), //ok
-    // mangatest = require('./Controllers/article/TEST'),
-    genreController = require('./Controllers/genre/genreController'), //ok
+
     //contact
     contactController = require('./Controllers/Contact/contactController'), //ok
     //reference
@@ -22,22 +22,19 @@ const homeController = require('./Controllers/home/homeController'), //ok
     userController = require('./Controllers/user/userController'), //ok
     //book de livre
     bookingController = require('./Controllers/booking/bookingController'), //ok
-   
+    //CONNECTION
+    authController = require('./Controllers/isVerifAdmin/authController'), //ok
     //middleware
     upload = require('./middleware/img'), //ok
-    uploadArray = require('./middleware/imgarray'),
-    auth = require('./middleware/auth'),
-   // loginController = require('./Controllers/isVerifAdmin/loginController'),
-   // registerController = require('./Controllers/isVerifAdmin/registerController'),
-   // logoutController = require('./Controllers/isVerifAdmin/logoutController'),
-    authController = require('./Controllers/isVerifAdmin/authController'); //ok
+    auth = require('./middleware/auth');
+
 
 
 /*
  * Page Home
  * *********** */
 router.route('/')
-    .get( homeController.getHomePage)
+    .get(homeController.getHomePage)
 //.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
 //.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
 //.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
@@ -51,33 +48,31 @@ router.route('/')
 
 router.route('/manga')
     // Page de presentation  liste de manga
-    .get(auth.auth,mangaController.getMangaPage)
+    .get(auth.auth, mangaController.getMangaPage)
 
 /*
  * page booking pour voir les manga
  * ********************************* */
 //router.route('/booking')
-   // .get(auth.auth,bookingController.getBookingPage)
+// .get(auth.auth,bookingController.getBookingPage)
 
 router.route('/booking/:id')
-    .get(auth.auth,bookingController.getMangaPageID)
-    .delete(auth.auth,bookingController.deleteOne)
+    .get(auth.auth, bookingController.getMangaPageID)
+    .delete(auth.auth, bookingController.deleteOne)
 
 /*
  * manga admin
  * ******* */
 
 router.route('/admin')
-    .get(auth.isAdmin,adminController.getAdminPage)
-//.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
-//.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
-//.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
+    .get(auth.isAdmin, adminController.getAdminPage)
+
 
 
 
 router.route('/manga/create')
     // Page Formulaire create manga 
-    .get(auth.auth,mangaCreateAdminController.getPageFormCreateArticle)
+    .get(auth.auth, mangaCreateAdminController.getPageFormCreateArticle)
     // Action du Formulaire
     .post(mangaCreateAdminController.createMangaForm)
 
@@ -97,10 +92,10 @@ router.route('/modal/:id')
 
 
 //router.route('/genre/create')
-    // Page Formulaire create genre
-    //.get(mangaCreateAdminController.getPageFormGenre)
-    // Ici nous appelons le middleware de multer pour pouvoir traiter notre image dans notre controller
-    //.post(upload.single('image'), mangaCreateAdminController.createGenreForm)
+// Page Formulaire create genre
+//.get(mangaCreateAdminController.getPageFormGenre)
+// Ici nous appelons le middleware de multer pour pouvoir traiter notre image dans notre controller
+//.post(upload.single('image'), mangaCreateAdminController.createGenreForm)
 
 
 
@@ -112,8 +107,8 @@ router.route('/tome/delete/:id')
 
 /***************************************************** */
 //router.route('/genre')
-    // Page genre pour edition
-   // .get(genreController.getGenrePage)
+// Page genre pour edition
+// .get(genreController.getGenrePage)
 
 
 

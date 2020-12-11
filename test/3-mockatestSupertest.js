@@ -1,12 +1,20 @@
 console.log("fichier supertest");
-/*const request = require('supertest');
+const request = require('supertest');
 const app = require('../server');
 const Manga = require('../API/database/models/Manga')
 const assert = require('assert');
 
+
 describe('SUPERTEST // "/manga2"', function () {
-
-
+  it('a file', function (done) {
+    request(app)
+      .post('/upload/single')
+      //.field('image', '{"in":"case you want to send json along with your file"}')
+      .attach('image', '/img/bookimg/test.jpg')
+      .expect(resetBodyUploadData)
+      .expect(200, result, err => (err ? done(err) : fs.stat(uploadedFilePath, done)));
+  });
+  /*
   it('Get Home (Page home)1', (done) => {
     request(app)
       .get('/')
@@ -18,7 +26,7 @@ describe('SUPERTEST // "/manga2"', function () {
           done(err);
         } else {
           // console.log(res.header);
-           console.log(res)
+          console.log(res)
           done();
         }
       })
@@ -57,5 +65,5 @@ describe('SUPERTEST // "/manga2"', function () {
         }
       })
   });
-
-});*/
+*/
+});

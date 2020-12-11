@@ -153,28 +153,7 @@ module.exports = {
     },
 
 
-    
 
-
-
-    
-    // formulaire 3
-    /*Tome.create({
-        mangaID: manga._id,
-        ...req.body,
-
-
-    }, (err, data) => {
-        if (err) console.log(err)
-        console.log('je suis dans le .createTomeForm pour tomes')
-        console.log(data);
-
-        console.log(req.file);
-        res.redirect()
-
-
-    })
-},*/
     createGenreForm: (req, res) => {//ok
         // formulaire 2
         Genre.create({ ...req.body }, (err) => {
