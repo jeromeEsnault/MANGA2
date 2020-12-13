@@ -1,4 +1,4 @@
-<div class="modal fade" id="newsTome{{manga._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="newsTome" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,6 +10,7 @@
             <form action="/modal/{{manga._id}}?_method=POST" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="row">
+                        {{manga._id}}
                         <div class="form-group col-md-6">
                             <label for="recipient-name" class="col-form-label">numero du volume</label>
                             <input type="number" class="form-control" name="volume">

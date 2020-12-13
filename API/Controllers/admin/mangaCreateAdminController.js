@@ -124,8 +124,8 @@ module.exports = {
     createTomeForm: async (req, res) => {
         console.log('je suis dans le .createTomeForm de editadmin')
         const manga = await Manga.findById(req.params.id)
-        // On définit query comme un objet acceuillant notre req.params.id
-        console.log(manga);
+        // On définit manga comme un objet acceuillant notre req.params.id
+        //console.log(manga);
         console.log(req.body);
         // On définit notre construction de tome
         const tome = new Tome({
