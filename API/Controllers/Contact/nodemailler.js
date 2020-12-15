@@ -2,18 +2,21 @@
 /*
  * On déclare nos constante
  * ************************ */
-
+// POUR FICHIER DE SECU DE DONNEE .ENV
+require("dotenv").config();
 // import nodemailer 
 const nodemailer = require('nodemailer'),
   // Déclaration ne notre transporter
   // C'est en quelque sorte notre connexion à notre boite mail
   transporter = nodemailer.createTransport({
-    host: HOST_URI_MAIL,
-    service: SERVICE_URI_MAIL,
-    port: PORT_URI_MAIL,
+    pool: true,
+    port: 'PORT_URI_MAIL',
+    host: 'HOST_URI_MAIL',
+    service: 'SERVICE_URI_MAIL',
+
     auth: {
-      user: USER_URI_MAIL,
-      pass: PASS_URI_MAIL
+      user: 'USER_URI_MAIL',
+      pass: 'PASS_URI_MAIL'
     }
   })
 
@@ -24,10 +27,11 @@ var rand, mailOptions, host, link;
 module.exports = {
   // Action test boite mail > nodemailer
   test: (req, res) => {
+    console.log('test a verifier');
     console.log(req.body)
     // On configure notre mail à envoyer par nodemailer
     const mailOptions = {
-      from: USER_URI_MAIL,
+      from: 'USER_URI_MAIL',
       to: req.body.email,
       subject: 'Félicitation, ' + req.body.author + ' !',
       html: `
@@ -40,7 +44,7 @@ module.exports = {
       if (err) console.log(err)
       else {
         console.log(info)
-        res.render('home', {
+        res.render('contact', {
           success: "Un email à bien été envoyer à " + req.body.email
         })
       }
@@ -56,7 +60,7 @@ module.exports = {
     link = "http://" + req.get('host') + "/verify/" + rand
     // et enfin notre mail
     mailOptions = {
-      from: 'jojocoin2019@gmail.com',
+      from: 'USER_URI_MAIL',
       to: req.body.email,
       subject: "Veuillez confirmez votre email svp.",
       rand: rand,
@@ -78,7 +82,7 @@ module.exports = {
       }
     })
     // Response
-    res.render('home', {
+    res.render('contact', {
       success: "Un email de vérification à bien été envoyer à " + req.body.email
     })
   },
@@ -103,4 +107,4 @@ module.exports = {
   }
 }
 
- 
+

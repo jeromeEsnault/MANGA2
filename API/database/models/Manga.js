@@ -33,7 +33,7 @@ const MangaSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Tome'
     }],
-    user: [{
+    userID: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],

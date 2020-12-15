@@ -11,7 +11,7 @@ const homeController = require('./Controllers/home/homeController'), //ok
     //manga
     mangaController = require('./Controllers/manga/mangaController'), //ok
     mangaCreateAdminController = require('./Controllers/admin/mangaCreateAdminController'), //ok
-
+    contactnodemailController = require('./Controllers/Contact/nodemailler'),
     //contact
     contactController = require('./Controllers/Contact/contactController'), //ok
     //reference
@@ -116,7 +116,10 @@ router.route('/tome/delete/:id')
  * Contact
  * ********/
 router.route('/contact')
-    .get(contactController.getContactPage)
+    .get(contactController.sendVerif)
+    //.get(contactnodemailController.verifMail)
+    .post(contactnodemailController.test)
+    //.post(contactnodemailController.sendVerif)
 
 /*
  * reference

@@ -1,0 +1,24 @@
+{{!-- liste de message --}}
+
+<div class="accordion mt-5" id="accordionListeMessage">
+    <div class="card">
+        <div class="card-header" id="headingManga">
+            <h2 class="mb-0">
+                <button class="btn  btn-block text-center " type="button" data-toggle="collapse"
+                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h2>liste de message{{ _id }}</h2>
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingManga" data-parent="#accordionListeMessage">
+            <div class="card-body">
+               {{> admin/LMES-colapseListeMessage/filtreMessage user=user}}
+               {{> admin/LMES-colapseListeMessage/messageListe user=user}}
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- fin liste de message --}}

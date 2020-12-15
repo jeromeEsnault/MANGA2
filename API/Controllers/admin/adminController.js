@@ -8,16 +8,13 @@ module.exports = {
         console.log('je suis dans le .getAdminPage')
         const sess = req.session
         //console.log(sess)
-        const dbManga = await Manga.find({})
-        const dbTome1 = await Tome.findOne({volume: 1 })
-        const dbTome = await Tome.find({})
-
+        const dbManga = await Manga.find({}),
+            dbTome = await Tome.find({}),
+            dbTome1 = await Tome.find({ volume: 1 });
+        const rgvol = { volume: 1 };
         //console.log(dbTome1);
         Manga.find({})
-            .populate({
-                path: 'tome user', populate: { path: '#filterTitlevf' },
-                select: 'manga.titlevf'
-            })
+            .populate('tome user').sort(rgvol)
 
 
 
@@ -27,9 +24,10 @@ module.exports = {
                 console.log("test1");
                 //console.log(sess); // ok fonctionne
                 console.log("test2");
-                //console.log(data);
+                //console.log(data); // ok fonctionne
                 console.log("test3");
                 //console.log(dbTome1);// ok fonctionne 
+                //console.log(dbTome1);
                 console.log("test4");
                 //console.log(filtre); // ok fonctionne
                 console.log("test5");
@@ -42,7 +40,7 @@ module.exports = {
                     layout: 'adminLayout',
                     manga: data,
                     sess: sess,
-                    tome1: dbTome1,
+                    //tome1: dbTome1,
                     tome: dbTome,
 
 

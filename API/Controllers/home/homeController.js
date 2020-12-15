@@ -14,7 +14,7 @@ module.exports = {
         console.log(sess)
         User.findById(req.session.userId)
         Manga.find({})
-            .populate('tome genre')
+            .populate('tome user').limit(-3)
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log('je suis dans le .getHomePage')

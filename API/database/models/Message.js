@@ -4,6 +4,14 @@ const Schema = mongoose.Schema
 
 const MessageSchema = new mongoose.Schema({
 
+    mangaID: [{
+        type: Schema.Types.ObjectId,
+        ref: 'manga'
+    }],
+    tome: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Tome'
+    }],
     author: {
         type: String
     },
