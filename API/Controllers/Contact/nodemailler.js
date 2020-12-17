@@ -2,21 +2,18 @@
 /*
  * On déclare nos constante
  * ************************ */
-// POUR FICHIER DE SECU DE DONNEE .ENV
-require("dotenv").config();
+
 // import nodemailer 
 const nodemailer = require('nodemailer'),
   // Déclaration ne notre transporter
   // C'est en quelque sorte notre connexion à notre boite mail
   transporter = nodemailer.createTransport({
-    pool: true,
-    port: 'PORT_URI_MAIL',
-    host: 'HOST_URI_MAIL',
-    service: 'SERVICE_URI_MAIL',
-
+    host: "smtp.gmail.com",
+    service: 'gmail',
+    port: '587',
     auth: {
-      user: 'USER_URI_MAIL',
-      pass: 'PASS_URI_MAIL'
+      user:'formationdev.arinfo@gmail.com',
+      pass: 'DIEUXGREC72'
     }
   })
 
@@ -31,11 +28,11 @@ module.exports = {
     console.log(req.body)
     // On configure notre mail à envoyer par nodemailer
     const mailOptions = {
-      from: 'USER_URI_MAIL',
-      to: req.body.email,
-      subject: 'Félicitation, ' + req.body.author + ' !',
+      from: 'formationdev.arinfo@gmail.com', 
+      to:'formationdev.arinfo@gmail.com',
+      subject: 'Félicitation, ' + req.body.userid + ' !',
       html: `
-        <h2>${req.body.author}, Ton premier mail avec nodemailer, Successfull !!</h2>
+        <h2>${req.body.userid}, Ton premier mail avec nodemailer, Successfull !!</h2>
       `
     }
 
@@ -60,9 +57,9 @@ module.exports = {
     link = "http://" + req.get('host') + "/verify/" + rand
     // et enfin notre mail
     mailOptions = {
-      from: 'USER_URI_MAIL',
-      to: req.body.email,
-      subject: "Veuillez confirmez votre email svp.",
+      from: req.body.email,
+      to: 'USER_URI_MAIL',
+      subject: req.body.Subject,
       rand: rand,
       html: `
         <h2>Encore un effort</h2>,<br>

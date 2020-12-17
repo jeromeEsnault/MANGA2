@@ -119,17 +119,17 @@ app.use(
 app.use(express.static("public"));
 
 /*
- *       seceriter de helmet
+ *       securitée de helmet
  *
  ***********************************/
-
+/*
  const helmet = require("helmet");
  app.use(
    helmet({
      contentSecurityPolicy: false,
    })
  );
-
+*/
 //******************************** */
 app.use("*", (req, res, next) => {
   console.log("donner local");
@@ -151,7 +151,10 @@ app.use("/", ROUTER);
 app.use("*", (req, res) => {
   res.send("Erreur 404");
 });
-
+/********************************* */
+/*******       test de secu        */
+//app.use.ethereum.autoRefreshOnNetworkChange = false;
+/************************************* */
 app.listen(port, () => {
   console.log("le serveur tourne sur :" + port);
 });

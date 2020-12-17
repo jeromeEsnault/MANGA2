@@ -1,4 +1,4 @@
-const User = require('../../database/models/User')
+const Message = require('../../database/models/Message')
 const nodemailer = require('nodemailer'),
     // Déclaration ne notre transporter
     // C'est en quelque sorte notre connexion à notre boite mail
@@ -19,45 +19,36 @@ const nodemailer = require('nodemailer'),
 var  rand, mailOptions, host, link;
 
 module.exports = {
+  
 
-
-
-    sendVerif: (req, res) => {
-        // génération d'un chiffre random
-        rand = Math.floor((Math.random() * 100) + 54)
-        // on definit notre host
-        host = req.get('host')
-        // on définit le lien
-        link = "http://" + req.get('host') + "/verify/" + rand
-        // et enfin notre mail
-        mailOptions = {
-            from: 'USER_URI_MAIL',
-            to: req.body.email,
-            subject: "Veuillez confirmez votre email svp.",
-            rand: rand,
-            html: `
-            <h2>Encore un effort</h2>,<br>
-            <h5>Cliquer sur le lien suivant afin de finir la procédure de validation de mail.</h5><br>
-            <a href=" ` + link + ` ">Click here to verify</a>
-          `
-        }
-        console.log(mailOptions)
-        // Et envoi notre mail avec nos callback
-        transporter.sendMail(mailOptions, (err, res, next) => {
-            if (err) {
-                console.log(err)
-                res.end("error")
-            } else {
-                console.log("Message Envoyer")
-                next()
-            }
-        })
-        // Response
-        const sess = req.session
-        console.log(sess)
+    getPageContact:(req,res)=> {
         res.render('contact', {
             sess: sess,
-            success: "Un email de vérification à bien été envoyer à " + req.body.email
+           
         })
-    }
+    },
+    createMessageForm: async (req, res) => {//ok
+      // const mangaExist = await Manga.findById(req.params._id)
+      // formulaire 
+      console.log('Controller Action Formulaire Create message')
+
+      Message.create({
+          ...req.body,
+      }, (err, data) => {
+
+          if (err) console.log(err)
+
+          else {
+              console.log(data);
+              res.redirect(`/contact`)
+              console.log('redirection faite');
+              console.log(data);
+
+              console.log('envoie des donner fait');
+          }
+          //  Manga.save((err) => {
+          //     if (err) console.log(err);
+          // });
+      })
+  },
 }

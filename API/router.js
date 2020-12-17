@@ -11,7 +11,7 @@ const homeController = require('./Controllers/home/homeController'), //ok
     //manga
     mangaController = require('./Controllers/manga/mangaController'), //ok
     mangaCreateAdminController = require('./Controllers/admin/mangaCreateAdminController'), //ok
-    contactnodemailController = require('./Controllers/Contact/nodemailler'),
+   nodemailController = require('./Controllers/Contact/nodemailler'), //ok
     //contact
     contactController = require('./Controllers/Contact/contactController'), //ok
     //reference
@@ -26,8 +26,11 @@ const homeController = require('./Controllers/home/homeController'), //ok
     authController = require('./Controllers/isVerifAdmin/authController'), //ok
     //middleware
     upload = require('./middleware/img'), //ok
-    auth = require('./middleware/auth');
-
+    auth = require('./middleware/auth'),
+    /******************************* *
+    *    a supprimmer
+    /************************* */
+    testController= require('./Controllers/filter');
 
 
 /*
@@ -111,15 +114,28 @@ router.route('/tome/delete/:id')
 // .get(genreController.getGenrePage)
 
 
-
+/***************************************************** */
 /*
  * Contact
  * ********/
 router.route('/contact')
-    .get(contactController.sendVerif)
-    //.get(contactnodemailController.verifMail)
-    .post(contactnodemailController.test)
-    //.post(contactnodemailController.sendVerif)
+    .get(contactController.getPageContact)
+    .post(contactController.createMessageForm)
+   
+
+
+// Nodemailer
+// email test
+router.route('/nodemailerTest')
+.post(nodemailController.test)
+// email de verification
+router.route('/verification')
+.post(nodemailController.sendVerif)
+// Page de vérification
+router.route('/verify/:id')
+.get(nodemailController.verifMail)
+
+/****************************************************** */
 
 /*
  * reference
@@ -152,6 +168,6 @@ router.route('/login')
 
 router.route('/logout')
     .get(authController.logout)
-
-
+router.route('/test')
+.get(testController.filtre)
 module.exports = router;

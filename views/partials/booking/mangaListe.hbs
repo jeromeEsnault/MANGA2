@@ -1,11 +1,16 @@
-<ul class="list-unstyled">
-  {{#each manga.tome }}
-  <li class="media">
-    <img src=`{{ image }}` class="mr-3" alt="...">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1"> {{ titlevf }} </h5>
-    </div>
-  </li>
-   {{/each }}
-  
-</ul>
+
+{{#each manga}}
+
+<div class="media-body ">
+  <div class="">
+    <h5 class="mt-0 mb-1"> {{titlevf }}</h5>
+  </div>
+  <div class="" style="width: 50px;">
+     {{#each tome}}
+  <img src="{{tome1.image}}" class="" alt="...">
+  {{/each}}
+  </div>
+ 
+</div>
+
+{{/each}}

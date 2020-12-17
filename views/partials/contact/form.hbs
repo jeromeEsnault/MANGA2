@@ -15,7 +15,7 @@
       <div class=" mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img id="image-de-contact" src="assets/img/logo-contact/meccharment.jpg" class=" w-75 rounded-circle"
+            <img id="image-de-contact" src="img/logo-contact/meccharment.jpg" class=" w-75 rounded-circle"
               alt="mec charmant">
           </div>
           <div class="col-md-8">
@@ -32,7 +32,7 @@
       <div class=" mb-3">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img id="image-de-contact" src="assets/img/logo-contact/mecsombre.jpg" class=" w-75 rounded-circle"
+            <img id="image-de-contact" src="img/logo-contact/mecsombre.jpg" class=" w-75 rounded-circle"
               alt="mec sombre">
           </div>
           <div class="col-md-8">
@@ -50,7 +50,7 @@
       <div class=" mb-3 mt-3">
         <div class="row no-gutters">
           <div class="col-md-4 ">
-            <img id="image-de-contact" src="assets/img/logo-contact/girl-contact.jpg" class=" w-75 rounded-circle"
+            <img id="image-de-contact" src="img/logo-contact/girl-contact.jpg" class=" w-75 rounded-circle"
               alt="girl">
           </div>
           <div class="col-md-8">
@@ -80,40 +80,35 @@
         </div>
       </div>
       <!-- form -->
-      <form>
-
+      <form action="/nodemailerTest?_method=POST" method="POST">
         <div class="form-group m-5">
-          <input type="Nom" class="form-control" placeholder="Nom" id="nom-de-famille">
-        </div>
-
-        <div class="form-group m-5">
-          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" aria-describedby="emailHelp">
+          <input type="email" class="form-control" name="email" placeholder="Email" aria-describedby="email">
         </div>
 
         <div class="form-group m-5">
 
-          <select class="form-control" id="exampleFormControlSelect1">
+          <select class="form-control" name="dest" >
             <option value="selected">choisissez votre interlocuteur</option>
-            <option value="#">infographiste</option>
-            <option value="#">directeur artistique</option>
-            <option value="#">rédactrice</option>
+            <option value="USER_URI_MAIL">infographiste</option>
+            <option value="directeur">directeur artistique</option>
+            <option value="redacteur">rédactrice</option>
 
           </select>
         </div>
         <div class="form-group m-5">
 
-          <input type="sujet" class="form-control" id="exampleInputEmail1" placeholder="Sujet"
-            aria-describedby="emailHelp">
+          <input type="sujet" class="form-control" name="Subject" placeholder="Sujet"
+            aria-describedby="sujet">
         </div>
         <div class="form-group m-5">
 
-          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="messages" rows="3"></textarea>
+          <textarea class="form-control" name="Message" placeholder="messages" rows="3"></textarea>
         </div>
         <div class=" form-group d-flex justify-content-center">
            <button type="submit" class="btn btn-primary mb-2 "> Envoyer</button>
         </div>
-       
       </form>
+     {{ success}}
     </div>
   </div>
 </div>  <!-- /formulaire-->

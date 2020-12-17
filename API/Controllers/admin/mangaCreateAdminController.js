@@ -5,7 +5,16 @@ const User = require('../../database/models/User')
 const { isValidObjectId } = require('mongoose')
 
 module.exports = {
-
+    FilterManga: (req, res) => {
+        Manga.where('title').gte(5).lte(200)
+            .exec(function (err, result) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log("Result :", result)
+                }
+            })
+    },
     getMangaPageID: async (req, res) => {//ok
         const dbTome = await Tome.find({})
         const dbGenre = await Genre.find({})
@@ -132,7 +141,7 @@ module.exports = {
             mangaID: manga._id,
             ...req.body,
             // Ici on viens formater le chemin de notre image // qui sera stocker dans notre DB
-            image: `./img/bookimg/${req.file.originalname}`, // On stock aussi le nom de l'image 
+            image: `/img/bookimg/${req.file.originalname}`, // On stock aussi le nom de l'image 
             name: req.file.originalname
         })
         // Ici on incrémente nos mangas dans nos model en relation

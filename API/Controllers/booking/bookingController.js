@@ -1,27 +1,22 @@
-const Genre = require('../../database/models/Genre')
+
 const Manga = require('../../database/models/Manga')
 const Tome = require('../../database/models/Tome')
 
 module.exports = {
-    getBookingPage: (req, res) => {
-        const sess = req.session
-        console.log(sess)
-        const dbTome = Tome.find({})
-        const dbGenre = Genre.find({})
-        
-        res.render('booking', {
-            manga: data,
-            genre: dbGenre.data,
-            tome: dbTome.data,
-            sess: sess
-        })
-    },
+
+
     getMangaPageID: async (req, res) => {
         const sess = req.session
         console.log(sess)
-        const dbTome = await Tome.find({})
-        const dbGenre = await Genre.find({})
-        console.log(req.params.id)
+        const dbmanga1 = await Manga.findOne({});
+        const dbTome1 = await Tome.findOne({});
+        const dbTome = await Tome.find({});
+        //console.log(req.body)
+        console.log(dbTome)
+        console.log(dbTome1)
+        console.log(dbmanga1)
+       // console.log(dbGenre)
+        //console.log(req.params.id)
         Manga.findById(req.params.id)
             .populate('tome genre ')
             .exec((err, data) => {
@@ -29,10 +24,11 @@ module.exports = {
                 console.log(data)
                 console.log('je suis dans le .getMangaPageID de booking')
                 res.render('booking', {
-                    manga: data,
+                    manga: dbmanga1,
+                    tome1: dbTome1,
                     tome: dbTome,
-                    genre: dbGenre,
                     sess: sess
+
                 })
             })
     },

@@ -10,20 +10,22 @@ const MessageSchema = new mongoose.Schema({
     }],
     tome: [{
         type: Schema.Types.ObjectId,
-        ref: 'Tome'
+        ref: 'tome'
     }],
-    author: {
-        type: String
-    },
+    userID: [{
+        type: Schema.Types.ObjectId,
+        ref: 'user'
+    }],
+    
     email: {
         type: String
     },
     dest: {
         type: String
     },
-    isSupport: {
-        boolean: true
-    },
+   // isSupport: {
+    //    boolean: true
+   // },
     Message: {
         type: String
     },
