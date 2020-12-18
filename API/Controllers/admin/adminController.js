@@ -40,7 +40,7 @@ module.exports = {
                     layout: 'adminLayout',
                     manga: data,
                     sess: sess,
-                    //tome1: dbTome1,
+                    tome1: dbTome1,
                     tome: dbTome,
 
 
