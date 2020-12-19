@@ -17,11 +17,12 @@ const nodemailer = require('nodemailer'),
 // Ici on genere nos variable en parent pour pouvoir les récupérer au retour de nos data email
 // (Dans la branch nodemailer-advanced il sera générer avec un token type jwt)
 var  rand, mailOptions, host, link;
-
+ //const sess= req.session ;
 module.exports = {
-  
+ 
 
     getPageContact:(req,res)=> {
+         const sess= req.session ;
         res.render('contact', {
             sess: sess,
            

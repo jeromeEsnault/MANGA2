@@ -6,6 +6,8 @@ const express = require("express"),
   hbs = require("express-handlebars"),
   bodyParser = require("body-parser"),
   port = 1989;
+const Handlebars = require('handlebars')
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
 //=====================================================
 //        2  DEPENDENSE DE CONNECTION DB
@@ -27,7 +29,7 @@ const expressSession = require("express-session"),
   //upload = require('express-fileupload'),
 
   methodOverride = require("method-override"),
-  handlebars = require("handlebars"),
+ 
   handlebarshelpers = require("handlebars-helpers");
 //=====================================================
 //          5 DEPENDENSE DE TEST
@@ -80,6 +82,7 @@ app.set("view engine", "hbs");
 app.engine(
   "hbs",
   hbs({
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
     //helpers: {
     //   stripTags: stripTags,
     //    limit: limit
