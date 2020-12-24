@@ -1,0 +1,14 @@
+$all
+$eq
+$exists
+$gt
+$gte
+$in
+$lt
+$lte
+$ne
+$nin
+$not
+$options
+$regex
+$type

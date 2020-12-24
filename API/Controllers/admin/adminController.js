@@ -1,37 +1,41 @@
+const { get } = require('request')
 const Manga = require('../../database/models/Manga')
+const { $where } = require('../../database/models/Tome')
 const Tome = require('../../database/models/Tome')
 const User = require('../../database/models/User')
+const test = require('./filtreDOM')
+
 
 module.exports = {
 
-    getAdminPage: async (req, res) => {
+
+
+    getAdminPage: async(req, res) => {
         console.log('je suis dans le .getAdminPage')
         const sess = req.session
-        //console.log(sess)
-        const dbManga = await Manga.find({}),
-            dbTome = await Tome.find({}),
-            dbTome1 = await Tome.find({ volume: 1 });
-        const rgvol = { volume: 1 };
-        //console.log(dbTome1);
+            //console.log(sess)
+        const dbManga = await Manga.find({ titlevf: { $all: "" }, nameType: { $all: "" } }),
+            dbTome = await Tome.find({ volume: { $all: "" } }),
+            dbTome1 = await Tome.find({ volume: 1 }),
+            rgvol = { volume: 1 };
+
+
         Manga.find({})
             .populate('tome user').sort(rgvol)
-
-
-
             .exec((err, data, req) => {
 
                 if (err) console.log(err)
-                console.log("test1");
-                //console.log(sess); // ok fonctionne
-                console.log("test2");
-                //console.log(data); // ok fonctionne
-                console.log("test3");
-                //console.log(dbTome1);// ok fonctionne 
-                //console.log(dbTome1);
-                console.log("test4");
-                //console.log(filtre); // ok fonctionne
-                console.log("test5");
-                //console.log(dbTome); // ok fonctionne 
+                    // console.log("test1");
+                    // //console.log(sess); // ok fonctionne
+                    // console.log("test2");
+                    // //console.log(data); // ok fonctionne
+                    // console.log("test3");
+                    // //console.log(dbTome1);// ok fonctionne 
+
+                // console.log("test4");
+                // //console.log(filtre); // ok fonctionne
+                // console.log("test5");
+                // //console.log(dbTome); // ok fonctionne 
 
 
                 //console.log(data)

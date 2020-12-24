@@ -8,7 +8,6 @@ module.exports = {
     getMangaPage: async (req, res) => {
         const sess = req.session
         console.log(sess)
-        const dbManga = await Manga.find({})
         const dbTome = await Tome.find({})
         const dbGenre = await Genre.find({})
         Manga.find({})

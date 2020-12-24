@@ -11,13 +11,14 @@ const homeController = require('./Controllers/home/homeController'), //ok
     //manga
     mangaController = require('./Controllers/manga/mangaController'), //ok
     mangaCreateAdminController = require('./Controllers/admin/mangaCreateAdminController'), //ok
-   nodemailController = require('./Controllers/Contact/nodemailler'), //ok
+    nodemailController = require('./Controllers/Contact/nodemailler'), //ok
     //contact
     contactController = require('./Controllers/Contact/contactController'), //ok
     //reference
     referenceController = require('./Controllers/Reference/referenceController'), //ok
     //admin
     adminController = require('./Controllers/admin/adminController'), //ok
+    FiltreMangaController = require('./Controllers/filtre1'),
     // user
     userController = require('./Controllers/user/userController'), //ok
     //book de livre
@@ -30,7 +31,7 @@ const homeController = require('./Controllers/home/homeController'), //ok
     /******************************* *
     *    a supprimmer
     /************************* */
-    testController= require('./Controllers/filter');
+    testController = require('./Controllers/filter');
 
 
 /*
@@ -69,6 +70,7 @@ router.route('/booking/:id')
 
 router.route('/admin')
     .get(auth.isAdmin, adminController.getAdminPage)
+    
 
 
 
@@ -94,14 +96,6 @@ router.route('/modal/:id')
 
 
 
-//router.route('/genre/create')
-// Page Formulaire create genre
-//.get(mangaCreateAdminController.getPageFormGenre)
-// Ici nous appelons le middleware de multer pour pouvoir traiter notre image dans notre controller
-//.post(upload.single('image'), mangaCreateAdminController.createGenreForm)
-
-
-
 
 
 router.route('/tome/delete/:id')
@@ -121,19 +115,19 @@ router.route('/tome/delete/:id')
 router.route('/contact')
     .get(contactController.getPageContact)
     .post(contactController.createMessageForm)
-   
+
 
 
 // Nodemailer
 // email test
 router.route('/nodemailerTest')
-.post(nodemailController.test)
+    .post(nodemailController.test)
 // email de verification
 router.route('/verification')
-.post(nodemailController.sendVerif)
+    .post(nodemailController.sendVerif)
 // Page de vérification
 router.route('/verify/:id')
-.get(nodemailController.verifMail)
+    .get(nodemailController.verifMail)
 
 /****************************************************** */
 
@@ -169,5 +163,5 @@ router.route('/login')
 router.route('/logout')
     .get(authController.logout)
 router.route('/test')
-.get(testController.filtre)
+    .get(testController.filtre)
 module.exports = router;

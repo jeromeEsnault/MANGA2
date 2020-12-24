@@ -13,9 +13,15 @@
 
         <div id="collapseOneManga" class="collapse" aria-labelledby="headingManga" data-parent="#accordionListeManga">
             <div class="card-body">
+
                 {{> admin/LM-colapseListeManga/filtreManga  manga=manga tome=tome tome1=tome1 }}
+                {{!-- {{#if }} --}}
+
                 {{> admin/LM-colapseListeManga/mangaListe  manga=manga tome=tome tome1=tome1}}
+                {{!-- {{else}}
+                 {{/if}} --}}
             </div>
+
         </div>
     </div>
 </div>

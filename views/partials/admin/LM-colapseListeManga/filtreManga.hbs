@@ -1,4 +1,6 @@
+
 {{!-- filtre de manga --}}
+
 <div class="container">
     <div class="row">
         <div class="col-md-12 justify-content-start">
@@ -6,18 +8,20 @@
         </div>
     </div>
 
-    <form>
+    <form id="filterTitlevf">
         <div class="row">
             <div class="col-md-4 mb-4">
-                <input type="text" class="form-control" name="titlevf" id="filterTitlevf" placeholder="titre du manga">
+                <input type="text" class="form-control" name="titlevf" value="" placeholder="titre du manga">
             </div>
             <div class="col-md-4 mb-4">
-                <input type="text" class="form-control" name="volume" placeholder="numero du volume">
+                <input type="text" class="form-control" name="volume" value="" placeholder="numero du volume">
             </div>
             <div class="col-md-4 mb-4">
-                <input type="text" class="form-control" name="type" placeholder="type de manga (shonen, shojo, ect...)">
-            </div>  
+                <input type="text" class="form-control" name="type" value=""
+                    placeholder="type de manga (shonen, shojo, ect...)">
+            </div>
         </div>
     </form>
 </div>
+<script src='../../../../API/Controllers/admin/filtreDOM.js'></script>
 {{!-- /filtre de manga --}}
