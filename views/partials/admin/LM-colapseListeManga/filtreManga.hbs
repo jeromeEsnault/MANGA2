@@ -8,10 +8,10 @@
         </div>
     </div>
 
-    <form id="filterTitlevf">
+    <form >
         <div class="row">
             <div class="col-md-4 mb-4">
-                <input type="text" class="form-control" name="titlevf" value="" placeholder="titre du manga">
+                <input type="text" class="form-control"id="filterTitlevf" name="titlevff" value="" placeholder="titre du manga">
             </div>
             <div class="col-md-4 mb-4">
                 <input type="text" class="form-control" name="volume" value="" placeholder="numero du volume">
@@ -23,5 +23,13 @@
         </div>
     </form>
 </div>
-<script src='../../../../API/Controllers/admin/filtreDOM.js'></script>
+
 {{!-- /filtre de manga --}}
+<script src="../../../../API/Controllers/admin/filtreDOM.js"></script>
+ <script>
+    
+    $('#filterTitlevf').keypress(function () {
+       
+    });
+});
+</script> --}}

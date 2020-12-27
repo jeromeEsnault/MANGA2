@@ -12,8 +12,18 @@ module.exports = {
 
     getAdminPage: async(req, res) => {
         console.log('je suis dans le .getAdminPage')
+        const x = req.body.titlevff
         const sess = req.session
-            //console.log(sess)
+        console.log(x);
+        //console.log(sess)
+
+        // Manga.find({ title: { like: '%' + x + '%' }, id: { gt: 10 } }).success(function(Manga) {
+        //     for (var i = 0; i < Manga.length; i++) {
+        //         console.log(Manga[i].title + " " + Manga[i].description);
+        //     }
+        // });
+
+
         const dbManga = await Manga.find({ titlevf: { $all: "" }, nameType: { $all: "" } }),
             dbTome = await Tome.find({ volume: { $all: "" } }),
             dbTome1 = await Tome.find({ volume: 1 }),
