@@ -7,24 +7,27 @@ const test = require('./filtreDOM')
 
 
 module.exports = {
+    filtermanga: (req, res) => {
+        const x = req.body.titlevf,
+            dbManga = Manga.find({ titlevf: { $all: x }, nameType: { $all: "" } });
+        res.render('admin', {
+            layout: 'adminLayout',
+            manga: dbManga,
+            sess: sess,
+            tome1: dbTome1,
+            tome: dbTome,
 
+
+
+        })
+    },
 
 
     getAdminPage: async(req, res) => {
         console.log('je suis dans le .getAdminPage')
-        const x = req.body.titlevff
         const sess = req.session
-        console.log(x);
-        //console.log(sess)
-
-        // Manga.find({ title: { like: '%' + x + '%' }, id: { gt: 10 } }).success(function(Manga) {
-        //     for (var i = 0; i < Manga.length; i++) {
-        //         console.log(Manga[i].title + " " + Manga[i].description);
-        //     }
-        // });
-
-
-        const dbManga = await Manga.find({ titlevf: { $all: "" }, nameType: { $all: "" } }),
+            //console.log(sess)
+        const dbManga = await Manga.find({}),
             dbTome = await Tome.find({ volume: { $all: "" } }),
             dbTome1 = await Tome.find({ volume: 1 }),
             rgvol = { volume: 1 };
