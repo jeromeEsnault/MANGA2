@@ -8,18 +8,26 @@ const test = require('./filtreDOM')
 
 module.exports = {
     filtermanga: (req, res) => {
-        const x = req.body.titlevf,
-            dbManga = Manga.find({ titlevf: { $all: x }, nameType: { $all: "" } });
-        res.render('admin', {
-            layout: 'adminLayout',
-            manga: dbManga,
-            sess: sess,
-            tome1: dbTome1,
-            tome: dbTome,
+        console.log('JE SUIS DANS LE FILTRE DE MANGA');
+        const x = req.body.titlevf;
+
+        Manga.find({ titlevf: { $all: x }, nameType: { $all: "" } })
+            .populate('tome user').sort(rgvol)
+            .exec((err, data, req) => {
+                if (err) console.log(err)
+                    //console.log(data)
+                console.log('je suis dans le .getAdminPage LA FIN')
+                res.render('admin', {
+                    layout: 'adminLayout',
+                    manga: data,
+                    sess: sess,
+                    tome1: dbTome1,
+                    tome: dbTome,
 
 
 
-        })
+                })
+            })
     },
 
 
