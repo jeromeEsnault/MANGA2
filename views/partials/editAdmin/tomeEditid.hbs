@@ -1,156 +1,67 @@
-<div class=" mb-5 pt-5 mt-5 pb-5 bg-primary">
-    <div class="text-center">
+<form action="/editAdmin/{{ tome1._id }}" method="post">
 
-        <button type="button" class=" btn btn-warning" aria-label="Close" aria-hidden="true" data-toggle="modal"
-            data-target="#newsTome{{manga._id}}">
-            <span>créer un nouveaux tome</span>
-        </button>
-        {{> modal/tome manga=manga }}
-
-    </div>
-</div>
-
-<form action="/editAdmin/{{ _id }}" method="post">
-    
-    <div class=" bg-success">
+    <div class=" bg-success m-2">
         <div class="row text-decoration-none">
-            <ul class="col-md-4">
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">dessin</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="dessin"> {{ dessin }}</p>
-                    </div>
-                    <input type="text" name='dessin' value="{{
-                            dessin }}">
-                </div>
 
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="Scenariste">scenariste</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="Scenariste"> {{ Scenariste }}</p>
-                    </div>
-                    <input type="text" name='Scenariste' value="{{
-                           Scenariste }}">
-                </div>
 
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="Traducteur">traducteur</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="Traducteur"> {{ traducteur }}</p>
-                    </div>
-                    <input type="text" name='Traducteur' value="{{
-                            traducteur  }}">
-                </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">numero du volume</label>
+                <input type="number" class="form-control" name="volume" value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">date de parution</label>
+                <input type="date" class="form-control" name="datedeparution" value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">dessin</label>
+                <input type="text" class="form-control" name="dessin" value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">Illustrution</label>
+                <input type="text" class="form-control" name="illustrution" value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">Scénariste</label>
+                <input type="text" class="form-control" name="scenariste" value="">
+            </div>
 
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="EditeurVF">editeur en vf</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="EditeurVF"> {{ EditeurVF }}</p>
-                    </div>
-                    <input type="text" name='EditeurVF' value="{{
-                            EditeurVF }}">
-                </div>
-
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="EditeurVO">editeur en vo</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="EditeurVO"> {{ EditeurVO }}</p>
-                    </div>
-                    <input type="text" name='EditeurVO' value="{{
-                            EditeurVO  }}">
-                </div>
-            </ul>
-            <ul class="col-md-4">
-                <div class="">
-                    <img name="img-de-manga" src="/img/NARUTOH.jpg" alt="naruto" class="card-img">
-                </div>
-            </ul>
-            <ul class="col-md-4">
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="prepublication">prépublication</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="prepublication"> {{ prepublication }}</p>
-                    </div>
-                    <input type="text" name='prepublication' value="{{
-                            prepublication  }}">
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">numero du volume</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="volume"> {{ volume }}</p>
-                    </div>
-                    <input type="text" name='volume' value="{{
-                            volume  }}">
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">origine</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="origine"> {{ origine }}</p>
-                    </div>
-                    <input type="text" name='origine' value="{{
-                            origine  }}">
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">description</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="description"> {{ description }}</p>
-                    </div>
-                    <textarea type="text" name='description' cols="30" rows="10" value="{{
-                            description  }}"></textarea>
-
-                </div>
-
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="">date de parution</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="dateDeParution"> {{ dateDeParution }}</p>
-                    </div>
-                    <input type="text" name='dateDeParution' value="{{
-                           dateDeParution  }}">
-                </div>
-
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="image">image</label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="image"> {{ manga.tome.description }}</p>
-                    </div>
-                    <input type="file" name='image' value="{{
-                            manga.tome.origine  }}">
-                </div>
-                <div class="row m-3">
-                    <div class="col-md-6">
-                        <label for="dateEdit">date D'édition </label>
-                    </div>
-                    <div class="col-md-6">
-                        <p name="dateEdit"> {{ dateEdit }}</p>
-                    </div>
-                    <input type="text" name='dateEdit' value="{{
-                            manga.tome.origine  }}">
-                </div>
-            </ul>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">Traducteur</label>
+                <input type="text" class="form-control" name="traducteur" value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">editeur en vf</label>
+                <input type="text" class="form-control" name="editeurvf" value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">éditeur en vo</label>
+                <input type="text" class="form-control" name="editeurvo" value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">prépublication</label>
+                <input type="text" class="form-control" name="prepublication" value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">origine</label>
+                <input type="text" class="form-control" name="origine" value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">date d'edition</label>
+                <input type="date" class="form-control" name="dateEdit" value="">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="recipient-name" class="col-form-label">image du tome</label>
+                <input type="file" class="form-control" name="image" value="">
+            </div>
+            <div class="form-group col-md-12">
+                <label for="message-text" class="col-form-label">description:</label>
+                <textarea class="form-control" name="description" cols="30" rows="10"
+                    placeholder="description" value=""></textarea>
+            </div>
         </div>
-
-        <button type="submit">Valider</button>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+        <button type="submit" class="btn btn-primary">enregistrer</button>
+    </div>
 </form>

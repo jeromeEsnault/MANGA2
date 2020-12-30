@@ -5,38 +5,30 @@ const User = require('../../database/models/User')
 const { isValidObjectId } = require('mongoose')
 
 module.exports = {
-    FilterManga: (req, res) => {
-        Manga.where('title').gte(5).lte(200)
-            .exec(function (err, result) {
-                if (err) {
-                    console.log(err)
-                } else {
-                    console.log("Result :", result)
-                }
-            })
-    },
-    getMangaPageID: async (req, res) => {//ok
-        const dbTome = await Tome.find({})
+
+    getMangaPageID: async(req, res) => { //ok
+        const dbTome = await Tome.findOne({})
         const dbGenre = await Genre.find({})
         const dbUser = await User.find({})
-        console.log(req.params.id)
-        Manga.findById(req.params.id)
+            //console.log(req.params.id)
+            //console.log(req.params)
+        Tome.findById(req.params.id)
             .populate('tome genre ')
             .exec((err, data) => {
                 if (err) console.log(err)
-                console.log(data)
+                    //console.log(data)
                 console.log('je suis dans le .getMangaPageID de booking')
                 res.render('booking', {
-                    manga: data,
-                    tome: dbTome,
-                    genre: dbGenre,
-                    user: dbUser
-                })
-                /* res.json(
-                     data,
-                     dbTome,
-                     dbGenre
-                 )*/
+                        manga: data,
+                        tome: dbTome,
+                        genre: dbGenre,
+                        user: dbUser
+                    })
+                    /* res.json(
+                         data,
+                         dbTome,
+                         dbGenre
+                     )*/
             })
     },
 
@@ -51,7 +43,7 @@ module.exports = {
         res.render('formCreateGenre')
     },
     // POST : Action d'envoi du formulaire Createmanga
-    createMangaForm: async (req, res) => {//ok
+    createMangaForm: async(req, res) => { //ok
         // const mangaExist = await Manga.findById(req.params._id)
         // formulaire 
         console.log('Controller Action Formulaire Create manga')
@@ -75,25 +67,22 @@ module.exports = {
             // });
         })
     },
-    editID: async (req, res) => {
+    editID: async(req, res) => {
         console.log('Controller Edit ID')
-        // recupérer lid du manga et le mettre en attente 
+            // recupérer lid du manga et le mettre en attente 
         const mangaExist = await Manga.findById(req.params.id)
         let tomeArray = mangaExist.tomes
         let userArray = mangaExist.user
-        let genreArray = mangaExist.genre
 
         if (req.body.tome && req.body.genre) {
             tomeArray.push(req.body.tome),
-                genreArray.push(req.body.genre),
                 userArray.push(req.body.user)
         }
         // on recupére le tableau de tome
         console.log(tomeArray)
-        console.log(genreArray)
         console.log(userArray);
         console.log(' je suis dans le tomeArray')
-        //
+            //
 
         // on recupére le tableau de genre
 
@@ -101,7 +90,7 @@ module.exports = {
         Manga.findByIdAndUpdate(req.params.id, {
             tome: tomeArray,
             user: userArray,
-            genre: genreArray
+
         }, (err, data) => {
             if (err) console.log(err)
             console.log(data)
@@ -110,41 +99,41 @@ module.exports = {
         res.end()
 
     },
-    getMangaPageID: async (req, res) => {
+    getMangaPageID: async(req, res) => {
         console.log('je suis dans le .getMangaPageID de editadmin')
-        const dbTome = await Tome.find({})
-        const dbGenre = await Genre.find({})
+        const dbManga = await Manga.findById(req.params.id)
+
         console.log(req.params.id)
-        Manga.findById(req.params.id)
-            .populate('tome user genre ')
+        Tome.findById(req.params.id)
+            .populate('tome user ')
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log(data)
                 console.log('je suis dans le .getMangaPageID de editadmin')
                 res.render('editAdmin', {
-                    manga: data,
-                    tome: dbTome,
-                    genre: dbGenre
+                    tome1: data,
+                    manga1: dbManga
+
                 })
             })
     },
 
 
-    createTomeForm: async (req, res) => {
+    createTomeForm: async(req, res) => {
         console.log('je suis dans le .createTomeForm de editadmin')
         const manga = await Manga.findById(req.params.id)
-        // On définit manga comme un objet acceuillant notre req.params.id
-        //console.log(manga);
+            // On définit manga comme un objet acceuillant notre req.params.id
+            //console.log(manga);
         console.log(req.body);
         // On définit notre construction de tome
         const tome = new Tome({
-            mangaID: manga._id,
-            ...req.body,
-            // Ici on viens formater le chemin de notre image // qui sera stocker dans notre DB
-            image: `/img/bookimg/${req.file.originalname}`, // On stock aussi le nom de l'image 
-            name: req.file.originalname
-        })
-        // Ici on incrémente nos mangas dans nos model en relation
+                mangaID: manga._id,
+                ...req.body,
+                // Ici on viens formater le chemin de notre image // qui sera stocker dans notre DB
+                image: `/img/bookimg/${req.file.originalname}`, // On stock aussi le nom de l'image 
+                name: req.file.originalname
+            })
+            // Ici on incrémente nos mangas dans nos model en relation
         manga.tome.push(tome._id)
         console.log(tome._id);
         console.log(manga);
@@ -163,9 +152,9 @@ module.exports = {
 
 
 
-    createGenreForm: (req, res) => {//ok
+    createGenreForm: (req, res) => { //ok
         // formulaire 2
-        Genre.create({ ...req.body }, (err) => {
+        Genre.create({...req.body }, (err) => {
             if (err) console.log(err)
             console.log('je suis dans le .createGenreForm pour genre')
             console.log(req.body);

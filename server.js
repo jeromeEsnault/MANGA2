@@ -125,14 +125,14 @@ app.use(express.static("public"));
  *       securitée de helmet
  *
  ***********************************/
-/*
- const helmet = require("helmet");
- app.use(
-   helmet({
-     contentSecurityPolicy: false,
-   })
- );
-*/
+
+const helmet = require("helmet");
+app.use(
+    helmet({
+        contentSecurityPolicy: false,
+    })
+);
+
 //******************************** */
 app.use("*", (req, res, next) => {
     //console.log("donner local");

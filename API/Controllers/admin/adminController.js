@@ -36,6 +36,7 @@ module.exports = {
         const sess = req.session
             //console.log(sess)
         const dbManga = await Manga.find({}),
+            dbUser = await User.find({}),
             dbTome = await Tome.find({ volume: { $all: "" } }),
             dbTome1 = await Tome.find({ volume: 1 }),
             rgvol = { volume: 1 };
@@ -67,7 +68,7 @@ module.exports = {
                     sess: sess,
                     tome1: dbTome1,
                     tome: dbTome,
-
+                    user: dbUser
 
 
                 })

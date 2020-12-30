@@ -1,0 +1,29 @@
+{{!-- liste des utilisateur --}}
+
+<div class="accordion mt-5" id="accordionListeUser">
+    <div class="card">
+        <div class="card-header" id="headingUser">
+            <h2 class="mb-0">
+                <button class="btn  btn-block text-center " type="button" data-toggle="collapse"
+                    data-target="#collapseOneUser" aria-expanded="true" aria-controls="collapseOneUser">
+                    <h2>liste des utilisateur</h2>
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOneUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionListeUser">
+            <div class="card-body">
+
+                {{> admin/LUSER-colapseListeUser/filtreUser manga=manga tome=tome tome1=tome1 user=user}}
+                {{!-- {{#if }} --}}
+
+                {{> admin/LUSER-colapseListeUser/userListe  manga=manga tome=tome tome1=tome1 user=user}}
+                {{!-- {{else}}
+                 {{/if}} --}}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{{!-- fin liste des utilisateur --}}

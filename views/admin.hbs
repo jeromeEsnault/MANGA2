@@ -2,21 +2,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 text-center m-5">
-            <h2>bienvenue {{ user.pseudo }}</h2>
+            <h2>bienvenue {{userObj.pseudo}}</h2>
         </div>
     </div>
 </div>
-{{> admin/userAdmin }}
 <!--1  controle de presentation du site -->
 
-{{> admin/manager }}
+
 <!--2  controle de presentation du site -->
-
 {{> admin/LM-colapseListeManga }}
-<!--3  controle de presentation du site -->
+<!--3 controle de presentation du site -->
 {{> admin/LMES-colapseListeMessage }}
-<!--4 controle de presentation du site -->
 
-
-<!--5  controle de presentation du site -->
-{{> admin/user }}
+<!--4  controle de presentation du site -->
+{{> admin/LUSER-colapseListeUser}}

@@ -5,9 +5,9 @@
             <div class="row no-gutters">
 
                 <div class="col-md-4 bg-dark">
-                    {{#if tome.image }}
+                    {{#if tome1 }}
 
-                    <img src="{{ tome.image.}}" class="card-img" alt="naruto">
+                    <img src="{{ tome1.image}}" class="card-img" alt="naruto">
 
                     {{else }}
                     <img src="/img/imgDefault/imgmanga.jpg " class="card-img" alt="img par default">
@@ -18,11 +18,11 @@
 
                         <div class="card-text">
 
-                            title en vf: {{manga.titlevf}}
+                            title en vf: {{manga1.titlevf}}
                         </div>
                         <p class=" font-weight-bold text-lg-left">
-                            {{#if tome.description }}
-                            {{tome.description}}
+                            {{#if tome1.description }}
+                            {{tome1.description}}
                             {{else }}
                             <img src="/img/imgDefault/description-default.gif" alt="default description" class="card-img">
                             {{/if }}
@@ -35,19 +35,19 @@
                         <p class=" font-weight-bold text-lg-left">
                         <div class="card-text">
 
-                            title en vo: {{ manga.titlevo }}
+                            title en vo: {{ manga1.titlevo }}
                         </div>
                         <div class="card-text">
 
-                            date d édition: {{ manga.dateEdit }}
+                            date d édition: {{ manga1.dateEdit }}
                         </div>
                         <div class="card-text">
 
-                            Auteur: {{ manga.author }}
+                            Auteur: {{ manga1.author }}
                         </div>
                         <div class="card-text">
 
-                            type de manga: {{ manga.namesType }}
+                            type de manga: {{ manga1.namesType }}
                         </div>
                         </p>
                     </div>

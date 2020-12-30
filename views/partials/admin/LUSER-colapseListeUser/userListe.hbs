@@ -1,7 +1,7 @@
 {{!-- collapse de TOMES --}}
 
 <div class="accordion container" id="accordionListeTomes">
-    {{#each manga }}
+    {{#each user }}
     <div class="card">
 
 
@@ -11,16 +11,18 @@
 
                 <div class=" col-md-2">
 
-                    <img class="img-fluid" style="width: 50px;" src="{{ tome1.image }} " alt="">
+                    <img class="img-fluid" style="width: 50px;" src="{{ imgProfil }} " alt="">
 
                 </div>
 
                 <div class=" text-left col-md-6 ">
                     <ul class="list-group list-group-horizontal">
-                        <li class="list-inline p-1">{{ titlevf }}</li>
-                        <li class="list-inline p-1">{{ titlevo }}</li>
-                        <li class="list-inline p-1">{{ author }}</li>
-                        <li class="list-inline p-1">{{ nameType }}</li>
+                        <li class="list-inline p-1">{{ pseudo }}</li>
+                        <li class="list-inline p-1">{{email}}</li>
+                        <li class="list-inline p-1">{{typeUser}}</li>
+                        <li class="list-inline p-1">{{typeUser}}</li>
+                        <li class="list-inline p-1">{{isAdmin}}</li>
+
                     </ul>
                 </div>
 
@@ -61,14 +63,11 @@
             <div class="card-body">
                 <div class="text-center">
 
-                    <button type="button" class=" btn btn-warning" aria-label="Close" aria-hidden="true"
-                        data-toggle="modal" data-target="#newsTome{{_id}}">
-                        <span>créer un nouveaux tome </span>
-                    </button>
-                    {{> modal/tome  ./this}}
+                   
+                    
 
                 </div>
-                {{> admin/LM-colapseListeManga/adminTome/tableTome manga=manga tome=tome }}
+                {{> admin/LUSER-colapseListeUser/adminUser/tableUser }}
 
             </div>
         </div>
