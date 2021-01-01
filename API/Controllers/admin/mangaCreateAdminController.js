@@ -152,15 +152,7 @@ module.exports = {
 
 
 
-    createGenreForm: (req, res) => { //ok
-        // formulaire 2
-        Genre.create({...req.body }, (err) => {
-            if (err) console.log(err)
-            console.log('je suis dans le .createGenreForm pour genre')
-            console.log(req.body);
-            res.redirect('/admin')
-        })
-    },
+
 
 
 

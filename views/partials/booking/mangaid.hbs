@@ -1,69 +1,72 @@
 <div class="container">
   <div class="row">
+    <div class="col-md-12">
+      <h1 class=" text-center"> {{manga1.titlevf }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
     <div class=" col-md-4 ">
-      <h1 class=""> {{manga.titlevf }}</h1>
+
       <div>
         <img class="img-fluid" src="{{tome1.image}}" alt="">
       </div>
-      <div>
 
-        <div class="col-md-4 ">
-          <ul class="list-group">
-            <li class="list-group-item">
-              <strong>Titre VO :</strong>
-              {{ manga1.titlevo }}
-            </li>
-            <li class="list-group-item">
-              <strong>Titre traduit</strong> {{manga1.titlevf }}
-            </li>
-            <li class="list-group-item">
-              <strong>Dessin : </strong>
-              {{tome1.dessin}}
-            </li>
-            <li class="list-group-item"><strong>Scénario :</strong>
-              {{tome1.dessin}}
-            </li>
-            <li>
-              <strong>Traducteur :</strong>
-              {{tome1.Traducteur}}
-            </li>
-            <li class="list-group-item"><strong>Editeur VF :</strong>
-              {{ tome1.EditeurVF}}
-            </li>
-          </ul>
-        </div>
-        <div class="col-4">
-          <ul class="list-group">
+    </div>
+    <div class="col-md-4 m-2">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Titre VO :</strong>
+          {{ manga1.titlevo }}
+        </li>
+        <li class="list-group-item">
+          <strong>Titre traduit</strong> {{manga1.titlevf }}
+        </li>
+        <li class="list-group-item">
+          <strong>Dessin : </strong>
+          {{tome1.dessin}}
+        </li>
+        <li class="list-group-item"><strong>Scénario :</strong>
+          {{tome1.dessin}}
+        </li>
+        <li class="list-group-item">
+          <strong>Traducteur :</strong>
+          {{tome1.Traducteur}}
+        </li>
+       
+      </ul>
+    </div>
+    <div class="col-md-4 m-2">
+      <ul class="list-group">
 
-            <li class="list-group-item"><strong>Collection :</strong>
-              {{manga1.nameType}}
-            </li>
-            <li class="list-group-item"><strong>Type :</strong>
-              {{manga1.nameType}}
-            </li>
-            <li class="list-group-item"><strong>Editeur VO :</strong>
-              {{ tome1.EditeurVO}}
-            </li>
-            <li><strong>Prépublication :</strong>
-              {{tome1.prepublication}}
-            </li>
-            <li class="list-group-item"><strong>Illustration :</strong>
-              {{ tome1.illustration}}
-            </li>
-            <li><strong>Origine :</strong>
-              {{tome1.origine}} </li>
-          </ul>
-          <div class="row">
-            <div class=" col-md-4">
-              <h3>Description</h3>
-              <p class="">{{tome1.description}}</p>
-            </div>
-          </div>
-
-        </div>
+       
+        <li class="list-group-item"><strong>Type :</strong>
+          {{manga1.nameType}}
+        </li>
+        <li class="list-group-item"><strong>Editeur VO :</strong>
+          {{ tome1.EditeurVO}}
+        </li>
+        <li class="list-group-item"><strong>Prépublication :</strong>
+          {{tome1.prepublication}}
+        </li>
+        <li class="list-group-item"><strong>Illustration :</strong>
+          {{ tome1.illustration}}
+        </li>
+        <li class="list-group-item"><strong>Origine :</strong>
+          {{tome1.origine}} </li>
+      </ul>
+    </div>
+    <div class="row">
+      <div class=" col-md-12">
+        <h3>Description</h3>
+        <p class="">{{tome1.description}}</p>
       </div>
     </div>
 
+
   </div>
+</div>
+
+</div>
 
 </div>
