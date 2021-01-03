@@ -5,21 +5,20 @@ const Genre = require('../../database/models/Genre')
 
 module.exports = {
     // GET : Page manga list ( Utilisateur )
-    getMangaPage: async (req, res) => {
+    getMangaPage: async(req, res) => {
         const sess = req.session
         console.log(sess)
         const dbTome = await Tome.find({})
-        const dbGenre = await Genre.find({})
+
         Manga.find({})
             .populate('tome genre')
-            .exec((err,data) => {
+            .exec((err, data) => {
                 if (err) console.log(err)
                 console.log('je suis dans le .getMangaPage')
                 console.log(data)
                 res.render('manga', {
                     manga: data,
                     tome: dbTome,
-                    genre: dbGenre,
                     sess: sess
                 })
             })
@@ -36,7 +35,7 @@ module.exports = {
     },
 
     //
-    getMangaPageID: async (req, res) => {
+    getMangaPageID: async(req, res) => {
         const sess = req.session
         console.log(sess)
         const dbTome = await Tome.find({})
@@ -60,9 +59,9 @@ module.exports = {
 
 
     //appeler  le await pour incorporer les donnée avec async
-    editID: async (req, res) => {
+    editID: async(req, res) => {
         console.log('Controller Edit ID')
-        // recupérer lid du manga et le mettre en attente 
+            // recupérer lid du manga et le mettre en attente 
         const mangaExist = await Manga.findById(req.params.id)
         let tomeArray = mangaExist.tomes
         let genreArray = mangaExist.genre
@@ -75,7 +74,7 @@ module.exports = {
         console.log(tomeArray)
         console.log(genreArray)
         console.log(' je suis dans le tomeArray')
-        //
+            //
 
         // on recupére le tableau de genre
 
@@ -93,7 +92,7 @@ module.exports = {
     },
 
     // supression des donnée
-    deleteOneTome: async (req, res) => {
+    deleteOneTome: async(req, res) => {
         console.log('Controller delete tome Single')
         const tomeExistOnManga = await Manga.findOne({ tome: req.params.id })
 

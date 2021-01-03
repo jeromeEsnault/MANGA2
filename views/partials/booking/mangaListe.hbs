@@ -1,14 +1,16 @@
-{{#each manga1}}
-
-<div class="media-body ">
-  <div class="">
+<div class="container">
+  <div class="row">
     {{#each tome}}
-    <img src='{{ image }}' class=" img-fluid" alt="IMG MANGA">
+    <a href="/booking/{{_id}}">
+      <div class="col-md-3">
+        <div class="media">
+          <img src="{{ image }}" class="w-25" alt="IMG MANGA">
+          <div class="media-body">
+            <h5 class="mt-0"> volume {{ volume }}</h5>
+          </div>
+        </div>
+      </div>
+    </a>
     {{/each}}
   </div>
-  <div class="">
-    <h5 class="mt-0 mb-1"> {{titlevf }}</h5>
-  </div>
 </div>
-
-{{/each}}

@@ -8,16 +8,20 @@ module.exports = {
         const sess = req.session
         console.log(sess)
         const dbmanga1 = await Manga.findOne({});
+        const dbmanga = await Manga.find({});
         const dbTome1 = await Tome.findOne({});
         const dbTome = await Tome.find({});
-        //console.log(req.body)
+        const dbTometest = await Tome.find({ _id: req.params.id, });
+        //console.log('test:' + dbTometest.$mangaID)
         //console.log("dbtome:" + dbTome)
         //console.log("dbTome1 : " + dbTome1)
-        //console.log("dbmanga1:" + dbmanga1)
-        // console.log(dbGenre)
+        console.log("dbmanga:" + dbmanga)
+            // console.log(dbGenre)
         console.log('id params:' + req.params.id)
-        Manga.findById(req.params.id)
-            .populate('tome genre ')
+            //console.log('id params:' + )
+        console.log('id params:' + req.params.id)
+        Tome.findById({ _id: req.params.id })
+            .populate('manga user ')
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log('data :' + data)
@@ -25,9 +29,10 @@ module.exports = {
                 res.render('booking', {
                     manga1: dbmanga1,
                     tome1: dbTome1,
-                    tome: dbTome,
-                    sess: sess
+                    manga: dbmanga,
+                    tome: data,
 
+                    sess: sess
                 })
             })
     },

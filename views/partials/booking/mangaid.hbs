@@ -4,16 +4,15 @@
       <h1 class=" text-center"> {{manga1.titlevf }}</h1>
     </div>
   </div>
-
   <div class="row">
-    <div class=" col-md-4 ">
+    <div class="col-4 col-xl-4 ">
 
       <div>
         <img class="img-fluid" src="{{tome1.image}}" alt="">
       </div>
 
     </div>
-    <div class="col-md-4 m-2">
+    <div class="col-4 col-xl-4">
       <ul class="list-group">
         <li class="list-group-item">
           <strong>Titre VO :</strong>
@@ -33,13 +32,13 @@
           <strong>Traducteur :</strong>
           {{tome1.Traducteur}}
         </li>
-       
+
       </ul>
     </div>
-    <div class="col-md-4 m-2">
+    <div class="col-4 col-xl-4">
       <ul class="list-group">
 
-       
+
         <li class="list-group-item"><strong>Type :</strong>
           {{manga1.nameType}}
         </li>
@@ -56,15 +55,16 @@
           {{tome1.origine}} </li>
       </ul>
     </div>
-    <div class="row">
-      <div class=" col-md-12">
-        <h3>Description</h3>
-        <p class="">{{tome1.description}}</p>
-      </div>
-    </div>
-
-
   </div>
+  <div class="row">
+    <div class=" col-md-12 col-xl-12">
+      <h3>Description</h3>
+      <p class=" text-truncate">{{tome1.description}}</p>
+    </div>
+  </div>
+
+
+</div>
 </div>
 
 </div>
