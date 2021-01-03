@@ -3,15 +3,15 @@ const Tome = require("../../database/models/Tome");
 
 
 module.exports = {
-    getReferencePage: async (req, res) => {
+    getReferencePage: async(req, res) => {
         console.log('je suis dans le .getAdminPage')
         const sess = req.session
-        //console.log(sess)
+            //console.log(sess)
         const dbManga = await Manga.find({}),
-            dbTome = await Tome.findOne({}).limit(1).sort({$naturel:1}),
-            dbmanga1=await Tome.find({});
-            //;
-           
+            dbTome = await Tome.findOne({}).limit(1).sort({ $naturel: 1 }),
+            dbmanga1 = await Tome.find({});
+        //;
+
         //console.log(dbTome1);
         Manga.find({})
             .populate('tome user')
@@ -32,12 +32,12 @@ module.exports = {
                 //console.log(data)
                 console.log('je suis dans le .getAdminPage LA FIN')
                 res.render('reference', {
-                    layout: 'adminLayout',
+
                     manga: data,
                     tome: dbTome,
                     sess: sess,
                     manga1: dbmanga1
-                    
+
 
 
 
@@ -45,4 +45,3 @@ module.exports = {
             })
     }
 }
-

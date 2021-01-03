@@ -5,14 +5,17 @@
         <div class="card col-md-3">
             <a href="/booking/{{ id }}">
                 <div>
-                    <img src="{{ tome.image }}" class="card-img-top" alt="TOME1">
+                    {{#each tome}}
+                    <img src="{{ image }}" class="card-img-top" alt="TOME1">
+                    {{/each}}
                 </div class=" img-thumbnail">
                 <div class="card-body">
                     <h5 class="card-title">{{ titlevf }}</h5>
+                    {{#each tome}}
                     <p class="card-text">{{ description }}</p>
-                    <p class="card-text"> {{ datedeparution }} <small class="text-muted">créer parle
-                            {{ datecreate }} </small>
-                    </p>
+
+                   
+                    {{/each}}
                 </div>
             </a>
         </div>

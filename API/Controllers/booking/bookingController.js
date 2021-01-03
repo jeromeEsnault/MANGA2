@@ -27,6 +27,7 @@ module.exports = {
                 console.log('data :' + data)
                 console.log('je suis dans le .getMangaPageID de booking')
                 res.render('booking', {
+
                     manga1: dbmanga1,
                     tome1: dbTome1,
                     manga: dbmanga,

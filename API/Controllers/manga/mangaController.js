@@ -17,6 +17,7 @@ module.exports = {
                 console.log('je suis dans le .getMangaPage')
                 console.log(data)
                 res.render('manga', {
+
                     manga: data,
                     tome: dbTome,
                     sess: sess
@@ -29,6 +30,7 @@ module.exports = {
         const sess = req.session
         console.log(sess)
         res.render('editAdmin', {
+            layout: 'adminLayout',
             sess: sess
         })
 
@@ -48,6 +50,7 @@ module.exports = {
                 console.log(data)
                 console.log('je suis dans le .getMangaPageID de booking')
                 res.render('booking', {
+
                     manga: data,
                     tome: dbTome,
                     genre: dbGenre,

@@ -1,14 +1,15 @@
+{{!-- page main --}}
 {{> head }}
 
-{{#if user }}
-
+ {{#if userObj.isAdmin }} 
+{{!-- page main 1 --}}
 {{> navAdmin }}
 
-{{else }}
-
+ {{else }} 
+{{!-- page main 2 --}}
 {{> navbar }}
 
-{{/if}}
+{{/if}} 
 
 {{> navpage }}
 

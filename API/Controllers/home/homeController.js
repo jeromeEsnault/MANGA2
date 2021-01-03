@@ -1,6 +1,5 @@
 const Manga = require('../../database/models/Manga')
 const Tome = require('../../database/models/Tome')
-const Genre = require('../../database/models/Genre')
 const User = require('../../database/models/User')
 
 
@@ -10,9 +9,11 @@ module.exports = {
      * Controller
      *************/
     getHomePage: (req, res) => {
+
         const sess = req.session
         console.log(sess)
-        User.findById(req.session.userId)
+        const dbUser = User.find({})
+        const dbTome = Tome.find({})
         Manga.find({})
             .populate('tome user').limit(-3)
             .exec((err, data) => {
@@ -20,8 +21,11 @@ module.exports = {
                 console.log('je suis dans le .getHomePage')
                 console.log(sess)
                 res.render('home', {
+
                     manga: data,
-                    sess:sess
+                    user: dbUser,
+                    tome: dbTome,
+                    sess: sess
                 })
             })
     },

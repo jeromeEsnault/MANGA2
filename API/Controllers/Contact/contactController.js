@@ -8,6 +8,7 @@ module.exports = {
     getPageContact: (req, res) => {
         const sess = req.session;
         res.render('contact', {
+
             sess: sess,
 
         })
