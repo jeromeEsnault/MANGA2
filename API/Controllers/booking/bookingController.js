@@ -31,7 +31,6 @@ module.exports = {
                     tome1: dbTome1,
                     manga: dbmanga,
                     tome: data,
-
                     sess: sess
                 })
             })
