@@ -8,10 +8,9 @@ module.exports = {
         const sess = req.session
         console.log(sess)
         const dbmanga1 = await Manga.findOne({});
-        const dbmanga = await Manga.find({});
+        const dbmanga = await Manga.find({}).populate('tome user').sort(volume);
         const dbTome1 = await Tome.findOne({});
-        const dbTome = await Tome.find({});
-        const dbTometest = await Tome.find({ _id: req.params.id, });
+
         //console.log('test:' + dbTometest.$mangaID)
         //console.log("dbtome:" + dbTome)
         //console.log("dbTome1 : " + dbTome1)
