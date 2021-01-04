@@ -7,13 +7,14 @@ module.exports = {
         console.log('je suis dans le .getAdminPage')
         const sess = req.session
             //console.log(sess)
-        const dbManga = await Manga.find({}),
-            dbTome = await Tome.findOne({}).limit(1).sort({ $naturel: 1 }),
-            dbmanga1 = await Tome.find({});
+        const dbManga = await Manga.find({}).lean(),
+            dbTome = await Tome.findOne({}).limit(1).sort({ $naturel: 1 }).lean(),
+            dbmanga1 = await Tome.find({}).lean();
         //;
 
         //console.log(dbTome1);
         Manga.find({})
+            .lean()
             .populate('tome user')
             .exec((err, data, req) => {
 

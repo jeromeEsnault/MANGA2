@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1 class=" text-center"> {{manga1.titlevf }}</h1>
+      <h1 class=" text-center"> {{mangaID.titlevf }}</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-4 col-xl-4 ">
 
       <div>
-        <img class="img-fluid" src="{{tome1.image}}" alt="">
+        <img class="img-fluid" src="{{tomeID.image}}" alt="">
       </div>
 
     </div>
@@ -16,57 +16,55 @@
       <ul class="list-group">
         <li class="list-group-item">
           <strong>Titre VO :</strong>
-          {{ manga1.titlevo }}
+          {{ mangaID.titlevo }}
         </li>
         <li class="list-group-item">
-          <strong>Titre traduit</strong> {{manga1.titlevf }}
+          <strong>Titre traduit</strong> {{mangaID.titlevf }}
         </li>
-        <li class="list-group-item">
-          <strong>Dessin : </strong>
-          {{tome1.dessin}}
-        </li>
-        <li class="list-group-item"><strong>Scénario :</strong>
-          {{tome1.dessin}}
-        </li>
-        <li class="list-group-item">
-          <strong>Traducteur :</strong>
-          {{tome1.Traducteur}}
+        <li class="list-group-item"><strong>Type :</strong>
+          {{mangaID.nameType}}
         </li>
 
       </ul>
     </div>
     <div class="col-4 col-xl-4">
+      
       <ul class="list-group">
-
-
+        <li class="list-group-item">
+          <strong>Dessin : </strong>
+          {{tomeID.dessin}}
+        </li>
+        <li class="list-group-item"><strong>Scénario :</strong>
+          {{tomeID.dessin}}
+        </li>
+        <li class="list-group-item">
+          <strong>Traducteur :</strong>
+          {{tomeID.Traducteur}}
+        </li>
         <li class="list-group-item"><strong>Type :</strong>
-          {{manga1.nameType}}
+          {{mangaID.nameType}}
         </li>
         <li class="list-group-item"><strong>Editeur VO :</strong>
-          {{ tome1.EditeurVO}}
+          {{ tomeID.EditeurVO}}
         </li>
         <li class="list-group-item"><strong>Prépublication :</strong>
-          {{tome1.prepublication}}
+          {{tomeID.prepublication}}
         </li>
         <li class="list-group-item"><strong>Illustration :</strong>
-          {{ tome1.illustration}}
+          {{ tomeID.illustration}}
         </li>
         <li class="list-group-item"><strong>Origine :</strong>
-          {{tome1.origine}} </li>
+          {{tomeID.origine}} </li>
       </ul>
+      
     </div>
   </div>
   <div class="row">
     <div class=" col-md-12 col-xl-12">
       <h3>Description</h3>
-      <p class=" text-truncate">{{tome1.description}}</p>
+      <p class=" text-truncate">{{tomeID.description}}</p>
     </div>
   </div>
 
-
-</div>
-</div>
-
-</div>
 
 </div>

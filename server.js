@@ -7,7 +7,7 @@ const express = require("express"),
     bodyParser = require("body-parser"),
     port = 1989;
 const Handlebars = require('handlebars')
-const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
+// const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
 //=====================================================
 //        2  DEPENDENSE DE CONNECTION DB
@@ -82,7 +82,7 @@ app.set("view engine", "hbs");
 app.engine(
     "hbs",
     hbs({
-        handlebars: allowInsecurePrototypeAccess(Handlebars),
+        // handlebars: allowInsecurePrototypeAccess(Handlebars),
         //helpers: {
         //   stripTags: stripTags,
         //    limit: limit

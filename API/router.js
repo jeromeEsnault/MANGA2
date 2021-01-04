@@ -61,7 +61,7 @@ router.route('/manga')
 // .get(auth.auth,bookingController.getBookingPage)
 
 router.route('/booking/:id')
-    .get(auth.auth, bookingController.getMangaPageID)
+    .get(bookingController.getMangaPageID)
     .delete(auth.auth, bookingController.deleteOne)
 
 /*

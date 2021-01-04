@@ -9,17 +9,19 @@ module.exports = {
      * Controller
      *************/
     getHomePage: (req, res) => {
-
+        // console.log('je suis dans le .getHomePage')
         const sess = req.session
-        console.log(sess)
+        // console.log(sess)
         const dbUser = User.find({})
         const dbTome = Tome.find({})
-        Manga.find({})
+
+        Manga
+            .find({})
+            .lean()
             .populate('tome user').limit(-3)
             .exec((err, data) => {
                 if (err) console.log(err)
-                console.log('je suis dans le .getHomePage')
-                console.log(sess)
+
                 res.render('home', {
 
                     manga: data,

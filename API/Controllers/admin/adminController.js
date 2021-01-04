@@ -35,15 +35,16 @@ module.exports = {
         console.log('je suis dans le .getAdminPage')
         const sess = req.session
             //console.log(sess)
-        const dbManga = await Manga.find({}),
-            dbUser = await User.find({}),
-            dbTome = await Tome.find({ volume: { $all: "" } }),
-            dbTome1 = await Tome.find({ volume: 1 }),
+        const dbManga = await Manga.find({}).lean(),
+            dbUser = await User.find({}).lean(),
+            dbTome = await Tome.find({ volume: { $all: "" } }).lean(),
+            dbTome1 = await Tome.find({ volume: 1 }).lean(),
             rgvol = { volume: 1 };
 
 
         Manga.find({})
-            .populate('tome user').sort(rgvol)
+            .populate('tome user')
+            .lean()
             .exec((err, data, req) => {
 
                 if (err) console.log(err)

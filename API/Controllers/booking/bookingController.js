@@ -5,32 +5,35 @@ module.exports = {
 
 
     getMangaPageID: async(req, res) => {
+        console.log('Page ID')
         const sess = req.session
-        console.log(sess)
-        const dbmanga1 = await Manga.findOne({});
-        const dbmanga = await Manga.find({}).populate('tome user').sort(volume);
-        const dbTome1 = await Tome.findOne({});
-
+        // console.log(sess)
+        // const dbmanga1 = await Manga.findOne({}).lean();
+        // const dbmanga = await Manga.find({}).lean();
+        // const dbTome1 = await Tome.findOne({}).lean();
+        // const dbTome = await Tome.find({}).lean();
+        // const dbTometest = await Tome.find({ _id: req.params.id, }).lean();
         //console.log('test:' + dbTometest.$mangaID)
         //console.log("dbtome:" + dbTome)
         //console.log("dbTome1 : " + dbTome1)
-        console.log("dbmanga:" + dbmanga)
+        // console.log("dbmanga:" + dbmanga)
             // console.log(dbGenre)
-        console.log('id params:' + req.params.id)
+        // console.log('id params:' + req.params.id)
             //console.log('id params:' + )
-        console.log('id params:' + req.params.id)
-        Tome.findById({ _id: req.params.id })
-            .populate('manga user ')
+        // console.log('id params:' + req.params.id)
+
+        Manga.findById({ _id: req.params.id })
+            .lean()
+            .populate('manga user tome')
             .exec((err, data) => {
                 if (err) console.log(err)
-                console.log('data :' + data)
-                console.log('je suis dans le .getMangaPageID de booking')
+                console.log('data :')
+                console.log(data)
+                
                 res.render('booking', {
 
-                    manga1: dbmanga1,
-                    tome1: dbTome1,
-                    manga: dbmanga,
-                    tome: data,
+                    mangaID: data,
+                    tomeID: data.tome,
                     sess: sess
                 })
             })

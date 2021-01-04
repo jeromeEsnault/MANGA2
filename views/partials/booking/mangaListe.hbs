@@ -1,18 +1,125 @@
-<div class="container b--blue ">
-  <div class="row">
-    {{#each tome}}
+{{!-- 
+    Liste de tome Page ID (Manga) 
+--}}
 
-    <div class="col-md-3 mb-3">
-      <a href="/booking/{{_id}}"class="link-dark">
-        <div class="media">
-          <img src="{{ image }}" class="w-25" alt="IMG MANGA">
-          <div class="media-body">
-            <h5 class="mt-0"> volume {{ volume }}</h5>
+<div class="container">
+  <div class="card-deck row">
+
+  {{#each tomeID}}
+
+    {{!-- Card --}}
+    <div class="col-md-3 flip-card">
+      <a href data-toggle="modal" data-target="#descriptionTome{{_id}}">
+      <div class="flip-card-inner">
+
+        {{!-- Front --}}
+        <div class="flip-card-front">
+          <img src="{{ image }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Volume: {{ volume }}</h5>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
           </div>
         </div>
+
+        {{!-- Back --}}
+        <div class="flip-card-back">
+          <ul class="list-group">
+            <li class="list-group-item"><strong>Scénario :</strong>
+              {{dessin}}
+            </li>
+            <li class="list-group-item">
+              <strong>Traducteur :</strong>
+              {{Traducteur}}
+            </li>
+            <li class="list-group-item"><strong>Editeur VO :</strong>
+              {{ EditeurVO}}
+            </li>
+            <li class="list-group-item"><strong>Prépublication :</strong>
+              {{prepublication}}
+            </li>
+            <li class="list-group-item"><strong>Illustration :</strong>
+              {{ illustration}}
+            </li>
+            <li class="list-group-item"><strong>Origine :</strong>
+              {{origine}} </li>
+          </ul>
+        </div>
+      </div>
       </a>
     </div>
 
-    {{/each}}
+  <!-- Modal -->
+  <div class="modal fade" id="descriptionTome{{_id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Volume: {{ volume }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="{{ image }}" class="card-img-top" alt="...">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each }}
+
   </div>
 </div>
+
+<style>
+  /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+  .flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px;
+    /* Remove this if you don't want the 3D effect */
+  }
+
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* Position the front and back side */
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    -webkit-backface-visibility: hidden;
+    /* Safari */
+    backface-visibility: hidden;
+  }
+
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: #bbb;
+    color: black;
+  }
+
+  /* Style the back side */
+  .flip-card-back {
+    background-color: dodgerblue;
+    color: black;
+    transform: rotateY(180deg);
+  }
+</style>

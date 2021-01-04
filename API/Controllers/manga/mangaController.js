@@ -12,6 +12,7 @@ module.exports = {
 
         Manga.find({})
             .populate('tome genre')
+            .lean()
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log('je suis dans le .getMangaPage')
