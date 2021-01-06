@@ -18,7 +18,7 @@ const homeController = require('./Controllers/home/homeController'), //ok
     referenceController = require('./Controllers/Reference/referenceController'), //ok
     //admin
     adminController = require('./Controllers/admin/adminController'), //ok
-    FiltreMangaController = require('./Controllers/filtre1'),
+
     // user
     userController = require('./Controllers/user/userController'), //ok
     //book de livre
@@ -39,9 +39,9 @@ const homeController = require('./Controllers/home/homeController'), //ok
  * *********** */
 router.route('/')
     .get(homeController.getHomePage)
-//.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
-//.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
-//.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
+    //.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
+    //.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
+    //.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
 
 
 
@@ -70,7 +70,7 @@ router.route('/booking/:id')
 
 router.route('/admin')
     .get(auth.isAdmin, adminController.getAdminPage)
-    
+
 
 
 
@@ -79,7 +79,7 @@ router.route('/manga/create')
     // Page Formulaire create manga 
     .get(auth.auth, mangaCreateAdminController.getPageFormCreateArticle)
     // Action du Formulaire
-    .post(mangaCreateAdminController.createMangaForm)
+    .post(upload.single('image'), mangaCreateAdminController.createMangaForm)
 
 /******************************************************* */
 router.route('/editAdmin/:id')
@@ -122,10 +122,10 @@ router.route('/contact')
 // email test
 router.route('/nodemailerTest')
     .post(nodemailController.test)
-// email de verification
+    // email de verification
 router.route('/verification')
     .post(nodemailController.sendVerif)
-// Page de vérification
+    // Page de vérification
 router.route('/verify/:id')
     .get(nodemailController.verifMail)
 

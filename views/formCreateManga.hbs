@@ -1,55 +1,50 @@
 <!-- CREATION DE MANGA  -->
 <div class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
-    <form action="/manga/create" method="POST">
-        <div class="container">
-            <h1>creation de manga</h1>
-            <div class="card m-3">
-                <div class="form-input">
-                    <div>
-                        <label for="">nom du manga en vo</label>
-                    </div>
-                    <div>
-                        <input type="text" name="titlevo">
-                    </div>
-                </div>
-                <div class="form-input">
-                    <label for="">nom du manga en vf</label>
-                    <input type="text" name="titlevf">
-                </div>
-                <div class="form-input">
-                    <label for="">author</label>
-                    <input type="text" name="author">
-                </div>
-                <div class="form-input">
-                    <label for="">date edition</label>
-                    <input type="date" name="dateEdit">
-                </div>
-                <div class="form-input">
-                    <label for="">date de creation</label>
-                    <input type="date" name="dateCreate">
-                </div>
-                <div class="form-input">
-                    <div>
-                        <label for="">type</label>
-                    </div>
-                    <div>
-                        <select name="nameType">
-                            <option value="selection">choisissez votre
-                                type
-                            </option>
-                            <option value="shonen">shonen</option>
-                            <option value="shojo">shojo</option>
-                            <option value="seinen">seinen</option>
-                            <option value="kodomo">kodomo</option>
-                        </select>
-                    </div>
-
-                </div>
+    <form action="/manga/create" method="POST" enctype="multipart/form-data">
+    <div class="container">
+        <h1>creation de manga</h1>
+        <div class="form-group">
+            <label for="formGroupExampleInput">nom du manga en vo</label>
+            <input type="text" class="form-control" name="titlevo" placeholder="nom du manga en vo">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">nom du manga en vf</label>
+            <input type="text" class="form-control" name="titlevf" placeholder=" nom du manga en vf">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">author</label>
+            <input type="text" class="form-control" name="author" placeholder=" Auteur">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">date edition</label>
+            <input type="date" class="form-control" name="dateEdit" placeholder="date d">
+        </div>
+        <div class="form-group">
+            <label for="nameType">type</label>
+            <div class="form-control">
+                <select name="nameType">
+                    <option value="selection">choisissez votre type</option>
+                    <option value="shonen">shonen</option>
+                    <option value="shojo">shojo</option>
+                    <option value="seinen">seinen</option>
+                    <option value="kodomo">kodomo</option>
+                </select>
             </div>
         </div>
-
-
-        <button type="submit">enregistrer</button>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">image de présentation
+            </label>
+            <input type="file" class="form-control" name="image" placeholder="Another input placeholder">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">date de creation </label>
+            <input type="date" class="form-control" name="dateCreate" placeholder="Another input placeholder">
+        </div>
+    </div>
+    <div class="container m-3">
+        <button class="btn" type="submit">enregistrer</button>
+    </div>
+    
     </form>
 
 </div>

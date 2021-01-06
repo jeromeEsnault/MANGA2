@@ -7,27 +7,26 @@ const { isValidObjectId } = require('mongoose')
 module.exports = {
 
     getMangaPageID: async(req, res) => { //ok
-        const dbTome = await Tome.findOne({})
-        const dbGenre = await Genre.find({})
-        const dbUser = await User.find({})
+        const dbTome = await Tome.findOne({}).lean()
+        const dbGenre = await Genre.find({}).lean()
+        const dbUser = await User.find({}).lean()
             //console.log(req.params.id)
             //console.log(req.params)
-        Tome.findById(req.params.id)
-            .populate('tome genre ')
+        Tome.findById(req.params.id).lean()
+            .populate('tome user ')
             .exec((err, data) => {
                 if (err) console.log(err)
                     //console.log(data)
                 console.log('je suis dans le .getMangaPageID de booking')
                 res.render('booking', {
-                        manga: data,
-                        tome: dbTome,
-                        genre: dbGenre,
+                        manga: data.manga,
+                        tome: data.tome,
                         user: dbUser
                     })
                     /* res.json(
                          data,
                          dbTome,
-                         dbGenre
+                        
                      )*/
             })
     },
@@ -38,10 +37,7 @@ module.exports = {
         res.render('formCreateManga')
     },
 
-    // GET : Page create Article
-    getPageFormGenre: (req, res) => {
-        res.render('formCreateGenre')
-    },
+
     // POST : Action d'envoi du formulaire Createmanga
     createMangaForm: async(req, res) => { //ok
         // const mangaExist = await Manga.findById(req.params._id)
@@ -50,6 +46,7 @@ module.exports = {
 
         Manga.create({
             ...req.body,
+
         }, (err, data) => {
 
             if (err) console.log(err)
@@ -101,10 +98,10 @@ module.exports = {
     },
     getMangaPageID: async(req, res) => {
         console.log('je suis dans le .getMangaPageID de editadmin')
-        const dbManga = await Manga.findById(req.params.id)
+        const dbManga = await Manga.findById(req.params.id).lean()
 
         console.log(req.params.id)
-        Tome.findById(req.params.id)
+        Tome.findById(req.params.id).lean()
             .populate('tome user ')
             .exec((err, data) => {
                 if (err) console.log(err)

@@ -3,7 +3,7 @@ const Manga = require('../../database/models/Manga')
 const { $where } = require('../../database/models/Tome')
 const Tome = require('../../database/models/Tome')
 const User = require('../../database/models/User')
-const test = require('./filtreDOM')
+
 
 
 module.exports = {

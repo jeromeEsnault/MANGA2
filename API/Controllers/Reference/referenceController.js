@@ -4,7 +4,7 @@ const Tome = require("../../database/models/Tome");
 
 module.exports = {
     getReferencePage: async(req, res) => {
-        console.log('je suis dans le .getAdminPage')
+        console.log('je suis dans le .getReferencePage')
         const sess = req.session
             //console.log(sess)
         const dbManga = await Manga.find({}).lean(),

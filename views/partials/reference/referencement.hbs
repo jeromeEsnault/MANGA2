@@ -1,11 +1,17 @@
 <div class="container">
-    {{tome._id}}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h2>référencement</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container">
     {{#each manga}}
     <div class="row">
-
         <ul class="list-group list-horizontal">
             {{#each tome}}
-            <li class="list-group-item">
+            <li class="list-group-item ">
                 <a href="/booking/{{_id}}">
                     {{/each }}
                     <h2> {{titlevf}} </h2>
@@ -13,7 +19,5 @@
             </li>
         </ul>
     </div>
-
-</div>
-{{/each }}
+    {{/each }}
 </div>

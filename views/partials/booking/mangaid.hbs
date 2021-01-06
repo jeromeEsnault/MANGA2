@@ -1,4 +1,4 @@
-<div class="container">
+<div class=" m-3 container m-3">
   <div class="row">
     <div class="col-md-12">
       <h1 class=" text-center"> {{mangaID.titlevf }}</h1>
@@ -6,11 +6,9 @@
   </div>
   <div class="row">
     <div class="col-4 col-xl-4 ">
-
       <div>
-        <img class="img-fluid" src="{{tomeID.image}}" alt="">
+        <img class="img-fluid" src="{{mangaID.image}}" alt="">
       </div>
-
     </div>
     <div class="col-4 col-xl-4">
       <ul class="list-group">
@@ -24,47 +22,26 @@
         <li class="list-group-item"><strong>Type :</strong>
           {{mangaID.nameType}}
         </li>
-
       </ul>
     </div>
     <div class="col-4 col-xl-4">
-      
-      <ul class="list-group">
+      <ul>
         <li class="list-group-item">
-          <strong>Dessin : </strong>
-          {{tomeID.dessin}}
+          <strong>Auteur</strong> {{ mangaID.author}}
         </li>
-        <li class="list-group-item"><strong>Scénario :</strong>
-          {{tomeID.dessin}}
+        <li class="list-group-item"><strong>date d'edition :</strong>
+          {{ mangaID.dateEdit}}
         </li>
-        <li class="list-group-item">
-          <strong>Traducteur :</strong>
-          {{tomeID.Traducteur}}
+        <li class="list-group-item"><strong> date de creation:</strong>
+          {{mangaID.dateCreate}}
         </li>
-        <li class="list-group-item"><strong>Type :</strong>
-          {{mangaID.nameType}}
-        </li>
-        <li class="list-group-item"><strong>Editeur VO :</strong>
-          {{ tomeID.EditeurVO}}
-        </li>
-        <li class="list-group-item"><strong>Prépublication :</strong>
-          {{tomeID.prepublication}}
-        </li>
-        <li class="list-group-item"><strong>Illustration :</strong>
-          {{ tomeID.illustration}}
-        </li>
-        <li class="list-group-item"><strong>Origine :</strong>
-          {{tomeID.origine}} </li>
       </ul>
-      
+
+
+
     </div>
   </div>
-  <div class="row">
-    <div class=" col-md-12 col-xl-12">
-      <h3>Description</h3>
-      <p class=" text-truncate">{{tomeID.description}}</p>
-    </div>
-  </div>
+
 
 
 </div>

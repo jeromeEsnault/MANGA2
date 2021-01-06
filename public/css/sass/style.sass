@@ -1,3 +1,90 @@
-div:target 
+div:target
     padding-top: 7em
     margin-top: -7em
+
+#myInput
+    background-image: url('/css/searchicon.png')
+    background-position: 10px 12px
+    background-repeat: no-repeat
+    width: 100%
+    font-size: 16px
+    padding: 12px 20px 12px 40px
+    border: 1px solid #ddd
+    margin-bottom: 12px
+
+#myUL
+    list-style-type: none
+    padding: 0
+    margin: 0
+
+#myUL li a
+    border: 1px solid #ddd
+    margin-top: -1px
+    background-color: #f6f6f6
+    padding: 12px
+    text-decoration: none
+    font-size: 18px
+    color: black
+    display: block
+
+#myUL li a:hover:not(.header)
+    background-color: #eee
+
+// filtre de button
+.container
+    overflow: hidden
+
+.filterDiv
+    float: left
+    color: #ffffff
+    margin: 2px
+    display: none
+
+.show
+    display: block
+
+.btn:hover
+    background-color: #ddd
+
+.btn.active
+    background-color: #666
+    color: white
+/*
+ *  card flip   
+ *****************/
+.row-flip
+    display: inline-flex
+.flip-card
+    flex: 0 0 auto
+    width: 200px
+    height: 350px
+    background-color: transparent
+    perspective: 1000px
+
+.flip-card-inner
+    position: relative
+    width: 100%
+    height: auto
+    text-align: center
+    transition: transform 0.8s
+    transform-style: preserve-3d
+
+.flip-card:hover .flip-card-inner
+    transform: rotateY(180deg)
+
+.flip-card-front,
+.flip-card-back
+    position: absolute
+    width: 100%
+    height: auto
+    -webkit-backface-visibility: hidden
+    backface-visibility: hidden
+
+.flip-card-front
+    background-color: #4e91df
+    color: black
+
+.flip-card-back
+    background-color: dodgerblue
+    color: black
+    transform: rotateY(180deg)

@@ -11,9 +11,9 @@ module.exports = {
     getHomePage: (req, res) => {
         // console.log('je suis dans le .getHomePage')
         const sess = req.session
-        // console.log(sess)
-        const dbUser = User.find({})
-        const dbTome = Tome.find({})
+            // console.log(sess)
+        const dbUser = User.find({}).lean()
+        const dbTome = Tome.find({}).lean()
 
         Manga
             .find({})

@@ -7,7 +7,7 @@ const express = require("express"),
     bodyParser = require("body-parser"),
     port = 1989;
 const Handlebars = require('handlebars')
-// const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
+    // const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 
 //=====================================================
 //        2  DEPENDENSE DE CONNECTION DB
@@ -125,14 +125,14 @@ app.use(express.static("public"));
  *       securitée de helmet
  *
  ***********************************/
-
+/*
 const helmet = require("helmet");
 app.use(
     helmet({
         contentSecurityPolicy: false,
     })
 );
-
+*/
 //******************************** */
 app.use("*", (req, res, next) => {
     //console.log("donner local");

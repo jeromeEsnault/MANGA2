@@ -31,32 +31,32 @@ const UserSchema = new mongoose.Schema({
     nameP: {
         type: String,
         required: [true, 'le nom est obligatoire'],
-        
+
     },
     nameM: {
         type: String,
         required: [true, 'le prénom  est obligatoire'],
-        
+
     },
     typeUser: {
         type: String,
         required: [true, 'le type  est obligatoire'],
-        
+
     },
     pseudo: {
         type: String,
         required: [true, 'le pseudo  est obligatoire'],
-       // unique: true
+        // unique: true
     },
     datedenaissance: {
         type: String,
         required: [true, 'la date de naissance est obligatoire'],
-       // unique: true
+        // unique: true
     },
     email: {
         type: String,
         required: [true, 'l email est obligatoire'],
-       // unique: true
+        // unique: true
     },
     mangaID: [{
         type: Schema.Types.ObjectId,
@@ -68,7 +68,7 @@ const UserSchema = new mongoose.Schema({
     }],
     imgProfil: {
         type: String,
-        default: 'img/imgDefault/default-profil.jpg'
+        default: '/img/imgDefault/default-profil.jpg'
     }
 
 });

@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Tome = require('./Tome')
 const Genre = require('./Genre')
-
+var format = require('date-format');
 
 // model de construction pour la base de donnée
 const MangaSchema = new mongoose.Schema({
-    
+
 
     titlevo: {
         type: String
@@ -20,14 +20,18 @@ const MangaSchema = new mongoose.Schema({
     },
     dateEdit: {
         type: Date,
-        default: Date.now()
+        default: format('hh:mm:ss.SSS', new Date())
     },
     dateCreate: {
         type: Date,
-        default: Date.now()
+        default: format('hh:mm:ss.SSS', new Date())
     },
     nameType: {
         type: String
+    },
+    image: { //ok
+        type: String,
+        default: '/img/imgDefault/imgmanga.jpg'
     },
     tome: [{
         type: Schema.Types.ObjectId,
@@ -37,8 +41,6 @@ const MangaSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
-
-    
 
 });
 
