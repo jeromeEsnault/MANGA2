@@ -1,6 +1,6 @@
 const Manga = require('../../database/models/Manga')
 const Tome = require('../../database/models/Tome')
-const Genre = require('../../database/models/Genre')
+
 
 
 module.exports = {

@@ -2,7 +2,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Tome = require('./Tome')
-const Genre = require('./Genre')
 var format = require('date-format');
 
 // model de construction pour la base de donnée

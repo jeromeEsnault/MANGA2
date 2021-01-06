@@ -27,11 +27,9 @@ const homeController = require('./Controllers/home/homeController'), //ok
     authController = require('./Controllers/isVerifAdmin/authController'), //ok
     //middleware
     upload = require('./middleware/img'), //ok
-    auth = require('./middleware/auth'),
-    /******************************* *
-    *    a supprimmer
-    /************************* */
-    testController = require('./Controllers/filter');
+    auth = require('./middleware/auth');
+
+
 
 
 /*
@@ -39,9 +37,6 @@ const homeController = require('./Controllers/home/homeController'), //ok
  * *********** */
 router.route('/')
     .get(homeController.getHomePage)
-    //.post(uploadArray.array('inputArticleArray', 3), homeController.postCarouselHome)
-    //.put(uploadArray.array('inputArticleArray', 3), homeController.putCarouselHome)
-    //.delete(uploadArray.array('inputArticleArray', 3), homeController.deleteOneCarouselHome)
 
 
 
@@ -162,6 +157,6 @@ router.route('/login')
 
 router.route('/logout')
     .get(authController.logout)
-router.route('/test')
-    .get(testController.filtre)
+    // router.route('/test')
+    //     .get()
 module.exports = router;

@@ -1,6 +1,6 @@
 const Manga = require('../../database/models/Manga')
 const Tome = require('../../database/models/Tome')
-const Genre = require('../../database/models/Genre')
+
 const User = require('../../database/models/User')
 const { isValidObjectId } = require('mongoose')
 
@@ -46,14 +46,15 @@ module.exports = {
 
         Manga.create({
             ...req.body,
-
+            image: `/img/bookimg/${req.file.originalname}`, // On stock aussi le nom de l'image 
+            name: req.file.originalname
         }, (err, data) => {
 
             if (err) console.log(err)
 
             else {
                 console.log(data);
-                res.redirect(`/editAdmin/` + data._id)
+                res.redirect(`/admin`)
                 console.log('redirection faite');
                 console.log(data);
 
