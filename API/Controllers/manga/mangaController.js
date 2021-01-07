@@ -11,8 +11,8 @@ module.exports = {
         const dbTome = await Tome.find({})
 
         Manga.find({})
-            .populate('tome genre')
             .lean()
+            .populate('manga user tome ')
             .exec((err, data) => {
                 if (err) console.log(err)
                 console.log('je suis dans le .getMangaPage')
@@ -20,7 +20,7 @@ module.exports = {
                 res.render('manga', {
 
                     manga: data,
-                    tome: dbTome,
+                    tome: data.tome,
                     sess: sess
                 })
             })
@@ -45,6 +45,7 @@ module.exports = {
         const dbGenre = await Genre.find({})
         console.log(req.params.id)
         Manga.findById(req.params.id)
+            .lean()
             .populate('tome genre ')
             .exec((err, data) => {
                 if (err) console.log(err)
@@ -108,7 +109,7 @@ module.exports = {
 
             Tome.findByIdAndDelete(req.params.id, (err) => {
                 if (err) console.log(err)
-                res.redirect('/')
+                res.redirect('/admin')
 
             })
         })

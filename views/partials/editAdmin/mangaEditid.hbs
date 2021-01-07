@@ -1,55 +1,41 @@
-<div class="container mb-5 pt-5 mt-5 pb-5 bg-primary">
-
-    <div class="container">
-        <div class="card m-3">
-            <div class="row no-gutters">
-
-                <div class="col-md-4 bg-dark">
-                    {{#if tome1 }}
-
-                    <img src="{{ tome1.image}}" class="card-img" alt="naruto">
-
-                    {{else }}
-                    <img src="/img/imgDefault/imgmanga.jpg " class="card-img" alt="img par default">
-                    {{/if}}
-                </div>
-                <div class="col-md-8 justify-content-center">
-                    <div class="card-body justify-content-evenly">
-
-                        <div class="card-text">
-
-                            title en vf: {{manga1.titlevf}}
-                        </div>
-                        <p class=" font-weight-bold text-lg-left">
-                            {{#if tome1.description }}
-                            {{tome1.description}}
-                            {{else }}
-                            <img src="/img/imgDefault/description-default.gif" alt="default description" class="card-img">
-                            {{/if }}
-                        </p>
-                    </div>
-                    
-                </div>
-            </div>
-<div class="card-body justify-content-evenly">
-                        <p class=" font-weight-bold text-lg-left">
-                        <div class="card-text">
-
-                            title en vo: {{ manga1.titlevo }}
-                        </div>
-                        <div class="card-text">
-
-                            date d édition: {{ manga1.dateEdit }}
-                        </div>
-                        <div class="card-text">
-
-                            Auteur: {{ manga1.author }}
-                        </div>
-                        <div class="card-text">
-
-                            type de manga: {{ manga1.namesType }}
-                        </div>
-                        </p>
-                    </div>
-        </div>
+<div class=" m-3 container m-3">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class=" text-center"> {{manga.titlevf }}</h1>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-4 col-xl-4 ">
+      <div>
+        <img class="img-fluid" src="{{manga.image}}" alt="">
+      </div>
+    </div>
+    <div class="col-4 col-xl-4">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Titre VO :</strong>
+          {{ manga.titlevo }}
+        </li>
+        <li class="list-group-item">
+          <strong>Titre traduit</strong> {{manga.titlevf }}
+        </li>
+        <li class="list-group-item"><strong>Type :</strong>
+          {{manga.nameType}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-4 col-xl-4">
+      <ul>
+        <li class="list-group-item">
+          <strong>Auteur</strong> {{ manga.author}}
+        </li>
+        <li class="list-group-item"><strong>date d'edition :</strong>
+          {{ manga.dateEdit}}
+        </li>
+        <li class="list-group-item"><strong> date de creation:</strong>
+          {{manga.dateCreate}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

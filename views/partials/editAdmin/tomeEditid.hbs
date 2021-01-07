@@ -1,4 +1,6 @@
-<form action="/editAdmin/{{ tome1._id }}" method="post">
+{{#each tome}}
+
+<form action="/editAdmin/{{ _id }}" method="post">
 
     <div class=" bg-success m-2">
         <div class="row text-decoration-none">
@@ -6,62 +8,66 @@
 
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">numero du volume</label>
-                <input type="number" class="form-control" name="volume" value="">
+                <input type="number" class="form-control" name="volume" value="{{volume}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">date de parution</label>
-                <input type="date" class="form-control" name="datedeparution" value="">
+                <input type="date" class="form-control" name="dateDeParution" value=" {{dateDeParution}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">dessin</label>
-                <input type="text" class="form-control" name="dessin" value="">
+                <input type="text" class="form-control" name="dessin" value="{{dessin}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">Illustrution</label>
-                <input type="text" class="form-control" name="illustrution" value="">
+                <input type="text" class="form-control" name="illustration" value="{{illustration}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">Scénariste</label>
-                <input type="text" class="form-control" name="scenariste" value="">
+                <input type="text" class="form-control" name="Scenariste" value="{{Scenariste}}">
             </div>
 
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">Traducteur</label>
-                <input type="text" class="form-control" name="traducteur" value="">
+                <input type="text" class="form-control" name="traducteur" value="{{traducteur}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">editeur en vf</label>
-                <input type="text" class="form-control" name="editeurvf" value="">
+                <input type="text" class="form-control" name="editeurvf" value="{{editeurVF}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">éditeur en vo</label>
-                <input type="text" class="form-control" name="editeurvo" value="">
+                <input type="text" class="form-control" name="editeurvo" value="{{editeurVO}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">prépublication</label>
-                <input type="text" class="form-control" name="prepublication" value="">
+                <input type="text" class="form-control" name="prepublication" value="{{prepublication}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">origine</label>
-                <input type="text" class="form-control" name="origine" value="">
+                <input type="text" class="form-control" name="origine" value="{{origine}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">date d'edition</label>
-                <input type="date" class="form-control" name="dateEdit" value="">
+                <input type="date" class="form-control" name="dateEdit" value="{{dateEdit}}">
             </div>
             <div class="form-group col-md-6">
                 <label for="recipient-name" class="col-form-label">image du tome</label>
-                <input type="file" class="form-control" name="image" value="">
+                <input type="file" class="form-control" name="image">
             </div>
             <div class="form-group col-md-12">
                 <label for="message-text" class="col-form-label">description:</label>
                 <textarea class="form-control" name="description" cols="30" rows="10"
-                    placeholder="description" value=""></textarea>
+                    placeholder="description">{{description}}</textarea>
             </div>
         </div>
+
+
+
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn " data-dismiss="modal">fermer</button>
+    <div class="">
+        <button type="button" class="btn ">fermer</button>
         <button type="submit" class="btn ">enregistrer</button>
     </div>
 </form>
+{{/each }}

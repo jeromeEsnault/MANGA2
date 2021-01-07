@@ -8000,6 +8000,9 @@ div:target {
   color: black;
   transform: rotateY(180deg); }
 
+.z-index-modal {
+  z-index: 1; }
+
 .red {
   background-color: #df1c1c;
   opacity: 70%; }

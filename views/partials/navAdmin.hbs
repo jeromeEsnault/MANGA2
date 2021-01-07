@@ -20,16 +20,23 @@
                 <a class="nav-link" href="/contact">contact</a>
             </li>
         </ul>
-
+        <div class="col-md-1 im w-icon">
+            <span aria-hidden="true">
+                <div class="btn  collapsed" type="button" data-toggle="collapse" data-target="#colapsedeconnection"
+                    aria-expanded="false" aria-controls="colapsedeconnection"><img class=" img-nav"
+                        style="width: 50px;height: 50px" src="{{ userObj.imgProfil }}" alt=""></div>
+            </span>
+        </div>
     </div>
-
-    <!--pour admin-->
-    {{#if isAdmin}}
-
-    {{> modal/admin }}
-    {{else}}
-    <!--pour user-->
-    {{> modal/user }}
-
-    {{/if }}
 </nav>
+<div >
+    <!--pour admin-->
+{{#if isAdmin}}
+
+{{> modal/admin }}
+{{else}}
+<!--pour user-->
+{{> modal/user }}
+
+{{/if }}
+</div>

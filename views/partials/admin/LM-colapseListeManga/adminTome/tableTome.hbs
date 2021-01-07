@@ -5,7 +5,7 @@
             <th scope="col">auteur du tome</th>
             <th scope="col">image du tome</th>
             <th scope="col">modifier</th>
-            
+
         </tr>
     </thead>
     {{#each tome}}
@@ -13,31 +13,26 @@
         <tr>
             <th scope="row">{{ volume }}</th>
 
-            <td>pseudo:</td>
-
+            <td>allen_whoaa</td>
             <td><img style="width: 30px;" src="{{ image }}" alt=""></td>
             <td>
                 <h2 class=" text-left  ">
-                    <button class="btn" type="button">
-                        <a href="/modal/supmanga">
-                            <i class="far fa-trash-alt"></i>
-                        </a>
+                    <button type="button" class="btn " data-toggle="modal" data-target="#staticBackdrop{{ _id }}">
+                        <i class="far fa-trash-alt"></i>
                     </button>
+                    {{> modal/suptome tome=tome}}
                     <button class="btn" type="button">
                         <a href="/editAdmin/{{ _id }}">
                             <i class="fas fa-edit"></i>
                         </a>
                     </button>
-
-                    <button class="btn" type="button">
-                        <a href="">
-                            <i class="fas fa-check-circle"></i>
-                        </a>
-                    </button>
                 </h2>
+
             </td>
         </tr>
 
     </tbody>
+
     {{/each }}
 </table>
+{{> modal/suptome tome=tome}}

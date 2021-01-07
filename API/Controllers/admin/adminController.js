@@ -16,22 +16,20 @@ module.exports = {
         const dbManga = await Manga.find({}).lean(),
             dbUser = await User.find({}).lean(),
             dbTome = await Tome.find({ volume: { $all: "" } }).lean(),
-            dbTome1 = await Tome.find({ volume: 1 }).lean(),
             rgvol = { volume: 1 };
 
 
-        Manga.find({})
+        Manga.find({}).lean()
             .populate('tome user')
-            .lean()
             .exec((err, data, req) => {
 
                 if (err) console.log(err)
                     // console.log("test1");
                     // //console.log(sess); // ok fonctionne
                     // console.log("test2");
-                console.log(data); // ok fonctionne
-                // console.log("test3");
-                // //console.log(dbTome1);// ok fonctionne 
+                    //console.log(data); // ok fonctionne
+                    // console.log("test3");
+                    // //console.log(dbTome1);// ok fonctionne 
 
                 // console.log("test4");
                 // //console.log(filtre); // ok fonctionne
@@ -39,13 +37,12 @@ module.exports = {
                 // //console.log(dbTome); // ok fonctionne 
 
 
-                //console.log(data)
+                console.log(dbTome)
                 console.log('je suis dans le .getAdminPage LA FIN')
                 res.render('admin', {
                     layout: 'adminLayout',
                     manga: data,
                     sess: sess,
-                    tome1: dbTome1,
                     tome: dbTome,
                     user: dbUser
 

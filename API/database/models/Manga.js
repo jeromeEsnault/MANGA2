@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Tome = require('./Tome')
-var format = require('date-format');
+
 
 // model de construction pour la base de donnée
 const MangaSchema = new mongoose.Schema({
@@ -19,11 +19,11 @@ const MangaSchema = new mongoose.Schema({
     },
     dateEdit: {
         type: Date,
-        default: format('hh:mm:ss.SSS', new Date())
+        default: new Date()
     },
     dateCreate: {
         type: Date,
-        default: format('hh:mm:ss.SSS', new Date())
+        default: new Date()
     },
     nameType: {
         type: String

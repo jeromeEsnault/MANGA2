@@ -99,23 +99,29 @@ module.exports = {
     },
     getMangaPageID: async(req, res) => {
         console.log('je suis dans le .getMangaPageID de editadmin')
-        const dbManga = await Manga.findById(req.params.id).lean()
-
+        const sess = (req.session)
         console.log(req.params.id)
-        Tome.findById(req.params.id).lean()
-            .populate('tome user ')
+        Tome.findById(req.params.id)
+            .lean()
+            .populate('manga tome user ')
             .exec((err, data) => {
                 if (err) console.log(err)
-                console.log(data)
-                console.log('je suis dans le .getMangaPageID de editadmin')
-                res.render('editAdmin', {
-                    tome1: data,
-                    manga1: dbManga
-
-                })
+                const idmanga = data.mangaID;
+                Manga.findById(idmanga)
+                    .lean()
+                    .populate('manga tome user ')
+                    .exec((err, data) => {
+                        if (err) console.log(err)
+                        console.log(data.tome)
+                        console.log('je suis dans le .getMangaPageID de editadmin')
+                        res.render('editAdmin', {
+                            tome: data.tome,
+                            manga: data,
+                            sess: sess
+                        })
+                    })
             })
     },
-
 
     createTomeForm: async(req, res) => {
         console.log('je suis dans le .createTomeForm de editadmin')
@@ -143,7 +149,7 @@ module.exports = {
                 if (err) return console.log(err)
                 console.log('coucou');
                 // Et on redirige sur notre manga parent
-                res.redirect(`/editAdmin/${manga._id}`)
+                res.redirect(`/admin`)
             })
         })
     },
