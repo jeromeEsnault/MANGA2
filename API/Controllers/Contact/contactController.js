@@ -54,6 +54,7 @@ module.exports = {
 
                 console.log(data);
                 res.redirect(`/contact`)
+
                 console.log('redirection faite');
 
                 console.log('envoie des donner fait');

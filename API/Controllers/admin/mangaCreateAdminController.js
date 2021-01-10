@@ -1,6 +1,6 @@
 const Manga = require('../../database/models/Manga')
 const Tome = require('../../database/models/Tome')
-
+const format = require('date-format')
 const User = require('../../database/models/User')
 const { isValidObjectId } = require('mongoose')
 
@@ -8,7 +8,7 @@ module.exports = {
 
     getMangaPageID: async(req, res) => { //ok
         const dbTome = await Tome.findOne({}).lean()
-        const dbGenre = await Genre.find({}).lean()
+
         const dbUser = await User.find({}).lean()
             //console.log(req.params.id)
             //console.log(req.params)
@@ -47,7 +47,9 @@ module.exports = {
         Manga.create({
             ...req.body,
             image: `/img/bookimg/${req.file.originalname}`, // On stock aussi le nom de l'image 
-            name: req.file.originalname
+            name: req.file.originalname,
+            dateEdit: format(),
+            dateCreate: format()
         }, (err, data) => {
 
             if (err) console.log(err)

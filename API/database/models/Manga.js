@@ -1,7 +1,8 @@
 // dependance appeler
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const Tome = require('./Tome')
+const mongoose = require('mongoose');
+const { format } = require('sharp');
+const Schema = mongoose.Schema;
+const Tome = require('./Tome');
 
 
 // model de construction pour la base de donnée

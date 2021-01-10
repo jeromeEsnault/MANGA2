@@ -1,107 +1,127 @@
-
 /*
  * On déclare nos constante
  * ************************ */
 
 // import nodemailer 
 const nodemailer = require('nodemailer'),
-  // Déclaration ne notre transporter
-  // C'est en quelque sorte notre connexion à notre boite mail
-  transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    service: 'gmail',
-    port: '587',
-    auth: {
-      user:'formationdev.arinfo@gmail.com',
-      pass: 'DIEUXGREC72'
-    }
-  })
+    // Déclaration ne notre transporter
+    // C'est en quelque sorte notre connexion à notre boite mail
+    transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        service: 'gmail',
+        port: '587',
+        auth: {
+            user: 'formationdev.arinfo@gmail.com',
+            pass: 'DIEUXGREC72'
+        }
+    })
 
 // Ici on genere nos variable en parent pour pouvoir les récupérer au retour de nos data email
 // (Dans la branch nodemailer-advanced il sera générer avec un token type jwt)
 var rand, mailOptions, host, link;
 
 module.exports = {
-  // Action test boite mail > nodemailer
-  test: (req, res) => {
-    console.log('test a verifier');
-    console.log(req.body)
-    // On configure notre mail à envoyer par nodemailer
-    const mailOptions = {
-      from: 'formationdev.arinfo@gmail.com', 
-      to:'formationdev.arinfo@gmail.com',
-      subject: 'Félicitation, ' + req.body.userid + ' !',
-      html: `
-        <h2>${req.body.userid}, Ton premier mail avec nodemailer, Successfull !!</h2>
+    // Action test boite mail > nodemailer
+    test: (req, res) => {
+        console.log('test a verifier');
+        console.log(req.body)
+            // On configure notre mail à envoyer par nodemailer
+        const mailOptions = {
+            from: 'formationdev.arinfo@gmail.com',
+            to: 'formationdev.arinfo@gmail.com',
+            subject: 'envoye de message, ' + req.body.Pseudo + ' !',
+            html: `
+        <h2>${req.body.Pseudo},vous as envoyer un message</h2>
       `
-    }
+        }
 
-    // On demande à notre transporter d'envoyer notre mail
-    transporter.sendMail(mailOptions, (err, info) => {
-      if (err) console.log(err)
-      else {
-        console.log(info)
-        res.render('contact', {
-          success: "Un email à bien été envoyer à " + req.body.email
+        // On demande à notre transporter d'envoyer notre mail
+        transporter.sendMail(mailOptions, (err, info) => {
+            if (err) console.log(err)
+            else {
+                console.log(info)
+                res.render('contact', {
+                    success: "Un email à bien été envoyer à " + req.body.email
+                })
+            }
         })
-      }
-    })
-  },
-  // Envoie du message de vérification
-  sendVerif: (req, res) => {
-    // génération d'un chiffre random
-    rand = Math.floor((Math.random() * 100) + 54)
-    // on definit notre host
-    host = req.get('host')
-    // on définit le lien
-    link = "http://" + req.get('host') + "/verify/" + rand
-    // et enfin notre mail
-    mailOptions = {
-      from: req.body.email,
-      to: 'USER_URI_MAIL',
-      subject: req.body.Subject,
-      rand: rand,
-      html: `
+    },
+    // Envoie du message de vérification
+    sendVerif: (req, res) => {
+        // génération d'un chiffre random
+        rand = Math.floor((Math.random() * 100) + 54)
+            // on definit notre host
+        host = req.get('host')
+            // on définit le lien
+        link = "http://" + req.get('host') + "/verify/" + rand
+            // et enfin notre mail
+        mailOptions = {
+            from: req.body.email,
+            to: 'formationdev.arinfo@gmail.com',
+            subject: req.body.Subject,
+            rand: rand,
+            html: `
         <h2>Encore un effort</h2>,<br>
         <h5>Cliquer sur le lien suivant afin de finir la procédure de validation de mail.</h5><br>
         <a href=" ` + link + ` ">Click here to verify</a>
       `
+        }
+        console.log(mailOptions)
+            // Et envoi notre mail avec nos callback
+        transporter.sendMail(mailOptions, (err, res, next) => {
+                if (err) {
+                    console.log(err)
+                    res.end("error")
+                } else {
+                    console.log("Message Envoyer")
+                    next()
+                }
+            })
+            // Response
+        res.render('contact', {
+            success: "Un email de vérification à bien été envoyer à " + req.body.email
+        })
+    },
+    // Génération de la page ID (Unique)
+    verifMail: (req, res) => {
+        console.log(req.protocol + "://" + req.get('host'))
+        console.log('Page verify: ')
+            // Ici on tcheck notre protocole hébergeur (nodejs localhost) et le liens générer dans le mail
+        if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
+            console.log("Domain is matched. Information is from Authentic email")
+                // Ici on tcheck notre id du mail avec la variable enregistrer en cache (rand)
+            if (req.params.id == mailOptions.rand) {
+                console.log("email est verifier")
+                res.send(
+                    "<body class='center img-body container' style ='width: fit-content;'>"
+                    // "<div class='row-form'>" + mailOptions.to "<div class='text-center'>"
+                    // "<div class='col-all text-strike'>"
+                    // "<form action= '/'>"
+                    // "<div class='form - group row'>"
+                    // "<label for='staticEmail' class='col-sm-2 col-form-label'>Email</label>"
+                    // "<div class='col - sm - 10'>"
+                    // "<input type='text' readonly class='form-control-plaintext' id='staticEmail' value='email@example.com'>"
+                    // "</div >"
+                    // "</div >"
+                    // "<div class='form-group row'>"
+                    // "<label for='inputPassword' class='col-sm-2 col-form-label'>Password</label>"
+                    // "<div class='col-sm-10'>"
+                    // "<input type='password' class='form-control' id='inputPassword'>"
+                    // "</div>"
+                    // "</div>"
+                    // "</form>"
+                    // "</div >"
+                    // " </div >"
+                    // "</div >"
+                    // "</body > "
+                )
+
+            } else {
+                console.log("email is not verified")
+                res.end("<h1>Bad Request</h1>")
+            }
+        } else {
+            res.end("<h1>Request is from unknown source")
+        }
     }
-    console.log(mailOptions)
-    // Et envoi notre mail avec nos callback
-    transporter.sendMail(mailOptions, (err, res, next) => {
-      if (err) {
-        console.log(err)
-        res.end("error")
-      } else {
-        console.log("Message Envoyer")
-        next()
-      }
-    })
-    // Response
-    res.render('contact', {
-      success: "Un email de vérification à bien été envoyer à " + req.body.email
-    })
-  },
-  // Génération de la page ID (Unique)
-  verifMail: (req, res) => {
-    console.log(req.protocol + "://" + req.get('host'))
-    console.log('Page verify: ')
-    // Ici on tcheck notre protocole hébergeur (nodejs localhost) et le liens générer dans le mail
-    if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
-      console.log("Domain is matched. Information is from Authentic email")
-      // Ici on tcheck notre id du mail avec la variable enregistrer en cache (rand)
-      if (req.params.id == mailOptions.rand) {
-        console.log("email is verified")
-        res.end("<h1>Email " + mailOptions.to + " is been Successfully verified")
-      } else {
-        console.log("email is not verified")
-        res.end("<h1>Bad Request</h1>")
-      }
-    } else {
-      res.end("<h1>Request is from unknown source")
-    }
-  }
 }
-
-

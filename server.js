@@ -152,7 +152,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/", ROUTER);
 
 app.use("*", (req, res) => {
-    res.send("Erreur 404");
+    res.render("err404");
 });
 /********************************* */
 /*******       test de secu        */

@@ -27,7 +27,10 @@ const homeController = require('./Controllers/home/homeController'), //ok
     authController = require('./Controllers/isVerifAdmin/authController'), //ok
     //middleware
     upload = require('./middleware/img'), //ok
-    auth = require('./middleware/auth');
+    auth = require('./middleware/auth'),
+
+    // cookie
+    cookieController = require('./Controllers/cookie/cookie');
 
 
 
@@ -159,4 +162,25 @@ router.route('/logout')
     .get(authController.logout)
     // router.route('/test')
     //     .get()
+
+// ========= Cookie //
+
+// Delete cookie PtiGato & Cookie
+router.route('/cookie')
+    .post(cookieController.cookie)
+
+// Clear all cookie
+router.route('/clearCookie')
+    .get(cookieController.clearCookie)
+
+// Create New Cookie
+router.route('/newCookie')
+    .get(cookieController.newCookie)
+
+// Create New PtiGato
+router.route('/newPtiGato')
+    .get(cookieController.newPtiGato)
+
+// =========/Cookie //
+
 module.exports = router;
