@@ -28,9 +28,8 @@ function myFunction() {
  * Button Search Bar
  * ***************** */
 
-setTimeout(() => { // J'attend 1.5s pour faire apparaitre ma div
+setTimeout(() => {
     filterSelection("all")
-
 
 }, 1000)
 
