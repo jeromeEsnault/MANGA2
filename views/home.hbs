@@ -1,4 +1,3 @@
-
 {{> home/carousel }}
 
 <div class="container">
@@ -13,7 +12,7 @@
 
 {{> home/banner}}
 
- {{> home/button-admin}} 
+{{> home/button-admin}}
 
 <div class="container">
     <div class="row">
@@ -25,5 +24,10 @@
 {{> home/contact }}
 
 {{> modal/modalcookie}}
- 
 
+<script>
+    $(document).on('.modal.keyboard')
+    //$('#cookieModal').modal() // initialized with defaults
+    $('').modal({ : true }); // initialized with no keyboard
+    //$('#cookieModal').modal('show') // initializes and invokes show immediately
+</script>

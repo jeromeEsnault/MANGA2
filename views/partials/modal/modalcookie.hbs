@@ -29,7 +29,7 @@
   </div>
 </div> --}}
 
-<div class="modal fade bg_black" id="cookieModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+<div class="modal fade bg_black" id="cookieModal" data-backdrop="static" data-keyboard="true" tabindex="-1"
   role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl fixed-bottom" role="document">
     <div class="modal-content">
@@ -40,7 +40,7 @@
               <p class="ft-10 honey text-center">This website uses cookies to personalize content and analyse traffic in
                 order to offer you a better experience.</p>
               <a href="" class="btn bg-gold honey mr-1 btn-sm" style="height: 35px;" data-dismiss="modal">I accept</a>
-              {{!-- <a href="" class="btn bg-black honey btn-sm" style="height: 35px;" data-dismiss="modal">refuser</a> --}}
+             
             </div>
             {{!-- {{!-- {{> cookie/banner }} --}}
           </div>
@@ -59,8 +59,3 @@
 {{!-- le script piur activer desactiver les cookie --}}
 
 
-<script>
-  $(document).ready(function () {
-    $('#cookieModal').modal('show');
-  });
-</script>
