@@ -55,8 +55,7 @@ router.route('/manga')
 /*
  * page booking pour voir les manga
  * ********************************* */
-//router.route('/booking')
-// .get(auth.auth,bookingController.getBookingPage)
+
 
 router.route('/booking/:id')
     .get(bookingController.getMangaPageID)

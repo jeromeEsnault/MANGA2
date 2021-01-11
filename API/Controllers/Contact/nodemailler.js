@@ -56,8 +56,8 @@ module.exports = {
         link = "http://" + req.get('host') + "/verify/" + rand
             // et enfin notre mail
         mailOptions = {
-            from: req.body.email,
-            to: 'formationdev.arinfo@gmail.com',
+            from: 'formationdev.arinfo@gmail.com',
+            to: req.body.email,
             subject: req.body.Subject,
             rand: rand,
             html: `
@@ -92,29 +92,10 @@ module.exports = {
                 // Ici on tcheck notre id du mail avec la variable enregistrer en cache (rand)
             if (req.params.id == mailOptions.rand) {
                 console.log("email est verifier")
-                res.send(
-                    "<body class='center img-body container' style ='width: fit-content;'>"
-                    // "<div class='row-form'>" + mailOptions.to "<div class='text-center'>"
-                    // "<div class='col-all text-strike'>"
-                    // "<form action= '/'>"
-                    // "<div class='form - group row'>"
-                    // "<label for='staticEmail' class='col-sm-2 col-form-label'>Email</label>"
-                    // "<div class='col - sm - 10'>"
-                    // "<input type='text' readonly class='form-control-plaintext' id='staticEmail' value='email@example.com'>"
-                    // "</div >"
-                    // "</div >"
-                    // "<div class='form-group row'>"
-                    // "<label for='inputPassword' class='col-sm-2 col-form-label'>Password</label>"
-                    // "<div class='col-sm-10'>"
-                    // "<input type='password' class='form-control' id='inputPassword'>"
-                    // "</div>"
-                    // "</div>"
-                    // "</form>"
-                    // "</div >"
-                    // " </div >"
-                    // "</div >"
-                    // "</body > "
-                )
+                console.log(mailOptions.to)
+                res.render('verify', {
+                    mail: mailOptions.to
+                })
 
             } else {
                 console.log("email is not verified")

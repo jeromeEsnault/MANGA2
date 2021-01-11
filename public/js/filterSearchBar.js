@@ -27,12 +27,17 @@ function myFunction() {
 /*
  * Button Search Bar
  * ***************** */
-filterSelection("all")
+
+setTimeout(() => { // J'attend 1.5s pour faire apparaitre ma div
+    filterSelection("all")
+
+
+}, 1000)
 
 function filterSelection(c) {
     var x, i;
     x = document.getElementsByClassName("filterDiv");
-    if (c == "all") c = "all";
+    if (c == "all") c = " ";
     // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
     for (i = 0; i < x.length; i++) {
         w3RemoveClass(x[i], "show");

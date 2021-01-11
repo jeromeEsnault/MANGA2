@@ -23,11 +23,11 @@
 </div>
 {{> home/contact }}
 
-{{> modal/modalcookie}}
+ {{> modal/modalcookie}}
 
-<script>
-    $(document).on('.modal.keyboard')
-    //$('#cookieModal').modal() // initialized with defaults
-    $('').modal({ : true }); // initialized with no keyboard
-    //$('#cookieModal').modal('show') // initializes and invokes show immediately
-</script>
+ <script>
+     setTimeout(() => { // J'attend 1.5s pour faire apparaitre ma div
+       $('#cookieModal').modal('show');
+     
+  }, 1500)
+ </script>
