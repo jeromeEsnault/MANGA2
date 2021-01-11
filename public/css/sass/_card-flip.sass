@@ -1,0 +1,44 @@
+
+
+/*
+ *  card flip   
+ *****************/
+.row-flip
+    display: inline-flex
+.flip-card
+    flex: 0 0 auto
+    width: 200px
+    height: 350px
+    background-color: transparent
+    perspective: 1000px
+
+.flip-card-inner
+    position: relative
+    width: 100%
+    height: auto
+    text-align: center
+    transition: transform 0.8s
+    transform-style: preserve-3d
+
+.flip-card:hover .flip-card-inner
+    transform: rotateY(180deg)
+
+.flip-card-front,
+.flip-card-back
+    position: absolute
+    width: 100%
+    height: auto
+    -webkit-backface-visibility: hidden
+    backface-visibility: hidden
+
+.flip-card-front
+    background-color: #4e91df
+    color: black
+
+.flip-card-back
+    background-color: dodgerblue
+    color: black
+    transform: rotateY(180deg)
+
+.z-index-modal
+    z-index: 1
