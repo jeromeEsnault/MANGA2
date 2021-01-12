@@ -21,31 +21,7 @@ const nodemailer = require('nodemailer'),
 var rand, mailOptions, host, link;
 
 module.exports = {
-    // Action test boite mail > nodemailer
-    test: (req, res) => {
-        console.log('test a verifier');
-        console.log(req.body)
-            // On configure notre mail à envoyer par nodemailer
-        const mailOptions = {
-            from: 'formationdev.arinfo@gmail.com',
-            to: 'formationdev.arinfo@gmail.com',
-            subject: 'envoye de message, ' + req.body.Pseudo + ' !',
-            html: `
-        <h2>${req.body.Pseudo},vous as envoyer un message</h2>
-      `
-        }
 
-        // On demande à notre transporter d'envoyer notre mail
-        transporter.sendMail(mailOptions, (err, info) => {
-            if (err) console.log(err)
-            else {
-                console.log(info)
-                res.render('contact', {
-                    success: "Un email à bien été envoyer à " + req.body.email
-                })
-            }
-        })
-    },
     // Envoie du message de vérification
     sendVerif: (req, res) => {
         // génération d'un chiffre random
@@ -61,9 +37,9 @@ module.exports = {
             subject: req.body.Subject,
             rand: rand,
             html: `
-        <h2>Encore un effort</h2>,<br>
-        <h5>Cliquer sur le lien suivant afin de finir la procédure de validation de mail.</h5><br>
-        <a href=" ` + link + ` ">Click here to verify</a>
+        <h2 style = > mots de passe a modifier</h2><br>
+        <h5>Cliquer sur le lien suivant pour comfirmer le changement de mot de passe</h5><br>
+        <a href=" ` + link + ` ">cliquer ici </a>
       `
         }
         console.log(mailOptions)

@@ -5,9 +5,11 @@ const express = require("express"),
     app = express(),
     hbs = require("express-handlebars"),
     bodyParser = require("body-parser"),
+    cookieParser = require('cookie-parser'),
     port = 1989;
 const Handlebars = require('handlebars')
     // const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
+
 
 //=====================================================
 //        2  DEPENDENSE DE CONNECTION DB
@@ -43,7 +45,11 @@ const chai = require("chai"),
 //          6   RECUPERATION DES ROUTE
 //=====================================================
 
+// Cookie-Parser
+app.use(cookieParser())
+
 const ROUTER = require("./API/router");
+
 
 //=====================================================
 //              A VOIR
@@ -98,12 +104,12 @@ const mongoStore = MongoStore(expressSession);
 app.use(
     expressSession({
         secret: "securite",
-        maxAge: 1500000,
+        maxAge: 36000,
         domain: "",
         expire: "",
         httpOnly: "",
         path: "/",
-        name: "cookie-sess",
+        name: "cookiesess",
         saveUninitialized: true,
         resave: false,
         store: new mongoStore({
@@ -145,6 +151,7 @@ app.use("*", (req, res, next) => {
     //console.log("check session");
     next();
 });
+
 
 // Swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));

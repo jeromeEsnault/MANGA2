@@ -7,9 +7,112 @@
 /*          A COMPRENDRE
  * $bg-body: '/assets/img/bodyimg.jpg' */
 /*  CSS DE BASE */
-div:target {
+nav:target {
   padding-top: 7em;
   margin-top: -7em; }
+
+.espace-fixed {
+  margin-top: 100px; }
+
+.red {
+  background-color: #df1c1c;
+  opacity: 70%; }
+
+.block-recherche {
+  margin-bottom: 20px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 20px; }
+
+.btn-recherche {
+  background: linear-gradient(#df1c1c 25%, #f0f0f0 75%); }
+
+.block-recherche-btn {
+  margin-bottom: 20px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 20px; }
+
+a {
+  text-decoration: none; }
+
+li {
+  text-decoration-color: #000000; }
+
+h1 {
+  font-family: "manga"; }
+
+h2 {
+  font-family: "manga"; }
+
+h3 {
+  font-family: "manga"; }
+
+h4 {
+  font-family: "manga"; }
+
+h5 {
+  font-family: "manga"; }
+
+h6 {
+  font-family: "manga"; }
+
+p {
+  font-family: "manga"; }
+
+.w-logo {
+  width: 100px !important;
+  margin-right: 10px !important; }
+
+.fond {
+  background-color: #222222 !important; }
+
+.w-icon {
+  size: 100% !important; }
+
+.nav-black-active :active {
+  background-color: #080808 !important; }
+
+.color-footer {
+  background-color: #161212; }
+
+.w-color {
+  color: #ffffff; }
+
+.img-body {
+  background-image: url(/img/bodyimg.jpg); }
+
+.bg-admin {
+  background-image: url(/img/bodyimg.jpg); }
+
+.bg-contact {
+  background-color: #673ab7; }
+
+#myInputadminvo {
+  background-image: url("/css/searchicon.png");
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px; }
+
+#myTablev {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px; }
+
+#myTablev th, #myTablev td {
+  text-align: left;
+  padding: 12px; }
+
+#myTablev tr {
+  border-bottom: 1px solid #ddd; }
+
+#myTablev tr.header, #myTablev tr:hover {
+  background-color: #f1f1f1; }
 
 #myInput {
   background-image: url("/css/searchicon.png");
@@ -100,79 +203,5 @@ div:target {
 
 .z-index-modal {
   z-index: 1; }
-
-.red {
-  background-color: #df1c1c;
-  opacity: 70%; }
-
-.block-recherche {
-  margin-bottom: 20px;
-  margin-left: 25%;
-  margin-right: 25%;
-  margin-top: 20px; }
-
-.btn-recherche {
-  background: linear-gradient(#df1c1c 25%, #f0f0f0 75%); }
-
-.block-recherche-btn {
-  margin-bottom: 20px;
-  margin-left: 25%;
-  margin-right: 25%;
-  margin-top: 20px; }
-
-a {
-  text-decoration: none; }
-
-li {
-  text-decoration-color: #000000; }
-
-h1 {
-  font-family: "manga"; }
-
-h2 {
-  font-family: "manga"; }
-
-h3 {
-  font-family: "manga"; }
-
-h4 {
-  font-family: "manga"; }
-
-h5 {
-  font-family: "manga"; }
-
-h6 {
-  font-family: "manga"; }
-
-p {
-  font-family: "manga"; }
-
-.w-logo {
-  width: 100px !important;
-  margin-right: 10px !important; }
-
-.fond {
-  background-color: #222222 !important; }
-
-.w-icon {
-  size: 100% !important; }
-
-.nav-black-active :active {
-  background-color: #080808 !important; }
-
-.color-footer {
-  background-color: #161212; }
-
-.w-color {
-  color: #ffffff; }
-
-.img-body {
-  background-image: url(/img/bodyimg.jpg); }
-
-.bg-admin {
-  background-image: url(/img/bodyimg.jpg); }
-
-.bg-contact {
-  background-color: #673ab7; }
 
 /*# sourceMappingURL=style.css.map */

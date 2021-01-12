@@ -41,7 +41,7 @@ module.exports = {
                 domain: 'localhost',
                 path: '/',
                 httpOnly: true,
-                maxAge: 10000
+                maxAge: 100000
             })
             // res.render('home', {
             //   newPtiGato: 'Un nouveau cookie "ptiGato" vous à été assigné',
@@ -69,9 +69,9 @@ module.exports = {
 
             console.log('2')
             res.clearCookie(`ptiGato`)
-                // res.render('home', {
+                //  res.render('home', {
                 //   clearCookiePtiGato: 'Vous avez supprimer le cookie "ptiGato" !'
-                // })
+                //  })
             res.redirect('/')
 
         } else {

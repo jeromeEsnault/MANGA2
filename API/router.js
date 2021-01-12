@@ -29,6 +29,9 @@ const homeController = require('./Controllers/home/homeController'), //ok
     upload = require('./middleware/img'), //ok
     auth = require('./middleware/auth'),
 
+    // change password
+    passwordController = require('./Controllers/MDP-form'),
+
     // cookie
     cookieController = require('./Controllers/cookie/cookie');
 
@@ -117,14 +120,15 @@ router.route('/contact')
 
 // Nodemailer
 // email test
-router.route('/nodemailerTest')
-    .post(nodemailController.test)
-    // email de verification
+// router.route('/nodemailerTest')
+//     .post(nodemailController.test)
+// email de verification
 router.route('/verification')
     .post(nodemailController.sendVerif)
     // Page de vérification
 router.route('/verify/:id')
     .get(nodemailController.verifMail)
+    .post(passwordController.emailpassword)
 
 /****************************************************** */
 

@@ -6,7 +6,7 @@ const User = require('../../database/models/User')
 
 module.exports = {
     // Method register
-    register: async (req, res) => {
+    register: async(req, res) => {
         // const authAdmin = await isAdmin(false);
         // const authAdmin = await User.findOne({email: req.body.email, isAdmin: true});
         //=> false
@@ -14,18 +14,18 @@ module.exports = {
         // Racourcie pour accèder à la session
         const sess = req.session
         console.log(req.body)
-        // ici on compare les 2 mot de passe
+            // ici on compare les 2 mot de passe
         if (!req.body.password) {
             console.log('error password')
             res.redirect('/')
         } else {
             // ON log si la function est OK
             console.log('password OK')
-            // On demande la function de Mongo pour créé notre utilisateur
+                // On demande la function de Mongo pour créé notre utilisateur
             User.create({
                 // On récupère notre formulaire
                 ...req.body,
-                
+
                 // Au cas ou une err survient en force
             }, (err, user) => {
                 console.log('voir si il y a erreur');
@@ -37,16 +37,16 @@ module.exports = {
                     res.redirect('/')
                 }
             })
-        } 
+        }
     },
     // Validation du login ( Conexion )
-    login: async (req, res, next) => {
+    login: async(req, res, next) => {
         console.log('page connection login');
         console.log(req.body)
-        // On défini la variable userAuth qui execute une fonction de MongoDB
-        // Qui demande de recherché parmis le Model (User) une adresse mail
-        // Qui serais correspondante avec le req.body.email
-        // qui est notre formulaire d'authentification qui est sur la page /login
+            // On défini la variable userAuth qui execute une fonction de MongoDB
+            // Qui demande de recherché parmis le Model (User) une adresse mail
+            // Qui serais correspondante avec le req.body.email
+            // qui est notre formulaire d'authentification qui est sur la page /login
         let userAuth = await User.findOne({
             email: req.body.email
         });
@@ -60,29 +60,29 @@ module.exports = {
             console.log("pas dans la db");
             // Redirection sur home.hbs
             res.redirect('/', {
-                error: "Ce compte n existe pas",
-                sess: sess
-            })
-            // Sinon si userAuth est bien un mail qui éxiste dans la DB alors tu fais ça
+                    error: "Ce compte n existe pas",
+                    sess: sess
+                })
+                // Sinon si userAuth est bien un mail qui éxiste dans la DB alors tu fais ça
         } else {
             // On défini que l'on va récupéré un Objet contenant email & password depuis req.body
             const { email, password } = req.body
-            // On execute une fonction de MongoDB qui nous sert à allez récupéré l'objet complet
-            // Qui correspond au mail de userAuth -> req.body.email
+                // On execute une fonction de MongoDB qui nous sert à allez récupéré l'objet complet
+                // Qui correspond au mail de userAuth -> req.body.email
             User.findOne({
                 email
             }, (error, User) => {
                 if (error) console.log(error)
-                // Si l'User ne correspond pas a un email concerné
-                // Pour la sécurité c'est toujour mieux de géré les err avant la function réelle ;)
+                    // Si l'User ne correspond pas a un email concerné
+                    // Pour la sécurité c'est toujour mieux de géré les err avant la function réelle ;)
                 if (!User) {
                     // Redirection sur home.hbs
                     res.redirect('/', {
-                        error: "Ce compte n existe pas",
-                        sess: sess
-                    })
-                    // Sinon si notre req.body.email correspond avec un email éxistant
-                    // Alors tu me fais ça
+                            error: "Ce compte n existe pas",
+                            sess: sess
+                        })
+                        // Sinon si notre req.body.email correspond avec un email éxistant
+                        // Alors tu me fais ça
                 } else {
                     // L'on récupère le req.body.password
                     // On le passe dans la moulinette de notre module Bcrypt
@@ -93,21 +93,18 @@ module.exports = {
                     // et on ouvre la function afin de réaliser notre authentification
                     bcrypt.compare(password, User.password, (error, same) => {
                         if (error) console.log(error)
-                        // Si le hash du req.body.password ne correspond pas avec le hash du password
-                        // Correspondant avec l'email poster depuis req.body.email
-                        // et bien tu me fais ça
+                            // Si le hash du req.body.password ne correspond pas avec le hash du password
+                            // Correspondant avec l'email poster depuis req.body.email
+                            // et bien tu me fais ça
                         if (!same) {
                             // Log OK
                             console.log('Error mdp')
-                            // Redirection vers home.hbs
-                            res.redirect('/', {
-                                error: "Le mot de passe ne correspond pas !",
-                                sess: sess
-                            })
+                                // Redirection vers home.hbs
+                            res.redirect('/')
                         } else {
                             // Log Success Authentification OK
                             console.log('Success Authentification OK')
-                            // Définition de la session
+                                // Définition de la session
                             sess.email = User.email // email
                             sess.pseudo = User.pseudo // pseudo
                             sess.isVerified = User.isVerified // verification
@@ -116,7 +113,7 @@ module.exports = {
                             sess.isModo = User.isModo // si moderateur
                             sess.bio = User.bio // bio de user
                             sess.imgProfil = User.imgProfil // img de profil
-                            // Redirection vers home.hbs
+                                // Redirection vers home.hbs
                             res.redirect('/')
                         }
                     })
@@ -126,7 +123,7 @@ module.exports = {
     },
     logout: (req, res) => {
         req.session.destroy(() => {
-            res.clearCookie('cookie-sess')
+            res.clearCookie('cookiesess')
             console.log(req.session)
             res.redirect('/')
         })
