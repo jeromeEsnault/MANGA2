@@ -25,6 +25,7 @@ module.exports = {
                 })
             })
     },
+
     deleteOne: (req, res) => {
         Manga.findByIdAndDelete(req.params.id, (err) => {
             if (err) console.log(err)

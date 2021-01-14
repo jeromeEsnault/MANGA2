@@ -4,7 +4,7 @@ module.exports = {
 
     emailpassword: async(req, res) => {
         const emailExist = await req.body.mail
-        console.log('Controller email  changa mot de passe')
+        console.log('Controller email  change mot de passe')
 
         if (!emailExist) res.redirect('/')
         bcrypt.hash(req.body.password, 10, (err, encrypted) => {

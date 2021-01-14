@@ -42,6 +42,39 @@ module.exports = {
         <a href=" ` + link + ` ">cliquer ici </a>
       `
         }
+        console.log(link)
+            // Et envoi notre mail avec nos callback
+        transporter.sendMail(mailOptions, (err, res, next) => {
+                if (err) {
+                    console.log(err)
+                    res.end("err404")
+                } else {
+                    console.log("Message Envoyer")
+                    next()
+                }
+            })
+            // Response
+        res.redirect('/')
+    },
+    VerifInscription: (req, res) => {
+        // génération d'un chiffre random
+        rand = Math.floor((Math.random() * 100) + 54)
+            // on definit notre host
+        host = req.get('host')
+            // on définit le lien
+        link = "http://" + req.get('host') + "/verify/" + rand
+            // et enfin notre mail
+        mailOptions = {
+            from: 'formationdev.arinfo@gmail.com',
+            to: req.body.email,
+            subject: req.body.Subject,
+            rand: rand,
+            html: `
+        <h2 style = > mots de passe a modifier</h2><br>
+        <h5>Cliquer sur le lien suivant pour comfirmer l'incription a notre site</h5><br>
+        <a href=" ` + link + ` ">cliquer ici </a>
+      `
+        }
         console.log(mailOptions)
             // Et envoi notre mail avec nos callback
         transporter.sendMail(mailOptions, (err, res, next) => {

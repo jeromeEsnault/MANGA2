@@ -7,11 +7,9 @@ const { isValidObjectId } = require('mongoose')
 module.exports = {
 
     getMangaPageID: async(req, res) => { //ok
-        const dbTome = await Tome.findOne({}).lean()
 
-        const dbUser = await User.find({}).lean()
-            //console.log(req.params.id)
-            //console.log(req.params)
+        //console.log(req.params.id)
+        //console.log(req.params)
         Tome.findById(req.params.id).lean()
             .populate('tome user ')
             .exec((err, data) => {
@@ -19,15 +17,11 @@ module.exports = {
                     //console.log(data)
                 console.log('je suis dans le .getMangaPageID de booking')
                 res.render('booking', {
-                        manga: data.manga,
-                        tome: data.tome,
-                        user: dbUser
-                    })
-                    /* res.json(
-                         data,
-                         dbTome,
-                        
-                     )*/
+                    manga: data.manga,
+                    tome: data.tome,
+                    user: data.userID
+                })
+
             })
     },
 
