@@ -24,19 +24,6 @@ module.exports = {
             .exec((err, data, req) => {
 
                 if (err) console.log(err)
-                    // console.log("test1");
-                    // //console.log(sess); // ok fonctionne
-                    // console.log("test2");
-                    //console.log(data); // ok fonctionne
-                    // console.log("test3");
-                    // //console.log(dbTome1);// ok fonctionne 
-
-                // console.log("test4");
-                // //console.log(filtre); // ok fonctionne
-                // console.log("test5");
-                // //console.log(dbTome); // ok fonctionne 
-
-
                 console.log(dbTome)
                 console.log('je suis dans le .getAdminPage LA FIN')
                 res.render('admin', {

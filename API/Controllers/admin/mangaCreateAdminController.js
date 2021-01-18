@@ -8,8 +8,7 @@ module.exports = {
 
     getMangaPageID: async(req, res) => { //ok
 
-        //console.log(req.params.id)
-        //console.log(req.params)
+       
         Tome.findById(req.params.id).lean()
             .populate('tome user ')
             .exec((err, data) => {
@@ -33,7 +32,7 @@ module.exports = {
 
 
     // POST : Action d'envoi du formulaire Createmanga
-    createMangaForm: async(req, res) => { //ok
+    createMangaForm: (req, res) => { //ok
         // const mangaExist = await Manga.findById(req.params._id)
         // formulaire 
         console.log('Controller Action Formulaire Create manga')
@@ -52,15 +51,15 @@ module.exports = {
                 console.log(data);
                 res.redirect(`/admin`)
                 console.log('redirection faite');
-                console.log(data);
+
 
                 console.log('envoie des donner fait');
             }
-            //  Manga.save((err) => {
-            //     if (err) console.log(err);
-            // });
+
         })
     },
+
+
     editID: async(req, res) => {
         console.log('Controller Edit ID')
             // recupérer lid du manga et le mettre en attente 

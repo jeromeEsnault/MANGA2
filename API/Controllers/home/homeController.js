@@ -16,7 +16,6 @@ module.exports = {
         console.log('CSession: ', CSession)
         const dbUser = User.find({}).lean()
         const dbTome = Tome.find({}).lean()
-
         Manga
             .find({})
             .lean()
