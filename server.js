@@ -70,7 +70,7 @@ app.use(methodOverride("_method"));
 // Express-session
 // Mongoose
 mongoose
-    .connect(process.env.MONGODB_URI, {
+    .connect(process.env.MONGODB_URI_PROD, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false,
